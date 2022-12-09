@@ -93,7 +93,8 @@ if (isset($_SESSION["id"])) :
                     </tr>
                 </thead>
             </table>
-            <a href="tenants.php" class="btn btn-secondary">Back</a>
+            <a href="tenants.php" class="btn btn-outline-secondary">Back</a>
+            <a href="#" class="btn btn-warning">Change Password</a>
 
             <!--Logout Modal-->
             <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

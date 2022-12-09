@@ -114,7 +114,6 @@ if ($fname && $midname && $lname && $email && $contact &&  $business_type && $ad
                 <label for="lastname" class="form-label">Last Name</label>
                 <input name="lname" value="<?php echo $lname; ?>" type="text" class="form-control" placeholder="Enter your last name" autocomplete="off">
                 <span class="error"><?php echo $lnameErr ?></span>
-
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
@@ -123,7 +122,7 @@ if ($fname && $midname && $lname && $email && $contact &&  $business_type && $ad
             </div>
             <div class="mb-3">
                 <label for="contact" class="form-label">Contact #</label>
-                <input name="contact" type="text" value="<?php echo $contact; ?>" maxlength="11" class="form-control" placeholder="Enter your contact number" autocomplete="off">
+                <input name="contact" onkeypress="return isNumberKey(event)" type="text" value="<?php echo $contact; ?>" maxlength="11" class="form-control" placeholder="Enter your contact number" autocomplete="off">
                 <span class="error"><?php echo $contactErr ?></span>
             </div>
             <div class="mb-3">
@@ -131,11 +130,6 @@ if ($fname && $midname && $lname && $email && $contact &&  $business_type && $ad
                 <input name="business_type" value="<?php echo $business_type ?>" type="text" class="form-control" placeholder="e.g. Coffee" autocomplete="off">
                 <span class="error"><?php echo $business_typeErr ?></span>
             </div>
-            <!-- <div class="mb-3">
-                <label for="businessType" class="form-label">Username</label>
-                <input name="username" value="<?php echo $username; ?>" type="text" class="form-control" placeholder="Enter your username" autocomplete="off">
-                <span class="error"></span>
-            </div> -->
             <div class="mb-3">
                 <label for="address" class="form-label">Address</label>
                 <textarea name="address" class="form-control" placeholder="Enter your complete address" rows="3" autocomplete="off"><?php echo $address ?></textarea>
@@ -151,6 +145,15 @@ if ($fname && $midname && $lname && $email && $contact &&  $business_type && $ad
             </div>
     </div>
     </form>
+
+    <script>
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+    </script>
 </body>
 
 </html>

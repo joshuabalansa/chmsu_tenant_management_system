@@ -66,7 +66,7 @@ if (isset($_SESSION["id"])) :
                 </thead>
             </table>
 
-            <a class="btn-sm btn btn-secondary" href="process.php?update=<?php echo $user_id ?>">Update</a>
+            <a class="btn btn-info" href="process.php?update=<?php echo $user_id ?>">Update</a>
 
 
 

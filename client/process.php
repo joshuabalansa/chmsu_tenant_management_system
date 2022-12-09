@@ -11,7 +11,6 @@ if (isset($_GET['update'])) {
         $db_email = $row["email"];
         $db_contact = $row["contact"];
     }
-
 }
 
 if (isset($_POST["save"])) {
@@ -45,20 +44,23 @@ if (isset($_POST["save"])) {
 <body>
 
     <div class="container mt-5">
-        <h6>EDIT PROFILE</h6>
+        <h3>Edit Profile</h3>
         <form action="" method="POST">
-            <div class="mb-3">
-                <label for="name">First name</label>
-                <input placeholder="Enter full name" class="form-control" type="text" name="new_first_name" value="<?php echo $db_first_name ?>" required>
+            <div class="row">
+                <div class="col">
+                    <label for="name">First name</label>
+                    <input placeholder="Enter full name" class="form-control" type="text" name="new_first_name" value="<?php echo $db_first_name ?>" required>
+                </div>
+                <div class="col">
+                    <label for="name">Middle Name</label>
+                    <input placeholder="Enter middle name" class="form-control" type="text" name="new_middle_name" value="<?php echo $db_middle_name ?>" required>
+                </div>
+                <div class="col">
+                    <label for="name">Last Name</label>
+                    <input placeholder="Enter full name" class="form-control" type="text" name="new_last_name" value="<?php echo $db_last_name ?>" required>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="name">Middle Name</label>
-                <input placeholder="Enter middle name" class="form-control" type="text" name="new_middle_name" value="<?php echo $db_middle_name ?>" required>
-            </div>
-            <div class="mb-3">
-                <label for="name">Last Name</label>
-                <input placeholder="Enter full name" class="form-control" type="text" name="new_last_name" value="<?php echo $db_last_name ?>" required>
-            </div>
+
             <div class="mb-3">
                 <label for="name">Address</label>
                 <textarea placeholder="Enter your address" class="form-control" type="text" name="new_address" rows="3" required><?php echo $db_address ?></textarea>
@@ -69,14 +71,14 @@ if (isset($_POST["save"])) {
             </div>
             <div class="mb-3">
                 <label for="name">Contact</label>
-                <input placeholder="Enter your phone number" maxlength="11" class="form-control" type="text" value="<?php echo $db_contact; ?>" name="new_contact">
+                <input onkeypress="return isNumberKey(event)" placeholder="Enter your phone number" maxlength="11" class="form-control" type="text" value="<?php echo $db_contact; ?>" name="new_contact">
             </div>
             <div class="mb-3">
                 <label for="name">Change Password</label>
                 <input placeholder="Enter your new password" class="form-control" type="password" name="new_password" required>
             </div>
             <div class="mb-3">
-                <a href="profile.php" class="btn btn-secondary">Cancel</a>
+                <a href="profile.php" class="btn btn-outline-secondary">Cancel</a>
                 <input name="save" type="submit" class="btn btn-info" value="UPDATE">
             </div>
         </form>

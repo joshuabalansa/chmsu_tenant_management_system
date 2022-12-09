@@ -47,20 +47,23 @@
 
 
     <div class="container mt-5">
-        <h4>Edit user</h4>
+        <h3>Edit Tenant</h3>
 
         <form action="" method="POST">
-            <div class="mb-3">
-                <label for="name">First Name</label>
-                <input placeholder="Enter first name" class="form-control" type="text" name="new_first_name" value="<?php echo $db_first_name ?>" required>
-            </div>
-            <div class="mb-3">
-                <label for="name">Middle Name</label>
-                <input placeholder="Enter middle name" class="form-control" type="text" name="new_middle_name" value="<?php echo $db_middle_name ?>" required>
-            </div>
-            <div class="mb-3">
-                <label for="name">Last Name</label>
-                <input placeholder="Enter last name" class="form-control" type="text" name="new_last_name" value="<?php echo $db_last_name ?>" required>
+            <div class="row">
+                <div class="col">
+                    <label for="name">First Name</label>
+                    <input placeholder="Enter first name" class="form-control" type="text" name="new_first_name" value="<?php echo $db_first_name ?>" required>
+                </div>
+
+                <div class="col">
+                    <label for="name">Middle Name</label>
+                    <input placeholder="Enter middle name" class="form-control" type="text" name="new_middle_name" value="<?php echo $db_middle_name ?>" required>
+                </div>
+                <div class="col">
+                    <label for="name">Last Name</label>
+                    <input placeholder="Enter last name" class="form-control" type="text" name="new_last_name" value="<?php echo $db_last_name ?>" required>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="name">Address</label>
@@ -72,11 +75,11 @@
             </div>
             <div class="mb-3">
                 <label for="name">Contact</label>
-                <input placeholder="Enter your contact #" maxlength="11" class="form-control" type="text" name="new_contact" value="<?php echo $db_contact ?>" required>
+                <input onkeypress="return isNumberKey(event)" placeholder="Enter your contact #" maxlength="11" class="form-control" type="text" name="new_contact" value="<?php echo $db_contact ?>" required>
             </div>
             <div class="mb-3">
                 <label for="name">Change Password</label>
-                <input placeholder="Enter new password" class="form-control" type="password" name="new_password">
+                <input placeholder="Enter new password" class="form-control" type="password" name="new_password" required>
             </div>
             <div class="mb-3">
                 <a href="tenants.php" class="btn btn-outline-secondary">Cancel</a>
