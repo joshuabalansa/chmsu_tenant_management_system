@@ -57,12 +57,13 @@ if (isset($_SESSION["id"])) :
                             $db_address = $row["address"];
                             $db_status = $row["status"];
                             $fullname = ucfirst($db_fname) . " " . ucfirst($db_midname[0]) . ". " . ucfirst($db_lname);
+
                         ?>
                             <tr>
                                 <td><?php echo $fullname ?></td>
                                 <td><?php echo $db_email ?></td>
                                 <td><?php echo $db_contact ?></td>
-                                <td><?php echo $db_address ?></td>
+                                <td><?php echo substr($db_address, 0, -15) . "..." ?></td>
                                 <td><?php echo $db_type ?></td>
                                 <td>
                                     <p class='badge rounded-pill text-bg-danger'><?php echo $db_status ?></p>

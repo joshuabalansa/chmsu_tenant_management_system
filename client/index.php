@@ -10,6 +10,7 @@ if (isset($_SESSION["id"])) :
     $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
     while ($row = mysqli_fetch_assoc($get_record)) {
         $db_first_name = $row["first_name"];
+        $db_id = $row["user_id"];
     }
 ?>
     <!DOCTYPE html>
@@ -29,7 +30,7 @@ if (isset($_SESSION["id"])) :
         <div class="container">
             <?php include("inc/top_nav.php") ?>
             <br><br>
-
+            <h4>Payment History</h4>
             <?php $get_record = mysqli_query($connections, "SELECT * FROM payment WHERE user_id='$user_id' LIMIT 7");
             while ($row = mysqli_fetch_assoc($get_record)) :
                 $db_amount = $row["amount"];
@@ -37,7 +38,7 @@ if (isset($_SESSION["id"])) :
                 $db_date = $row["date"];
             ?>
 
-                <h4>Payment History</h4>
+
                 <ul class="list-group mt-1">
                     <li class="list-group-item d-flex justify-content-between lh-sm">
                         <div>

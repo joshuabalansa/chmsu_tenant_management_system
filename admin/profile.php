@@ -28,7 +28,7 @@ if (isset($_SESSION["id"])) :
         <div class="container">
             <?php include("inc/top_nav.php") ?>
             <br><br>
-
+            
             <?php
             $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id'");
             while ($row = mysqli_fetch_assoc($get_record)) {
@@ -41,7 +41,7 @@ if (isset($_SESSION["id"])) :
             $fullname = ucfirst($db_first_name) . " " . ucfirst($db_last_name);
 
             ?>
-            <h3>My Info</h3>
+            <h3>Profile</h3>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -54,11 +54,12 @@ if (isset($_SESSION["id"])) :
                     </tr>
                     <tr>
                         <th>Username:</th>
-                        <td><?php echo $db_user?></td>
+                        <td><?php echo $db_user ?></td>
                     </tr>
                 </thead>
             </table>
-            <button class="btn-sm btn btn-info">Update</button>
+
+            <button class="btn btn-info">Update</button>
             <!--Logout Modal-->
             <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">

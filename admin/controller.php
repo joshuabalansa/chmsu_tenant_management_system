@@ -7,11 +7,10 @@ if (isset($_GET["remove"])) {
     header("location: tenants.php");
 }
 
-
-
 //process of accepting and rejeting button
 $get_record = mysqli_query($connections, "SELECT * FROM user_register WHERE status='pending' ");
 while ($row = mysqli_fetch_assoc($get_record)) {
+    $db_fname = ucfirst($row["fname"]);
     $email = $row["email"];
 }
 
@@ -26,6 +25,11 @@ require 'PHPMailer/src/SMTP.php';
 if (isset($_GET['reject'])) {
     $id = $_GET['reject'];
     mysqli_query($connections, "UPDATE user_register SET status='rejected' WHERE id = $id");
+    $get_record = mysqli_query($connections, "SELECT * FROM user_register WHERE id='$id'");
+    while ($row = mysqli_fetch_assoc($get_record)) {
+        $db_fname = $row["fname"];
+    }
+
     $mail = new PHPMailer(true);
 
     try {
@@ -36,26 +40,28 @@ if (isset($_GET['reject'])) {
         $mail->SMTPAuth   = true;
         $mail->Username   = 'j.balansa00@gmail.com';
         $mail->Password   = 'grmqjovlsvcwmsdw';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->SMTPSecure = 'ssl';
         $mail->Port       = 465;
 
 
-        $mail->setFrom('j.balansa00@gmail.com', 'CHMSU FT');
+        $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University Fortune Towne');
         $mail->addAddress($email, 'user');
 
         $mail->isHTML(true);
         $mail->Subject = 'Thank you for taking the time to apply';
-        $mail->Body    = '
+        $mail->Body    = "
      <p>
-    Thank you for taking the time to apply as a tenant role at CHMSU FT. <br>
-    It was a pleasure to learn more about your skills and accomplishments.<br>
-    Unfortunately, the school did not select you for further consideration. <br>
-    <br><br>
-    Regards,
-    Carlos Hilado Memorial State University
-    </p>
-    
-    ';
+     Hi $db_fname,<br>
+     Thank you for a and bringing this feature to our attention.<br>
+     I could definitely understand how our customers would benefit from it. <br>
+     Right now, we don&#39;t have anything like that in place, however, we&#39;ve actually heard that request quite a lot, so we&#39;ll possibly implement it very soon.<br>
+     &#39;ll talk to our development team and find out if that could be added to a future release.<br>
+     In the meantime, please let me know if there&#39;s anything else that we can help you with and have a great rest of the week!
+     Best,
+     <br><br>
+     Regards, <br>
+     Carlos Hilado Memorial State University Fortune Towne.
+    </p> ";
         $mail->AltBody = '<p>
     Thank you for taking the time to apply as a tenant role at CHMSU FT. <br>
     It was a pleasure to learn more about your skills and accomplishments.<br>
@@ -70,7 +76,6 @@ if (isset($_GET['reject'])) {
         echo "<script>document.location.href='applicants.php'</script>";
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-        echo "You can check the internet connection or turn the antivirus off";
     }
 }
 if (isset($_GET['accept'])) {
@@ -110,15 +115,12 @@ if (isset($_GET['accept'])) {
         $mail->SMTPAuth   = true;
         $mail->Username   = 'j.balansa00@gmail.com';
         $mail->Password   = 'grmqjovlsvcwmsdw';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->SMTPSecure = 'ssl';
         $mail->Port       = 465;
 
 
-        $mail->setFrom('j.balansa00@gmail.com', 'CHMSU FT');
-        $mail->addAddress($email, 'User');
-
-
-
+        $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University Fortune  Towne');
+        $mail->addAddress($email, 'user');
 
         $mail->isHTML(true);
         $mail->Subject = 'You are now a part of CHMSU Tenant!';
@@ -140,6 +142,48 @@ if (isset($_GET['accept'])) {
         echo "<script>document.location.href='applicants.php'</script>";
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-        echo "You can check the internet connection or turn the antivirus off";
+    }
+}
+
+if (isset($_GET['change_password'])) {
+    $id = $_GET['change_password'];
+    $get_record = mysqli_query($connections, "SELECT * FROM user_register WHERE id='$id'");
+    while ($row = mysqli_fetch_assoc($get_record)) {
+        $email = $row["email"];
+    }
+    function random_password($lenght = 5)
+    {
+        $str = "abcdefghijkLmnopqrstuvwxyz1234567890";
+        $shuffled = substr(str_shuffle($str), 0, $lenght);
+        return $shuffled;
+    }
+    $password = random_password(8);
+
+    $mail = new PHPMailer(true);
+    try {
+
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'j.balansa00@gmail.com';
+        $mail->Password   = 'grmqjovlsvcwmsdw';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port       = 465;
+
+
+        $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University Fortune Towne');
+        $mail->addAddress($email, 'user');
+
+        $mail->isHTML(true);
+        $mail->Subject = 'Your password Change';
+        $mail->Body    = "Your password was Change to <b>$password</b>";
+        $mail->AltBody = '';
+
+        $mail->send();
+        echo "Reject Message Sent!";
+        echo "<script>document.location.href='tenants.php'</script>";
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }

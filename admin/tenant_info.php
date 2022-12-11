@@ -94,8 +94,8 @@ if (isset($_SESSION["id"])) :
                 </thead>
             </table>
             <a href="tenants.php" class="btn btn-outline-secondary">Back</a>
-            <a href="#" class="btn btn-warning">Change Password</a>
-
+            <button title="change password" type='submit' name="changepassword" data-bs-toggle="modal" data-bs-target="#modalChangePassword" class='btn btn-warning'>Change Password</button>
+            <?php include("modals.php") ?>
             <!--Logout Modal-->
             <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
