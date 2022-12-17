@@ -38,9 +38,7 @@
         $new_address = $_POST["new_address"];
         $new_email = $_POST["new_email"];
         $new_contact = $_POST["new_contact"];
-        $new_password  = $_POST["new_password"];
         mysqli_query($connections, "UPDATE user_register SET fname='$new_first_name', midname='$new_middle_name', lname='$new_last_name', address='$new_address', email='$new_email', contact='$new_contact' WHERE id='$id'");
-        mysqli_query($connections, "UPDATE users SET password='$new_password' WHERE user_id='$id'");
         header("location: tenants.php");
     }
     ?>
@@ -76,10 +74,6 @@
             <div class="mb-3">
                 <label for="name">Contact</label>
                 <input onkeypress="return isNumberKey(event)" placeholder="Enter your contact #" maxlength="11" class="form-control" type="text" name="new_contact" value="<?php echo $db_contact ?>" required>
-            </div>
-            <div class="mb-3">
-                <label for="name">Change Password</label>
-                <input placeholder="Enter new password" class="form-control" type="password" name="new_password" required>
             </div>
             <div class="mb-3">
                 <a href="tenants.php" class="btn btn-outline-secondary">Cancel</a>
