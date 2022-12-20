@@ -8,7 +8,7 @@ if (isset($_GET["remove"])) {
 }
 
 //process of accepting and rejeting button
-$get_record = mysqli_query($connections, "SELECT * FROM user_register WHERE status='pending' ");
+$get_record = mysqli_query($connections, "SELECT * FROM tenants WHERE status='pending' ");
 while ($row = mysqli_fetch_assoc($get_record)) {
     $db_fname = ucfirst($row["fname"]);
     $email = $row["email"];
@@ -24,7 +24,7 @@ require 'PHPMailer/src/SMTP.php';
 
 if (isset($_GET['reject'])) {
     $id = $_GET['reject'];
-    mysqli_query($connections, "UPDATE user_register SET status='rejected' WHERE id = $id");
+    mysqli_query($connections, "UPDATE tenants SET status='rejected' WHERE id = $id");
     $get_record = mysqli_query($connections, "SELECT * FROM user_register WHERE id='$id'");
     while ($row = mysqli_fetch_assoc($get_record)) {
         $db_fname = $row["fname"];
@@ -44,7 +44,7 @@ if (isset($_GET['reject'])) {
         $mail->Port       = 465;
 
 
-        $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University Fortune Towne');
+        $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University');
         $mail->addAddress($email, 'user');
 
         $mail->isHTML(true);
@@ -80,10 +80,10 @@ if (isset($_GET['reject'])) {
 }
 if (isset($_GET['accept'])) {
     $id = $_GET['accept'];
-    mysqli_query($connections, "UPDATE user_register SET status='approved' WHERE id = $id");
+    mysqli_query($connections, "UPDATE tenants SET status='approved' WHERE id = $id");
 
     //INSERT TO users
-    $get_record = mysqli_query($connections, "SELECT * FROM user_register WHERE id='$id'");
+    $get_record = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$id'");
     while ($row = mysqli_fetch_assoc($get_record)) {
         $db_id = $row["id"];
         $db_fname = $row["fname"];
@@ -119,7 +119,7 @@ if (isset($_GET['accept'])) {
         $mail->Port       = 465;
 
 
-        $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University Fortune  Towne');
+        $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University');
         $mail->addAddress($email, 'user');
 
         $mail->isHTML(true);
@@ -147,7 +147,7 @@ if (isset($_GET['accept'])) {
 
 if (isset($_GET['change_password'])) {
     $id = $_GET['change_password'];
-    $get_record = mysqli_query($connections, "SELECT * FROM user_register WHERE id='$id'");
+    $get_record = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$id'");
     while ($row = mysqli_fetch_assoc($get_record)) {
         $email = $row["email"];
     }
@@ -172,7 +172,7 @@ if (isset($_GET['change_password'])) {
         $mail->Port       = 465;
 
 
-        $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University Fortune Towne');
+        $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University');
         $mail->addAddress($email, 'user');
 
         $mail->isHTML(true);

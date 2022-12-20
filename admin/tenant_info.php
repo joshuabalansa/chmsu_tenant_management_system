@@ -32,7 +32,7 @@ if (isset($_SESSION["id"])) :
             <?php
             if (isset($_GET['view'])) {
                 $id = $_GET["view"];
-                $get_record = mysqli_query($connections, "SELECT * FROM user_register WHERE id='$id'");
+                $get_record = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$id'");
                 while ($row = mysqli_fetch_assoc($get_record)) {
                     $id = $row["id"];
                     $db_first_name = $row["fname"];
@@ -95,50 +95,7 @@ if (isset($_SESSION["id"])) :
             </table>
             <a href="tenants.php" class="btn btn-outline-secondary">Back</a>
             <button title="change password" type='submit' name="changepassword" data-bs-toggle="modal" data-bs-target="#modalChangePassword" class='btn btn-warning'>Change Password</button>
-            <?php include("modals.php") ?>
-            <!--Logout Modal-->
-            <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body p-4 text-center">
-                            <h5 class="mb-0">Warning!</h5>
-                            <p class="mb-0">Are you sure you want to logout?</p>
-                        </div>
-                        <form method="post">
-                            <div class="modal-footer flex-nowrap p-0">
-                                <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end" data-bs-dismiss="modal">Cancel</button>
-                                <a href="logout.php" name="logoutUser" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0">Logout</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-        <!-- Button trigger modal -->
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Business Permit</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <center>
-                            <img src="https://amazingboholcom.files.wordpress.com/2017/11/20171026_104950.jpg?w=715" alt="">
-                        </center>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Download</button>
-                    </div>
-                </div>
-            </div>
+            <?php include("inc/modals.php") ?>
         </div>
     </body>
 

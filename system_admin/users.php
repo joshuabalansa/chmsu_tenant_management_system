@@ -27,11 +27,13 @@ if (isset($_SESSION["id"])) :
 
     <body>
         <div class="container">
-            <?php include("inc/top_nav.php") ?>
-            <br>
             <?php
-            include("../connections.php");
+            @include("inc/top_nav.php");
+            @include("../connections.php");
+            @include("inc/modals.php");
             ?>
+            <br>
+
             <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
             <div class="container bg-light" style="margin-top: 60px;">
                 <br>
@@ -68,9 +70,8 @@ if (isset($_SESSION["id"])) :
                                 <td><?php echo $db_contact ?></td>
                                 <td><?php echo date('M d, Y', strtotime($db_date)) ?></td>
                                 <td colspan='3'>
-                                    <a class='btn-sm btn btn-primary' href='#'>View</a>
-                                    <a class='btn-sm btn btn-info' href='process.php?update=<?php echo $row["id"] ?>'>Edit</a>
-                                    <a class='btn-sm btn btn-outline-danger' href='process.php?delete=<?php echo $row["id"] ?>'>Deactivate</a>
+                                    <a href='process.php?view=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info'>
+                                        <i class='bx bxs-user-detail'></i></a>
                                 </td>
                             </tr>
                         <?php endwhile; ?>
@@ -99,24 +100,6 @@ if (isset($_SESSION["id"])) :
     </body>
 
     </html>
-
-    <!--Logout Modal-->
-    <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body p-4 text-center">
-                    <h5 class="mb-0">Warning!</h5>
-                    <p class="mb-0">Are you sure you want to logout?</p>
-                </div>
-                <form method="post">
-                    <div class="modal-footer flex-nowrap p-0">
-                        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end" data-bs-dismiss="modal">Cancel</button>
-                        <a href="logout.php" name="logoutUser" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0">Logout</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
 <?php
 else :

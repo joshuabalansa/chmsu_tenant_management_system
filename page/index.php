@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 if ($fname && $midname && $lname && $email && $contact &&  $business_type && $address) {
-    mysqli_query($connections, "INSERT INTO user_register(fname, midname, lname, email, contact, business_type, address, file) 
+    mysqli_query($connections, "INSERT INTO tenants(fname, midname, lname, email, contact, business_type, address, file) 
     VALUES('$fname', '$midname', '$lname', '$email', '$contact', '$business_type', '$address', '$file') ");
     echo "<script>location.href='pending_page.php'</script>";
 }
@@ -145,15 +145,6 @@ if ($fname && $midname && $lname && $email && $contact &&  $business_type && $ad
             </div>
     </div>
     </form>
-
-    <script>
-        function isNumberKey(evt) {
-            var charCode = (evt.which) ? evt.which : event.keyCode
-            if (charCode > 31 && (charCode < 48 || charCode > 57))
-                return false;
-            return true;
-        }
-    </script>
 </body>
 
 </html>

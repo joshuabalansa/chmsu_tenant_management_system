@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 @include "../connections.php";
 if (isset($_SESSION["id"])) :
@@ -46,8 +45,8 @@ if (isset($_SESSION["id"])) :
                     </thead>
                     <tbody>
                         <?php
-                        $get_record = mysqli_query($connections, "SELECT * FROM user_register WHERE status='pending'");
-                        while ($row = mysqli_fetch_assoc($get_record)) :
+                        $get_applicants = mysqli_query($connections, "SELECT * FROM tenants WHERE status='pending'");
+                        while ($row = mysqli_fetch_assoc($get_applicants)) :
                             $db_fname = $row["fname"];
                             $db_midname = $row["midname"];
                             $db_lname = $row["lname"];
@@ -70,8 +69,8 @@ if (isset($_SESSION["id"])) :
                                 </td>
                                 <td>
                                     <a href='applicant_info.php?view=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info'>View</a>
-                                    <a href='controller.php?accept=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-success'>Accept</a>
-                                    <a href="controller.php?reject=<?php echo $row['id'] ?>" name='btnReject' class='btn-sm btn btn-warning'>Reject</a>
+                                    <a href='mailer.php?accept=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-success'>Accept</a>
+                                    <a href="mailer.php?reject=<?php echo $row['id'] ?>" name='btnReject' class='btn-sm btn btn-warning'>Reject</a>
                                 </td>
                             </tr>
                         <?php endwhile; ?>

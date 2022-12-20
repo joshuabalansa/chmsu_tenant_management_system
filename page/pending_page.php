@@ -8,26 +8,8 @@ include("../connections.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Request Pending</title>
-    <style>
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            text-align: center;
-        }
-
-        .image {
-            width: 30rem;
-            height: 30rem;
-        }
-
-        h2 {
-            font-size: 2rem;
-        }
-    </style>
 </head>
 
 <body>

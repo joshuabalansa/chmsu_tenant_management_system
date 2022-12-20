@@ -52,7 +52,7 @@ if (isset($_SESSION["id"])) :
                     </thead>
                     <tbody>
                         <?php
-                        $view_query = mysqli_query($connections, "SELECT * FROM user_register WHERE status='approved' ");
+                        $view_query = mysqli_query($connections, "SELECT * FROM tenants WHERE status='approved' ");
 
                         while ($row = mysqli_fetch_assoc($view_query)) :
                             $user_id = $row["id"];
@@ -77,8 +77,9 @@ if (isset($_SESSION["id"])) :
 
                                     <a href='tenant_info.php?view=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info'>
                                         <i class='bx bxs-user-detail'></i></a>
-                                    <a class='btn-sm btn btn-info' href='process.php?update=<?php echo $row["id"] ?>' title="Edit user"><i class='bx bxs-edit'></i></a>
-                                    <!-- <a class='btn-sm btn btn-outline-danger' href='process.php?delete=<?php echo $row["id"] ?>' title='Deactivate user'><i class='bx bxs-user-x'></i></a> -->
+                                    <a class='btn-sm btn btn-info' href='process.php?update=<?php echo $row["id"] ?>' title="Edit user">
+                                    <i class='bx bxs-edit'></i></a>
+                                    
                                 </td>
                             </tr>
                         <?php endwhile; ?>
@@ -107,23 +108,7 @@ if (isset($_SESSION["id"])) :
                 });
             </script>
         </div>
-        <!--Logout Modal-->
-        <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-body p-4 text-center">
-                        <h5 class="mb-0">Warning!</h5>
-                        <p class="mb-0">Are you sure you want to logout?</p>
-                    </div>
-                    <form method="post">
-                        <div class="modal-footer flex-nowrap p-0">
-                            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end" data-bs-dismiss="modal">Cancel</button>
-                            <a href="logout.php" name="logoutUser" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0">Logout</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+        <?php include("inc/modals.php") ?>
     </body>
 
     </html>

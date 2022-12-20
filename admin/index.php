@@ -26,7 +26,10 @@ if (isset($_SESSION["id"])) :
 
     <body>
         <div class="container">
-            <?php include("inc/top_nav.php") ?>
+            <?php
+            include("inc/top_nav.php");
+            include("inc/modals.php");
+            ?>
             <br>
             <br>
             <h4>Summary</h4>
@@ -37,16 +40,14 @@ if (isset($_SESSION["id"])) :
                         </th>
                     <td>
                         <p class="lead">
-
                             <?php
-                            $result = mysqli_query($connections, "SELECT COUNT(*) AS `count` FROM user_register WHERE status='pending'");
+                            $result = mysqli_query($connections, "SELECT COUNT(*) AS `count` FROM tenants WHERE status='pending'");
                             $row = mysqli_fetch_assoc($result);
                             $count = $row['count'];
                             if ($count > 0) {
                                 echo $count;
                             }
                             ?>
-
                         </p>
                     </td>
                 </tr>
@@ -58,7 +59,7 @@ if (isset($_SESSION["id"])) :
                         <p class="lead">
 
                             <?php
-                            $result = mysqli_query($connections, "SELECT COUNT(*) AS `count` FROM user_register WHERE status='approved'");
+                            $result = mysqli_query($connections, "SELECT COUNT(*) AS `count` FROM tenants WHERE status='approved'");
                             $row = mysqli_fetch_assoc($result);
                             $count = $row['count'];
                             if ($count > 0) {
@@ -71,24 +72,6 @@ if (isset($_SESSION["id"])) :
                 </tr>
             </table>
 
-
-            <!--Logout Modal-->
-            <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body p-4 text-center">
-                            <h5 class="mb-0">Warning!</h5>
-                            <p class="mb-0">Are you sure you want to logout?</p>
-                        </div>
-                        <form method="post">
-                            <div class="modal-footer flex-nowrap p-0">
-                                <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end" data-bs-dismiss="modal">Cancel</button>
-                                <a href="logout.php" name="logoutUser" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0">Logout</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
     </body>
 
