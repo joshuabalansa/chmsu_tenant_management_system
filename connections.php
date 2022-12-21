@@ -5,7 +5,7 @@
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
 <script src="plugins/bootstrap/js/bootstrap.bundle.js"></script>
-    
+
 <style>
     .error {
         color: red;
@@ -32,7 +32,10 @@ $connections = mysqli_connect("localhost", "root", "", "ctms");
 if (mysqli_connect_errno()) {
     echo "Failed to connect to mySQL" . mysqli_connect_error();
 }
+
+echo "CONNECTIONS!";
 ?>
+
 <script>
     function isNumberKey(evt) {
         var charCode = (evt.which) ? evt.which : event.keyCode

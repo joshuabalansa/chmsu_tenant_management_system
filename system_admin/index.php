@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-include("../connections.php");
 if (isset($_SESSION["id"])) :
     $user_id = $_SESSION["id"];
     include("../connections.php");
@@ -24,7 +23,7 @@ if (isset($_SESSION["id"])) :
     <body>
         <div class="container">
             <?php
-            include("../connections.php");
+
             include("inc/top_nav.php");
             include("inc/modals.php");
             ?>

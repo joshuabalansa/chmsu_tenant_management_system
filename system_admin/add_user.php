@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-include("../connections.php");
 if (isset($_SESSION["id"])) :
     $user_id = $_SESSION["id"];
     include("../connections.php");
@@ -32,7 +31,6 @@ if (isset($_SESSION["id"])) :
             <div class="container">
                 <br>
                 <?php
-                include("../connections.php");
 
                 $first_name = $middle_name = $last_name = $email = $contact = $username = $password = "";
                 $first_nameErr = $middle_nameErr = $last_nameErr = $emailErr = $contactErr = $usernameErr = $emailErr = $passwordErr = "";
@@ -88,7 +86,10 @@ if (isset($_SESSION["id"])) :
                         $usernameErr = "Username is already registered!";
                     } else {
 
-                        $query = mysqli_query($connections, "INSERT INTO users(first_name, middle_name, last_name, email, contact, username,  password, account_type) 
+                        // mysqli_query($connections, "INSERT INTO coordinators(first_name, middle_name, last_name, email, contact) 
+                        // VALUES('$first_name', '$middle_name', '$last_name', '$email', '$contact')");
+                        //
+                        mysqli_query($connections, "INSERT INTO users(first_name, middle_name, last_name, email, contact, username,  password, account_type) 
                         VALUES('$first_name', '$middle_name', '$last_name', '$email', '$contact','$username' , '$password', 'coordinator')");
 
                         echo "<script>alert('New user has been created')</script>";
@@ -143,24 +144,7 @@ if (isset($_SESSION["id"])) :
                     </form>
                 </div>
             </div>
-
-            <!--Logout Modal-->
-            <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body p-4 text-center">
-                            <h5 class="mb-0">Warning!</h5>
-                            <p class="mb-0">Are you sure you want to logout?</p>
-                        </div>
-                        <form method="post">
-                            <div class="modal-footer flex-nowrap p-0">
-                                <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end" data-bs-dismiss="modal">Cancel</button>
-                                <a href="logout.php" name="logoutUser" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0">Logout</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            <?php include("inc/modals.php"); ?>
         </div>
     </body>
 

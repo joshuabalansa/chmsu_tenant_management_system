@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-include("../connections.php");
 
 if (isset($_SESSION["id"])) :
     $user_id = $_SESSION["id"];
@@ -28,9 +27,6 @@ if (isset($_SESSION["id"])) :
         <div class="container">
             <?php include("inc/top_nav.php") ?>
             <br>
-            <?php
-            include("../connections.php");
-            ?>
             <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
             <div class="container bg-light" style="margin-top: 60px;">
                 <a href="register.php" class="btn-sm btn btn-primary" title="Add new user"><i class='bx bxs-user-plus'></i></a>

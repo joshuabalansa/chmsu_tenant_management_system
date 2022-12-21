@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-@include "../connections.php";
 if (isset($_SESSION["id"])) :
     $user_id = $_SESSION["id"];
     include("../connections.php");
