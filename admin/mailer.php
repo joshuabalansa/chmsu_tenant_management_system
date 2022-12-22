@@ -87,10 +87,8 @@ if (isset($_GET['accept'])) {
     while ($row = mysqli_fetch_assoc($get_record)) {
         $db_id = $row["id"];
         $db_fname = $row["fname"];
-        $db_midname = $row["midname"];
         $db_lname = $row["lname"];
-        $db_email = $row["email"];
-        $db_contact = $row["contact"];
+
     }
     $username = strtolower($db_fname[0]) . strtolower($db_lname);
 
@@ -101,8 +99,8 @@ if (isset($_GET['accept'])) {
         return $shuffled;
     }
     $password = random_password(8);
-    mysqli_query($connections, "INSERT INTO users (first_name, middle_name, last_name, email, contact, username, password, user_id) 
-    VALUES('$db_fname', '$db_midname','$db_lname', '$db_email', '$db_contact',  '$username', '$password', '$db_id')");
+    mysqli_query($connections, "INSERT INTO users (username, password, user_id) 
+    VALUES('$username', '$password', '$db_id')");
     //INSERT END
 
     $mail = new PHPMailer(true);

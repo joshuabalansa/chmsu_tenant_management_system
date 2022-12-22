@@ -4,10 +4,9 @@ session_start();
 if (isset($_SESSION["id"])) :
     $user_id = $_SESSION["id"];
     include("../connections.php");
-
     $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
     while ($row = mysqli_fetch_assoc($get_record)) {
-        $db_first_name = $row["first_name"];
+        $db_username = $row["username"];
     }
 
 ?>
@@ -86,11 +85,21 @@ if (isset($_SESSION["id"])) :
                         $usernameErr = "Username is already registered!";
                     } else {
 
-                        // mysqli_query($connections, "INSERT INTO coordinators(first_name, middle_name, last_name, email, contact) 
-                        // VALUES('$first_name', '$middle_name', '$last_name', '$email', '$contact')");
-                        //
-                        mysqli_query($connections, "INSERT INTO users(first_name, middle_name, last_name, email, contact, username,  password, account_type) 
-                        VALUES('$first_name', '$middle_name', '$last_name', '$email', '$contact','$username' , '$password', 'coordinator')");
+                        function random_id($lenght = 5)
+                        {
+                            $str = "1234567890";
+                            $shuffled = substr(str_shuffle($str), 0, $lenght);
+                            return $shuffled;
+                        }
+                        $random_userId = random_id(5);
+
+                        //INSERT INTO USERS DATABASE
+                        mysqli_query($connections, "INSERT INTO users(username,  password, account_type, user_id) 
+                        VALUES('$username', '$password', 'coordinator', '$random_userId')");
+                        //INSERT INTO COORDINATORS DATABASE
+                        mysqli_query($connections, "INSERT INTO coordinators(first_name, middle_name, last_name, email, contact, user_id) 
+                        VALUES('$first_name', '$middle_name', '$last_name', '$email', '$contact', '$random_userId')");
+
 
                         echo "<script>alert('New user has been created')</script>";
                     }

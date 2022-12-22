@@ -2,7 +2,7 @@
 include("../connections.php");
 if (isset($_GET['update'])) {
     $id = $_GET["update"];
-    $get_record = mysqli_query($connections, "SELECT * FROM user_register WHERE id='$id'");
+    $get_record = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$id'");
     while ($row = mysqli_fetch_assoc($get_record)) {
         $db_first_name = $row["fname"];
         $db_middle_name = $row["midname"];
@@ -22,11 +22,11 @@ if (isset($_POST["save"])) {
     $new_contact = $_POST["new_contact"];
     $new_password = $_POST["new_password"];
     //change info in table user_register
-    mysqli_query($connections, "UPDATE user_register
+    mysqli_query($connections, "UPDATE tenants
     SET fname='$new_first_name', midname='$new_middle_name', lname='$new_last_name', address='$new_address', email='$new_email', contact='$new_contact' WHERE id='$id'");
 
     // change info in table users
-    mysqli_query($connections, "UPDATE users SET first_name='$new_first_name',  last_name='$new_last_name', password='$new_password' WHERE user_id='$id'");
+    mysqli_query($connections, "UPDATE users SET password='$new_password' WHERE user_id='$id'");
 
     header("location: profile.php");
 }

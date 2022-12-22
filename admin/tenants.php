@@ -8,7 +8,7 @@ if (isset($_SESSION["id"])) :
 
     $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
     while ($row = mysqli_fetch_assoc($get_record)) {
-        $db_first_name = $row["first_name"];
+        $db_username = $row["username"];
     }
 ?>
     <!DOCTYPE html>
@@ -60,11 +60,12 @@ if (isset($_SESSION["id"])) :
                             $db_contact = $row["contact"];
                             $db_type    = $row['business_type'];
                             $db_date    = $row['date'];
+
+                            $db_fullname = ucfirst($db_first_name) . " " . ucfirst($db_middle_name[0]) . ". " . ucfirst($db_last_name);
                         ?>
-                            <?php $db_fullname = ucfirst($db_first_name) . " " . ucfirst($db_middle_name[0]) . ". " . ucfirst($db_last_name) ?>
                             <tr>
                                 <td><?php echo $db_fullname ?></td>
-                                <td><?php echo $db_address ?></td>
+                                <td><?php echo substr($db_address, 0, -15) . "..." ?></td>
                                 <td><?php echo $db_email ?></td>
                                 <td><?php echo $db_contact ?></td>
                                 <td><?php echo $db_type  ?></td>
@@ -74,8 +75,8 @@ if (isset($_SESSION["id"])) :
                                     <a href='tenant_info.php?view=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info'>
                                         <i class='bx bxs-user-detail'></i></a>
                                     <a class='btn-sm btn btn-info' href='process.php?update=<?php echo $row["id"] ?>' title="Edit user">
-                                    <i class='bx bxs-edit'></i></a>
-                                    
+                                        <i class='bx bxs-edit'></i></a>
+
                                 </td>
                             </tr>
                         <?php endwhile; ?>

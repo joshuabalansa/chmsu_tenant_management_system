@@ -32,15 +32,13 @@ $connections = mysqli_connect("localhost", "root", "", "ctms");
 if (mysqli_connect_errno()) {
     echo "Failed to connect to mySQL" . mysqli_connect_error();
 }
-
-echo "CONNECTIONS!";
 ?>
 
 <script>
-    function isNumberKey(evt) {
-        var charCode = (evt.which) ? evt.which : event.keyCode
-        if (charCode > 31 && (charCode < 48 || charCode > 57))
-            return false;
-        return true;
-    }
+    // function isNumberKey(evt) {
+    //     var charCode = (evt.which) ? evt.which : event.keyCode
+    //     if (charCode > 31 && (charCode < 48 || charCode > 57))
+    //         return false;
+    //     return true;
+    // }
 </script>

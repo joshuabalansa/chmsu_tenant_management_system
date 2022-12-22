@@ -13,15 +13,15 @@
     include("../connections.php");
 
     //Delete process
-    if (isset($_GET['delete'])) {
-        $id = $_GET['delete'];
-        mysqli_query($connections, "UPDATE user_register SET status='disable' WHERE id='$id'");
-        header("location: tenants.php");
-    }
+    // if (isset($_GET['delete'])) {
+    //     $id = $_GET['delete'];
+    //     mysqli_query($connections, "UPDATE user_register SET status='disable' WHERE id='$id'");
+    //     header("location: tenants.php");
+    // }
     //Update Process
     if (isset($_GET['update'])) {
         $id = $_GET["update"];
-        $get_record = mysqli_query($connections, "SELECT * FROM user_register WHERE id='$id'");
+        $get_record = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$id'");
         while ($row = mysqli_fetch_assoc($get_record)) {
             $db_first_name = $row["fname"];
             $db_middle_name = $row["midname"];
@@ -38,7 +38,7 @@
         $new_address = $_POST["new_address"];
         $new_email = $_POST["new_email"];
         $new_contact = $_POST["new_contact"];
-        mysqli_query($connections, "UPDATE user_register SET fname='$new_first_name', midname='$new_middle_name', lname='$new_last_name', address='$new_address', email='$new_email', contact='$new_contact' WHERE id='$id'");
+        mysqli_query($connections, "UPDATE tenants SET fname='$new_first_name', midname='$new_middle_name', lname='$new_last_name', address='$new_address', email='$new_email', contact='$new_contact' WHERE id='$id'");
         header("location: tenants.php");
     }
     ?>

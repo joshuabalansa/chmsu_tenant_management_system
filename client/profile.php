@@ -8,7 +8,6 @@ if (isset($_SESSION["id"])) :
     $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
     while ($row = mysqli_fetch_assoc($get_record)) {
         $user_id = $row["user_id"];
-        $db_first_name = $row["first_name"];
         $db_username = $row["username"];
     }
 ?>
@@ -30,7 +29,7 @@ if (isset($_SESSION["id"])) :
             <br><br>
             <h5>My Info</h5>
             <?php
-            $get_info = mysqli_query($connections, "SELECT * FROM user_register WHERE id='$user_id' ");
+            $get_info = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$user_id' ");
             while ($row = mysqli_fetch_assoc($get_info)) {
                 $db_first_name = $row["fname"];
                 $db_middle_name = $row["midname"];

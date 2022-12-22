@@ -7,7 +7,8 @@ if (isset($_SESSION["id"])) :
 
     $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
     while ($row = mysqli_fetch_assoc($get_record)) {
-        $db_first_name = $row["first_name"];
+        $db_username = $row["username"];
+        $db_id = $row["user_id"];
     }
 ?>
     <!DOCTYPE html>
@@ -29,7 +30,10 @@ if (isset($_SESSION["id"])) :
             <br><br>
 
             <?php
-            $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id'");
+            $get_record = mysqli_query(
+                $connections,
+                "SELECT users.username, users.date, coordinators.first_name, coordinators.last_name FROM users JOIN coordinators ON coordinators.user_id = users.user_id"
+            );
             while ($row = mysqli_fetch_assoc($get_record)) {
                 $db_first_name = $row["first_name"];
                 $db_last_name = $row["last_name"];

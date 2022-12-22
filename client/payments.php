@@ -7,11 +7,9 @@ if (isset($_SESSION["id"])) :
 
     $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
     while ($row = mysqli_fetch_assoc($get_record)) {
-        $db_first_name = $row["first_name"];
-        $db_last_name = $row["last_name"];
+        $db_username = $row["username"];
     }
 
-    $name = $db_first_name . " " . $db_last_name;
     $amount = $refno = "";
     $amountErr = $refnoErr = "";
 

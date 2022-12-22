@@ -7,7 +7,7 @@ if (isset($_SESSION["id"])) :
 
     $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
     while ($row = mysqli_fetch_assoc($get_record)) {
-        $db_first_name = $row["first_name"];
+        $db_username = $row["username"];
     }
 ?>
     <!DOCTYPE html>
@@ -24,13 +24,30 @@ if (isset($_SESSION["id"])) :
 
     <body>
         <div class="container">
-            <?php include("inc/top_nav.php") ?>
+            <?php
+            include("inc/top_nav.php");
+            include("inc/modals.php");
+            ?>
             <br><br>
             <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-            <div class="container bg-light">
+            <div class="container">
                 <br>
-                <p>List of Payment History</p>
-                <hr>
+                <?php
+                $report = mysqli_query($connections, "SELECT SUM(amount) AS `amount` FROM payment");
+                while ($payments = mysqli_fetch_assoc($report)) {
+                    $amounts = $payments["amount"];
+                }
+
+                ?>
+                <h5>Payment Reports</h5>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>Total this month:</td>
+                            <td><?php echo "₱ " . $amounts; ?></td>
+                        </tr>
+                    </thead>
+                </table>
                 <table id="fetch_result" class="table-sm table table-hover">
                     <thead>
                         <tr>
@@ -42,16 +59,20 @@ if (isset($_SESSION["id"])) :
                     </thead>
                     <tbody>
 
-                        <?php $get_record = mysqli_query($connections, "SELECT users.first_name, users.last_name, payment.amount, payment.refno, payment.date FROM users JOIN payment ON users.id = payment.user_id");
+                        <?php
+                        $get_record = mysqli_query(
+                            $connections,
+                            "SELECT users.username, tenants.fname, payment.amount, payment.refno, payment.date
+                             FROM ((users INNER JOIN payment ON payment.user_id = users.id) INNER JOIN tenants ON users.user_id = tenants.id)"
+                        );
                         while ($row = mysqli_fetch_assoc($get_record)) :
-                            $db_first_name = $row["first_name"];
-                            $db_last_name = $row["last_name"];
+                            $db_first_name = $row["fname"];
                             $db_amount = $row["amount"];
                             $db_refno = $row["refno"];
                             $db_date = $row["date"];
                         ?>
                             <tr>
-                                <td><?php echo $db_first_name . " " . $db_last_name ?></td>
+                                <td><?php echo $db_first_name  ?></td>
                                 <td><?php echo $db_amount ?></td>
                                 <td><?php echo $db_refno ?></td>
                                 <td><?php echo date("F j, Y", strtotime($db_date)) ?></td>
@@ -62,14 +83,16 @@ if (isset($_SESSION["id"])) :
                     <tfoot>
                         <tr>
                             <th>Total Amount:</th>
-                            <td><?php
+                            <td>
+                                <?php
                                 $result = mysqli_query($connections, "SELECT SUM(amount) AS `amount` FROM payment");
                                 $row = mysqli_fetch_assoc($result);
                                 $amount = $row['amount'];
                                 if ($amount > 0) {
                                     echo $amount;
                                 }
-                                ?></td>
+                                ?>
+                            </td>
 
                         </tr>
                     </tfoot>
@@ -91,8 +114,6 @@ if (isset($_SESSION["id"])) :
                     });
                 });
             </script>
-            <!--Logout Modal-->
-            <?php include("inc/modals.php"); ?>
         </div>
     </body>
 

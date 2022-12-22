@@ -7,7 +7,7 @@ if (isset($_SESSION["id"])) :
 
     $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
     while ($row = mysqli_fetch_assoc($get_record)) {
-        $db_first_name = $row["first_name"];
+        $db_username = $row["username"];
     }
 ?>
     <!DOCTYPE html>
@@ -45,13 +45,13 @@ if (isset($_SESSION["id"])) :
                     </thead>
                     <tbody>
                         <?php
-                        $get_record = mysqli_query($connections, "SELECT * FROM logs WHERE account_type='coordinator' ORDER BY date ");
+                        $get_record = mysqli_query($connections, "SELECT * FROM logs ");
                         while ($row = mysqli_fetch_assoc($get_record)) :
-                            $db_name = $row['name'];
+                            $db_fname = $row['first_name'];
                             $db_date = $row['date'];
                         ?>
                             <tr>
-                                <td><?php echo $db_name ?></td>
+                                <td><?php echo $db_fname ?></td>
                                 <td><?php echo date("F j, Y, g:i a", strtotime($db_date)) ?></td>
                             </tr>
                         <?php endwhile; ?>

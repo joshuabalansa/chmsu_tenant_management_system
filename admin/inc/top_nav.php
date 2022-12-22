@@ -27,7 +27,7 @@
                 </li>
             </ul>
             <div>
-                <?php echo "$db_first_name"; ?>
+                <?php echo "$db_username"; ?>
                 <button title="Logout" type='submit' name="logoutUser" data-bs-toggle="modal" data-bs-target="#modalLogout" class='btn-sm btn btn-primary'><i class='bx bx-exit'></i></button>
             </div>
         </div>

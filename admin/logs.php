@@ -8,7 +8,7 @@ if (isset($_SESSION["id"])) :
 
     $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
     while ($row = mysqli_fetch_assoc($get_record)) {
-        $db_first_name = $row["first_name"];
+        $db_username = $row["username"];
     }
 ?>
     <!DOCTYPE html>
@@ -46,9 +46,9 @@ if (isset($_SESSION["id"])) :
                     </thead>
                     <tbody>
                         <?php
-                        $get_record = mysqli_query($connections, "SELECT * FROM logs WHERE account_type='tenant'");
+                        $get_record = mysqli_query($connections, "SELECT * FROM logs");
                         while ($row = mysqli_fetch_assoc($get_record)) :
-                            $db_name = $row['name'];
+                            $db_name = $row['first_name'];
                             $db_date = $row['date'];
                         ?>
                             <tr>

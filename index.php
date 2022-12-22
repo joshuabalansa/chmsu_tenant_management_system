@@ -37,21 +37,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($password == $db_password) {
                     session_start();
                     $_SESSION["id"] = $user_id;
-                    $info = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id'");
 
-                    while ($row = mysqli_fetch_assoc($info)) {
-                        $first_name = $row["first_name"];
-                        $last_name = $row["last_name"];
-                        $account_type =  $row["account_type"];
-                    }
-                    $fullname = $first_name  . " " . $last_name;
                     if ($db_account_type == "admin") {
                         echo "<script>window.location.href='system_admin'</script>";
                     } elseif ($db_account_type == "tenant") {
-                        mysqli_query($connections, "INSERT INTO logs(name, account_type, log_id) VALUES('$fullname', '$account_type','$user_id')");
+
+                        $tenant_info = mysqli_query($connections, "SELECT tenants.fname, tenants.lname, users.account_type FROM tenants INNER JOIN users ON tenants.id = users.user_id");
+                        while ($row = mysqli_fetch_assoc($tenant_info)) {
+                            $db_firstname = $row["fname"];
+                            $db_lastname = $row["lname"];
+                        }
+                        mysqli_query($connections, "INSERT INTO logs(first_name, account_type, log_id) 
+                        VALUES('$db_lastname','admin','$user_id')");
+
                         echo "<script>window.location.href='client'</script>";
                     } elseif ($db_account_type == "coordinator") {
-                        mysqli_query($connections, "INSERT INTO logs(name, account_type, log_id) VALUES('$fullname', '$account_type','$user_id')");
+
+
+
                         echo "<script>window.location.href='admin'</script>";
                     } else {
                         $script = "NOTICE! Your account has been Deactivated!";
@@ -77,6 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+
     <div class="modal d-block bg-light py-5">
         <div class="modal-dialog mt-5" role="document">
             <div class="modal-content rounded-4 shadow">

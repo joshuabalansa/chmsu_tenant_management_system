@@ -7,7 +7,7 @@ if (isset($_SESSION["id"])) :
 
     $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
     while ($row = mysqli_fetch_assoc($get_record)) {
-        $db_first_name = $row["first_name"];
+        $db_username = $row["username"];
     }
 
 
@@ -44,13 +44,12 @@ if (isset($_SESSION["id"])) :
                             <th>Name</th>
                             <th>Email</th>
                             <th>Contact</th>
-                            <th>Date Created</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $view_query = mysqli_query($connections, "SELECT * FROM users WHERE account_type='coordinator' ");
+                        $view_query = mysqli_query($connections, "SELECT * FROM coordinators");
 
                         while ($row = mysqli_fetch_assoc($view_query)) :
                             $user_id = $row["id"];
@@ -59,14 +58,12 @@ if (isset($_SESSION["id"])) :
                             $db_last_name = $row["last_name"];
                             $db_email = $row["email"];
                             $db_contact = $row["contact"];
-                            $db_date    = $row['date'];
                         ?>
                             <?php $db_fullname = $db_first_name . " " . $db_middle_name . " " . $db_last_name ?>
                             <tr>
                                 <td><?php echo $db_fullname ?></td>
                                 <td><?php echo $db_email ?></td>
                                 <td><?php echo $db_contact ?></td>
-                                <td><?php echo date('M d, Y', strtotime($db_date)) ?></td>
                                 <td colspan='3'>
                                     <a href='process.php?view=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info'>
                                         <i class='bx bxs-user-detail'></i></a>
@@ -79,7 +76,6 @@ if (isset($_SESSION["id"])) :
                             <th>Name</th>
                             <th>Email</th>
                             <th>Contact</th>
-                            <th>Date Created</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
