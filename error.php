@@ -25,6 +25,7 @@ include("connections.php");
     <div class="wrapper">
         <h2>404</h2>
         <h3>Page not found :(</h3>
+        <p><b>Warning</b>: You cannot access the page directly, login your account to proceed.</p>
         <div>
 </body>
 

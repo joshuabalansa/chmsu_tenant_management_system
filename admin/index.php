@@ -4,11 +4,7 @@ session_start();
 if (isset($_SESSION["id"])) :
     $user_id = $_SESSION["id"];
     include("../connections.php");
-
-    $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
-    while ($row = mysqli_fetch_assoc($get_record)) {
-        $db_username = $row["username"];
-    }
+    include("fetch.php");
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -17,6 +13,7 @@ if (isset($_SESSION["id"])) :
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style/dashboard.css">
         <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
         <script src="../plugins/bootstrap/js/bootstrap.bundle.js"></script>
         <title>Admin</title>
@@ -28,59 +25,25 @@ if (isset($_SESSION["id"])) :
             <?php
             include("inc/top_nav.php");
             include("inc/modals.php");
+
             ?>
             <br>
             <br>
-            <h4>Summary</h4>
-            <table class="table table-hover">
-                <tr>
-                    <td>
-                        <p class="lead">Applicants:</p>
-                        </th>
-                    <td>
-                        <p class="lead">
-                            <?php
-                            $result = mysqli_query($connections, "SELECT COUNT(*) AS `count` FROM tenants WHERE status='pending'");
-                            $row = mysqli_fetch_assoc($result);
-                            $count = $row['count'];
-                            if ($count > 0) {
-                                echo $count;
-                            }
-                            ?>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="lead">Total Tenants:</p>
-                    </td>
-                    <td>
-                        <p class="lead">
-
-                            <?php
-                            $result = mysqli_query($connections, "SELECT COUNT(*) AS `count` FROM tenants WHERE status='approved'");
-                            $row = mysqli_fetch_assoc($result);
-                            $count = $row['count'];
-                            if ($count > 0) {
-                                echo $count;
-                            }
-
-                            ?>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="lead">Total Income this <?php echo date("F") ?>:</p>
-                    </td>
-                    <td>
-                        <p class="lead">
-                          
-                        </p>
-                    </td>
-                </tr>
-            </table>
-
+            <h3>Summary</h3>
+            <div class="card-wrapper">
+                <div class="card">
+                    <h2><?php echo $pending; ?></h2>
+                    <p>Applicants</p>
+                </div>
+                <div class="card">
+                    <h2><?php echo $tenants; ?></h2>
+                    <p>Active Tenants</p>
+                </div>
+                <div class="card">
+                    <h4><?php echo $tenants; ?></h4>
+                    <p>Past Due</p>
+                </div>
+            </div>
         </div>
     </body>
 

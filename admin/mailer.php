@@ -88,7 +88,6 @@ if (isset($_GET['accept'])) {
         $db_id = $row["id"];
         $db_fname = $row["fname"];
         $db_lname = $row["lname"];
-
     }
     $username = strtolower($db_fname[0]) . strtolower($db_lname);
 
@@ -157,6 +156,7 @@ if (isset($_GET['change_password'])) {
     }
     $password = random_password(8);
 
+    mysqli_query($connections, "UPDATE users SET password='$password' WHERE user_id=$id");
     $mail = new PHPMailer(true);
     try {
 

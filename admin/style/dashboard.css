@@ -1,0 +1,16 @@
+.container .card-wrapper {
+    display: flex;
+    width: 100%;
+}
+.container .card-wrapper .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    height: 10rem;
+    margin: 10px;
+    box-shadow: 10px 10px 13px -8px rgba(0,0,0,0.53);
+    -webkit-box-shadow: 10px 10px 13px -8px rgba(0,0,0,0.53);
+    -moz-box-shadow: 10px 10px 13px -8px rgba(0,0,0,0.53);
+}

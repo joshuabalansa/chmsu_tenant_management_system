@@ -91,7 +91,7 @@ if (isset($_SESSION["id"])) :
                             $shuffled = substr(str_shuffle($str), 0, $lenght);
                             return $shuffled;
                         }
-                        $random_userId = random_id(5);
+                        $random_userId = random_id(4);
 
                         //INSERT INTO USERS DATABASE
                         mysqli_query($connections, "INSERT INTO users(username,  password, account_type, user_id) 

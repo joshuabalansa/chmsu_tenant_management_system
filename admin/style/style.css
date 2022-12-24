@@ -16,3 +16,9 @@
     align-items: center;
     flex-direction: column;
 }
+.card{
+    display: flex;
+    box-shadow: 7px 11px 20px -5px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 7px 11px 20px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 11px 20px -5px rgba(0,0,0,0.75);
+}

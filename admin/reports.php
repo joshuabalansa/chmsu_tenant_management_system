@@ -4,11 +4,7 @@ session_start();
 if (isset($_SESSION["id"])) :
     $user_id = $_SESSION["id"];
     include("../connections.php");
-
-    $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
-    while ($row = mysqli_fetch_assoc($get_record)) {
-        $db_username = $row["username"];
-    }
+    include("fetch.php");
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -82,18 +78,10 @@ if (isset($_SESSION["id"])) :
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Total Amount:</th>
-                            <td>
-                                <?php
-                                $result = mysqli_query($connections, "SELECT SUM(amount) AS `amount` FROM payment");
-                                $row = mysqli_fetch_assoc($result);
-                                $amount = $row['amount'];
-                                if ($amount > 0) {
-                                    echo $amount;
-                                }
-                                ?>
-                            </td>
-
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Ref. No</th>
+                            <th>Date</th>
                         </tr>
                     </tfoot>
                 </table>

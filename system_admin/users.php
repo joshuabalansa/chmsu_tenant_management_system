@@ -58,8 +58,9 @@ if (isset($_SESSION["id"])) :
                             $db_last_name = $row["last_name"];
                             $db_email = $row["email"];
                             $db_contact = $row["contact"];
+
+                            $db_fullname = $db_first_name . " " . $db_middle_name . " " . $db_last_name;
                         ?>
-                            <?php $db_fullname = $db_first_name . " " . $db_middle_name . " " . $db_last_name ?>
                             <tr>
                                 <td><?php echo $db_fullname ?></td>
                                 <td><?php echo $db_email ?></td>

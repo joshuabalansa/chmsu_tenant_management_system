@@ -6,10 +6,7 @@ if (isset($_SESSION["id"])) :
     $user_id = $_SESSION["id"];
     include("../connections.php");
 
-    $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
-    while ($row = mysqli_fetch_assoc($get_record)) {
-        $db_username = $row["username"];
-    }
+    include("process.php");
 
 ?>
     <!DOCTYPE html>
@@ -82,14 +79,14 @@ if (isset($_SESSION["id"])) :
                 }
                 if ($first_name && $middle_name && $last_name && $address && $email && $username && $password && $contact) {
 
-                    $check_email = mysqli_query($connections, "SELECT * FROM users WHERE email='$email' ");
+                    $check_email = mysqli_query($connections, "SELECT * FROM tenants WHERE email='$email' ");
                     $check_email_row = mysqli_num_rows($check_email);
 
                     if ($check_email_row > 0) {
                         $emailErr = "Email is already registered!";
                     } else {
 
-                        $query = mysqli_query($connections, "INSERT INTO users(first_name, middle_name, last_name,  address, email, username ,  password, contact) VALUES('$first_name', '$middle_name', '$last_name', '$address', '$email', '$username' , '$password', '$contact')");
+                        $query = mysqli_query($connections, "INSERT INTO users(username ,  password) VALUES('$username' , '$password')");
 
                         echo "<script>window.location.href='tenants.php'</script>";
                     }

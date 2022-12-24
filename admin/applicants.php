@@ -3,10 +3,7 @@ session_start();
 if (isset($_SESSION["id"])) :
     $user_id = $_SESSION["id"];
     include("../connections.php");
-    $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
-    while ($row = mysqli_fetch_assoc($get_record)) {
-        $db_username = $row["username"];
-    }
+    include("fetch.php");
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -27,7 +24,7 @@ if (isset($_SESSION["id"])) :
             <br>
             <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
             <div class="container bg-light">
-           
+
                 <br>
                 <p>List of Pending Applicants</p>
                 <hr>
