@@ -5,8 +5,7 @@ include("../connections.php");
 if (isset($_SESSION["id"])) :
     $user_id = $_SESSION["id"];
     include("../connections.php");
-
-    include("process.php");
+    include("fetch.php");
 
 ?>
     <!DOCTYPE html>
