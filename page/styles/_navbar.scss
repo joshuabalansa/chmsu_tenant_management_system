@@ -11,7 +11,11 @@
   height: 80px;
   display: flex;
   justify-content: space-between;
+<<<<<<< HEAD
   padding: 1.5rem calc((100vw - 1200px) / 2);
+=======
+  padding: 0.5rem calc((100vw - 1200px) / 2);
+>>>>>>> 6124d5331ede172e4b0f988915e41a49002163a1
   z-index: 10;
   position: relative;
 
@@ -21,7 +25,10 @@
     text-decoration: none;
     font-size: 2rem;
     margin-left: 24px;
+<<<<<<< HEAD
     margin-top: 10px;
+=======
+>>>>>>> 6124d5331ede172e4b0f988915e41a49002163a1
     @extend %align-center;
   }
 

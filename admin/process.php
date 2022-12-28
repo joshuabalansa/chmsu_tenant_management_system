@@ -13,8 +13,6 @@
             $db_email = $row["email"];
             $db_contact = $row["contact"];
         }
-
-        include("tenant_edit.php");
     }
     if (isset($_POST["save"])) {
         $new_first_name = $_POST["new_first_name"];
@@ -23,7 +21,10 @@
         $new_address = $_POST["new_address"];
         $new_email = $_POST["new_email"];
         $new_contact = $_POST["new_contact"];
+        $new_password  = $_POST["new_password"];
         mysqli_query($connections, "UPDATE tenants SET fname='$new_first_name', midname='$new_middle_name', lname='$new_last_name', address='$new_address', email='$new_email', contact='$new_contact' WHERE id='$id'");
+        mysqli_query($connections, "UPDATE users SET password='$new_password' WHERE user_id='$id'");
         header("location: tenants.php");
     }
+    include("tenant_edit.php");
     ?>
