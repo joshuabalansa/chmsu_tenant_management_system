@@ -46,17 +46,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $address = $_POST["address"];
     }
-    if (empty($_POST["file"])) {
-        $fileErr = "File is required!";
-    } else {
-        $file = $_POST["file"];
+
+    // if (empty($_POST["file"])) {
+    //     $fileErr = "File is required!";
+    // } else {
+    //     $file = $_POST["file"];
+    // }
+
+
+    if ($fname && $midname && $lname && $email && $contact &&  $business_type && $address) {
+        if (!preg_match("/^[a-zA-Z]*$/", $fname)) {
+            $fnameErr = "Invalid!";
+        } else {
+            $count_first_name_string = strlen($fname);
+            if ($count_first_name_string < 2) {
+                $fnameErr = "Too short";
+            } else {
+                if (!preg_match("/^[a-zA-Z]*$/", $midname)) {
+                    $midnameErr = "Invalid!";
+                } else {
+                    $count_middle_name_string = strlen($midname);
+                    if ($count_middle_name_string < 2) {
+                        $midnameErr = "Too short!";
+                    } else {
+                        if (!preg_match("/^[a-zA-Z]*$/", $lname)) {
+                            $lnameErr = "Invalid!";
+                        } else {
+                            $count_last_name_string = strlen($lname);
+                            if ($count_last_name_string < 2) {
+                                $lnameErr = "Too short!";
+                            } else {
+                                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                                    $emailErr = "Invalid email format!";
+                                } else {
+                                    if (!preg_match("/^[0-9]*$/", $contact)) {
+                                        $contactErr = "Invalid!";
+                                    } else {
+                                        mysqli_query($connections, "INSERT INTO tenants(fname, midname, lname, email, contact, business_type, address, file) 
+                                        VALUES('$fname', '$midname', '$lname', '$email', '$contact', '$business_type', '$address', '$file') ");
+                                        echo "<script>location.href='pending_page.php'</script>";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
-if ($fname && $midname && $lname && $email && $contact &&  $business_type && $address) {
-    mysqli_query($connections, "INSERT INTO tenants(fname, midname, lname, email, contact, business_type, address, file) 
-    VALUES('$fname', '$midname', '$lname', '$email', '$contact', '$business_type', '$address', '$file') ");
-    echo "<script>location.href='pending_page.php'</script>";
-}
+
 
 ?>
 <!DOCTYPE html>

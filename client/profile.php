@@ -4,12 +4,7 @@ session_start();
 if (isset($_SESSION["id"])) :
     $user_id = $_SESSION["id"];
     include("../connections.php");
-
-    $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
-    while ($row = mysqli_fetch_assoc($get_record)) {
-        $user_id = $row["user_id"];
-        $db_username = $row["username"];
-    }
+    include("fetch.php");
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -29,7 +24,7 @@ if (isset($_SESSION["id"])) :
             <br><br>
             <h5>My Info</h5>
             <?php
-            $get_info = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$user_id' ");
+            $get_info = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$db_id' ");
             while ($row = mysqli_fetch_assoc($get_info)) {
                 $db_first_name = $row["fname"];
                 $db_middle_name = $row["midname"];
@@ -65,7 +60,7 @@ if (isset($_SESSION["id"])) :
                 </thead>
             </table>
 
-            <a class="btn btn-info" href="process.php?update=<?php echo $user_id ?>">Update</a>
+            <a class="btn btn-info" href="process.php?update=<?php echo $db_id ?>">Update</a>
 
 
 

@@ -1,5 +1,5 @@
  <?php
-    //Edit Tenant INFO
+    //Edit Tenant INFO Process
     include("../connections.php");
 
     if (isset($_GET['update'])) {

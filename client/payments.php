@@ -4,30 +4,7 @@ session_start();
 if (isset($_SESSION["id"])) :
     $user_id = $_SESSION["id"];
     include("../connections.php");
-
-    $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
-    while ($row = mysqli_fetch_assoc($get_record)) {
-        $db_username = $row["username"];
-    }
-
-    $amount = $refno = "";
-    $amountErr = $refnoErr = "";
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (empty($_POST['amount'])) {
-            $amountErr = "Required!";
-        } else {
-            $amount = $_POST['amount'];
-        }
-        if (empty($_POST['refno'])) {
-            $refnoErr = "Required!";
-        } else {
-            $refno = $_POST['refno'];
-        }
-    }
-    if ($amount && $refno) {
-        mysqli_query($connections, "INSERT INTO payment(amount, refno, user_id) VALUES('$amount', '$refno', '$user_id') ");
-    }
+    include("fetch.php");
 ?>
 
     <!DOCTYPE html>
@@ -47,14 +24,6 @@ if (isset($_SESSION["id"])) :
         <div class="container">
             <?php include("inc/top_nav.php") ?>
             <br><br>
-            <script>
-                function isNumberKey(evt) {
-                    var charCode = (evt.which) ? evt.which : event.keyCode
-                    if (charCode > 31 && (charCode < 48 || charCode > 57))
-                        return false;
-                    return true;
-                }
-            </script>
             <div class="d-flex justify-content-around">
                 <div class="img">
                     <img src="gcash.jpg" width="300" height="400" alt="">
@@ -64,11 +33,13 @@ if (isset($_SESSION["id"])) :
                     <form action="" method="POST">
                         <div class="mb-3">
                             <label for="amount">Amount</label>
-                            <input autocomplete="off" maxlength="6" onkeypress="return isNumberKey(event)" required class="form-control" type="text" name="amount" placeholder="Enter the amount" id="">
+                            <input value="<?php echo $amount ?>" autocomplete="off" maxlength="6" onkeypress="return isNumberKey(event)" class="form-control" type="text" name="amount" placeholder="Enter the amount">
+                            <span style="color: red;"><?php echo $amountErr ?></span>
                         </div>
                         <div class="mb-3">
                             <label for="refno">Ref. No.</label>
-                            <input autocomplete="off" required maxlength="16" onkeypress="return isNumberKey(event)" class="form-control" type="text" name="refno" placeholder="Enter the ref. no." id="">
+                            <input value="<?php echo $refno ?>" autocomplete="off" maxlength="16" onkeypress="return isNumberKey(event)" class="form-control" type="text" name="refno" placeholder="Enter the ref. no.">
+                            <span style="color: red;"><?php echo $refnoErr ?></span>
                         </div>
                         <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
                 </div>

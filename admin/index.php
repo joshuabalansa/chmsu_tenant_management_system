@@ -33,7 +33,7 @@ if (isset($_SESSION["id"])) :
             <div class="card-wrapper">
                 <div class="card">
                     <h2><?php echo $pending; ?></h2>
-                    <p>Applicants</p>
+                    <p class="blinker">Pending Applicants</p>
                 </div>
                 <div class="card">
                     <h2><?php echo $tenants; ?></h2>
@@ -41,7 +41,7 @@ if (isset($_SESSION["id"])) :
                 </div>
                 <div class="card">
                     <h4><?php echo "&#8369; 98342"; ?></h4>
-                    <p>Total income this December</p>
+                    <p>Total income generated <br></p>
                 </div>
             </div>
         </div>

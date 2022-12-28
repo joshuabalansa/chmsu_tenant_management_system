@@ -1,12 +1,6 @@
 <?php
 include("../connections.php");
 
-if (isset($_GET["remove"])) {
-    $id = $_GET['remove'];
-    mysqli_query($connections, "DELETE FROM user_register WHERE id='$id'");
-    header("location: tenants.php");
-}
-
 //process of accepting and rejeting button
 $get_record = mysqli_query($connections, "SELECT * FROM tenants WHERE status='pending' ");
 while ($row = mysqli_fetch_assoc($get_record)) {
@@ -98,6 +92,7 @@ if (isset($_GET['accept'])) {
         return $shuffled;
     }
     $password = random_password(8);
+    
     mysqli_query($connections, "INSERT INTO users (username, password, user_id) 
     VALUES('$username', '$password', '$db_id')");
     //INSERT END

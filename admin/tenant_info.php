@@ -89,6 +89,7 @@ if (isset($_SESSION["id"])) :
                 </thead>
             </table>
             <a href="tenants.php" class="btn btn-outline-secondary">Back</a>
+            <button type="button" class="btn btn-primary">Payment History</button>
             <button title="change password" type='submit' name="changepassword" data-bs-toggle="modal" data-bs-target="#modalChangePassword" class='btn btn-warning'>Change Password</button>
             <?php include("inc/modals.php") ?>
         </div>

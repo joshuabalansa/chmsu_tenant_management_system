@@ -2,9 +2,11 @@
 
 Capstone Project 2022-2023
 
-# Language
+# Technology used
 
 JAVASCRIPT
+SASS
+JQUERY
 PHP
 MYSQL
 

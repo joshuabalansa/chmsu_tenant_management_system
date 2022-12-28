@@ -6,7 +6,6 @@ if (isset($_SESSION["id"])) :
     $user_id = $_SESSION["id"];
     include("../connections.php");
     include("fetch.php");
-    echo $user_id;
 ?>
     <!DOCTYPE html>
     <html lang="en">
