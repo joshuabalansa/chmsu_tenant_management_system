@@ -74,7 +74,7 @@ if (isset($_GET['reject'])) {
 }
 if (isset($_GET['accept'])) {
     $id = $_GET['accept'];
-    mysqli_query($connections, "UPDATE tenants SET status='approved' WHERE id = $id");
+    mysqli_query($connections, "UPDATE tenants SET status='active' WHERE id = $id");
 
     //INSERT TO users
     $get_record = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$id'");

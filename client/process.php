@@ -22,7 +22,7 @@ if (isset($_POST["save"])) {
     $new_contact = $_POST["new_contact"];
     $new_password = $_POST["new_password"];
 
-    //change info in table user_register
+    //change info in table Tenants
     mysqli_query($connections, "UPDATE tenants
     SET fname='$new_first_name', midname='$new_middle_name', lname='$new_last_name', address='$new_address', email='$new_email', contact='$new_contact' WHERE id='$id'");
 

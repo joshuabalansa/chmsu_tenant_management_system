@@ -38,6 +38,7 @@ if (isset($_SESSION["id"])) :
                     $db_type = $row["business_type"];
                     $db_contact = $row["contact"];
                     $db_date = $row["date"];
+                    $db_status = $row["status"];
                 }
 
                 $fullname = ucfirst($db_first_name) . " " . ucfirst($db_midname[0]) . ". " . ucfirst($db_last_name);
@@ -88,9 +89,9 @@ if (isset($_SESSION["id"])) :
                     </tr>
                 </thead>
             </table>
-            <a href="tenants.php" class="btn btn-outline-secondary">Back</a>
-            <button type="button" class="btn btn-primary">Payment History</button>
-            <button title="change password" type='submit' name="changepassword" data-bs-toggle="modal" data-bs-target="#modalChangePassword" class='btn btn-warning'>Change Password</button>
+            <a href="tenants.php" class="btn-sm btn btn-outline-secondary">Back</a>
+            <a title="View payments history" href="payments.php?view_payment=<?php echo $id ?>" class="btn-sm btn btn-primary">Payments</a>
+            <button title="Request a new password of a user" type='submit' name="changepassword" data-bs-toggle="modal" data-bs-target="#modalChangePassword" class='btn-sm btn btn-warning'>Reset Password</button>
             <?php include("inc/modals.php") ?>
         </div>
     </body>

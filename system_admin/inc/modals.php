@@ -33,15 +33,3 @@
     </div>
 </div>
 
-<!-- Username & Password Generator Modal -->
-<div class="modal fade" id="modalCredentials" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body p-4 text-center">
-                <h5 class="mb-0">Login Credentials</h5><br>
-                <p class="mb-0">Username: jbalansa | Password: jdi39x</p>
-                <p class="mb-0"></p>
-            </div>
-        </div>
-    </div>
-</div>

@@ -4,10 +4,7 @@ session_start();
 if (isset($_SESSION["id"])) :
     $user_id = $_SESSION["id"];
     include("../connections.php");
-    $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
-    while ($row = mysqli_fetch_assoc($get_record)) {
-        $db_username = $row["username"];
-    }
+    include("fetch.php");
 
 ?>
     <!DOCTYPE html>
@@ -108,7 +105,6 @@ if (isset($_SESSION["id"])) :
                 <div class="container" style="width: 50rem;">
                     <center>
                         <h5>Create new account</h5>
-                        <button type='submit' name="logoutUser" data-bs-toggle="modal" data-bs-target="#modalCredentials" class='btn-sm btn btn-primary'>Create</button>
                     </center>
                     <form action="<?php htmlspecialchars("PHP_SELF") ?>" method="POST">
                         <div class="row">

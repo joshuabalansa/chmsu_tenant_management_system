@@ -20,7 +20,6 @@ if (isset($_SESSION["id"])) :
     </head>
 
     <body>
-
         <div class="container">
             <?php include("inc/top_nav.php") ?>
             <br><br>
@@ -38,7 +37,7 @@ if (isset($_SESSION["id"])) :
                         </div>
                         <div class="mb-3">
                             <label for="refno">Ref. No.</label>
-                            <input value="<?php echo $refno ?>" autocomplete="off" maxlength="16" onkeypress="return isNumberKey(event)" class="form-control" type="text" name="refno" placeholder="Enter the ref. no.">
+                            <input value="<?php echo $refno ?>" autocomplete="off" maxlength="13" onkeypress="return isNumberKey(event)" class="form-control" type="text" name="refno" placeholder="Enter the ref. no.">
                             <span style="color: red;"><?php echo $refnoErr ?></span>
                         </div>
                         <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>

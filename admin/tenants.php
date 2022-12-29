@@ -38,15 +38,15 @@ if (isset($_SESSION["id"])) :
                             <th>Email</th>
                             <th>Contact</th>
                             <th>Business Type</th>
-                            <th>Date Created</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $view_query = mysqli_query($connections, "SELECT * FROM tenants WHERE status='approved' ");
+                        $tenants_query = mysqli_query($connections, "SELECT * FROM tenants WHERE status = 'active' || status = 'pending' ");
 
-                        while ($row = mysqli_fetch_assoc($view_query)) :
+                        while ($row = mysqli_fetch_assoc($tenants_query)) :
                             $user_id = $row["id"];
                             $db_first_name = $row["fname"];
                             $db_middle_name = $row["midname"];
@@ -56,21 +56,23 @@ if (isset($_SESSION["id"])) :
                             $db_contact = $row["contact"];
                             $db_type    = $row['business_type'];
                             $db_date    = $row['date'];
+                            $db_status    = $row['status'];
 
                             $db_fullname = ucfirst($db_first_name) . " " . ucfirst($db_middle_name[0]) . ". " . ucfirst($db_last_name);
                         ?>
+                            <?php ($db_status == "active") ? ($badge = "success") : ($badge = "danger"); ?>
                             <tr>
                                 <td><?php echo $db_fullname ?></td>
                                 <td><?php echo substr($db_address, 0, -15) . "..." ?></td>
                                 <td><?php echo $db_email ?></td>
                                 <td><?php echo $db_contact ?></td>
                                 <td><?php echo $db_type  ?></td>
-                                <td><?php echo date('M d, Y', strtotime($db_date)) ?></td>
+                                <td><span class="badge rounded-pill text-bg-<?php echo $badge ?>"><?php echo $db_status ?></span></td>
                                 <td colspan='3'>
 
-                                    <a href='tenant_info.php?view=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info'>
+                                    <a href='tenant_info.php?view=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info' title="View tenant Information">
                                         <i class='bx bxs-user-detail'></i></a>
-                                    <a class='btn-sm btn btn-info' href='process.php?update=<?php echo $row["id"] ?>' title="Edit user">
+                                    <a class='btn-sm btn btn-info' href='process.php?update=<?php echo $row["id"] ?>' title="Edit Tenant Info">
                                         <i class='bx bxs-edit'></i></a>
 
                                 </td>
@@ -85,7 +87,7 @@ if (isset($_SESSION["id"])) :
                             <th>Email</th>
                             <th>Contact</th>
                             <th>Business Type</th>
-                            <th>Date Created</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>

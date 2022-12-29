@@ -40,7 +40,7 @@ if (isset($_SESSION["id"])) :
                             <h6>Ref. No. <?php echo $db_refno ?></h6>
                             <small class=" text-muted"><?php echo date("F j, Y, g:i a", strtotime($db_date)) ?></small>
                         </div>
-                        <span>₱<?php echo $db_amount; ?></span>
+                        <span style="color: black;">₱ <?php echo $db_amount; ?></span>
                     </li>
                 </ul>
             <?php endwhile; ?>

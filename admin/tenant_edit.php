@@ -41,6 +41,10 @@
                 <input onkeypress="return isNumberKey(event)" placeholder="Enter your contact #" maxlength="11" class="form-control" type="text" name="new_contact" value="<?php echo $db_contact ?>" required>
             </div>
             <div class="mb-3">
+                <label for="name">Set New Password</label>
+                <input placeholder="Enter password" maxlength="11" class="form-control" type="password" name="new_password" required>
+            </div>
+            <div class="mb-3">
                 <a href="tenants.php" class="btn btn-outline-secondary">Cancel</a>
                 <input name="save" type="submit" class="btn btn-info" value="UPDATE">
             </div>

@@ -25,11 +25,7 @@ if (isset($_SESSION["id"])) :
             <br><br>
 
             <?php
-            $get_record = mysqli_query(
-                $connections,
-                "SELECT users.username, users.date, coordinators.first_name, coordinators.last_name FROM users JOIN coordinators ON coordinators.user_id = users.user_id"
-            );
-            while ($row = mysqli_fetch_assoc($get_record)) {
+            while ($row = mysqli_fetch_assoc($get_profile)) {
                 $db_first_name = $row["first_name"];
                 $db_last_name = $row["last_name"];
                 $db_user = $row["username"];
@@ -56,8 +52,7 @@ if (isset($_SESSION["id"])) :
                     </tr>
                 </thead>
             </table>
-
-            <button class="btn btn-info">Update</button>
+            <button title="Logout" type='submit' name="logoutUser" data-bs-toggle="modal" data-bs-target="#profile_edit" class='btn btn-info'>Edit Profile</button>
             <?php include("inc/modals.php"); ?>
         </div>
 
