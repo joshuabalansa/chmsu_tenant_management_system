@@ -1,21 +1,22 @@
-# chmsu_tenant_management_system
 
-Capstone Project 2022-2023
+# CHMSU Tenant Management System
 
-<<<<<<< HEAD
-# Technology used
-=======
-# Language
->>>>>>> 6124d5331ede172e4b0f988915e41a49002163a1
+Automated CHMSU Tenant Management CAPSTONE PROJECT 2022
 
-JAVASCRIPT
-SASS
-JQUERY
-PHP
-MYSQL
+## Features
 
-# Group_Members
+- Online Tenant Registration
+- Real-time Tenant Assesment
+- Tenant Management
+- Cross platform
 
-James
-Joshua
-Carl
+
+## Used By
+
+This project is develop for CHMSU - Main:
+
+
+## Support
+
+For support, email jbalansa143@gmail.com or join our Slack channel.
+

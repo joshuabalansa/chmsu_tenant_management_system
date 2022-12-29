@@ -19,9 +19,7 @@ if (isset($_SESSION["id"])) :
         <script src="../plugins/bootstrap/js/bootstrap.bundle.js"></script>
         <title>Dashboard</title>
     </head>
-
     <body>
-
         <div class="container">
             <?php include("inc/top_nav.php") ?>
             <br><br>
