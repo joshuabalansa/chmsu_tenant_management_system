@@ -47,8 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $db_firstname = $row["fname"];
                             $db_lastname = $row["lname"];
                         }
+                        $tenant = $db_firstname . " " . $db_lastname;
                         mysqli_query($connections, "INSERT INTO logs(first_name, account_type, log_id) 
-                        VALUES('$db_lastname','admin','$user_id')");
+                        VALUES('$tenant','admin','$user_id')");
 
                         echo "<script>window.location.href='client'</script>";
                     } elseif ($db_account_type == "coordinator") {
