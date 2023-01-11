@@ -110,7 +110,17 @@ if ($fname && $midname && $lname && $email && $contact &&  $business_type && $ad
                 <span class="error"><?php echo $addressErr ?></span>
             </div>
             <div class="mb-3">
-                <label for="upload" class="form-label">Upload letter of intent</label>
+                <label for="upload" class="form-label">letter of intent</label>
+                <input name="file" value="<?php echo $file ?>" type="file" class="form-control" autocomplete="off">
+                <span class="error"><?php echo $fileErr ?></span>
+            </div>
+            <div class="mb-3">
+                <label for="upload" class="form-label">Business Permit (Optional)</label>
+                <input name="file" value="<?php echo $file ?>" type="file" class="form-control" autocomplete="off">
+                <span class="error"><?php echo $fileErr ?></span>
+            </div>
+            <div class="mb-3">
+                <label for="upload" class="form-label">Sanitary Permit</label>
                 <input name="file" value="<?php echo $file ?>" type="file" class="form-control" autocomplete="off">
                 <span class="error"><?php echo $fileErr ?></span>
             </div>

@@ -1,6 +1,5 @@
 <?php
 include("../connections.php");
-include("../validator.php");
 $fname = $midname =  $lname = $email = $contact = $business_type = $password = $address = $file  = "";
 $fnameErr = $midnameErr = $lnameErr = $emailErr = $contactErr = $business_typeErr = $passwordErr = $addressErr = $fileErr = "";
 

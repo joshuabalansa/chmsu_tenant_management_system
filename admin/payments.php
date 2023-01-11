@@ -36,7 +36,6 @@ if (isset($_SESSION["id"])) :
                 if (isset($_GET["view_payment"])) {
                     $id = $_GET["view_payment"];
                     $get_payment = mysqli_query($connections, "SELECT * FROM payment");
-                    echo $id;
                 }
                 ?>
                 <h5>Payment History</h5>

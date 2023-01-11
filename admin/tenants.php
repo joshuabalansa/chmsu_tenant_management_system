@@ -57,10 +57,10 @@ if (isset($_SESSION["id"])) :
                             $db_type    = $row['business_type'];
                             $db_date    = $row['date'];
                             $db_status    = $row['status'];
-
+                            //
                             $db_fullname = ucfirst($db_first_name) . " " . ucfirst($db_middle_name[0]) . ". " . ucfirst($db_last_name);
+                            ($db_status == "active") ? ($badge = "success") : ($badge = "danger");
                         ?>
-                            <?php ($db_status == "active") ? ($badge = "success") : ($badge = "danger"); ?>
                             <tr>
                                 <td><?php echo $db_fullname ?></td>
                                 <td><?php echo substr($db_address, 0, -15) . "..." ?></td>

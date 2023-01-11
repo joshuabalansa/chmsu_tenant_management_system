@@ -12,16 +12,14 @@
 <body>
   <!-- Navbar Section -->
   <nav class="navbar">
-<<<<<<< HEAD
     <a href="index.html" class="navbar__logo"><img src="images/logo.png" width="80" alt=""></a>
-=======
-    <a href="index.html" class="navbar__logo">CTMS</a>
->>>>>>> 6124d5331ede172e4b0f988915e41a49002163a1
+
+    <a href="index.php" class="navbar__logo">CHMSU</a>
+
     <div class="navbar__bars"><i class="fas fa-bars"></i></div>
     <div class="navbar__menu">
       <a href="index.php" class="navbar__menu--links">Home</a>
       <a href="guidelines.php" class="navbar__menu--links">Guidelines</a>
-      <a href="#" class="navbar__menu--links">Services</a>
       <a href="../index.php" class="navbar__menu--links" id="button">Sign in</a>
     </div>
   </nav>
@@ -33,11 +31,10 @@
         <h1>Become a part of </h1>
         <h2>CHMSU Tenant</h2>
         <p>Sign up now to join the list.</p>
-<<<<<<< HEAD
+
         <button class="hero__container--btn"><a href="registration.php">Register</a></button>
-=======
-        <button class="hero__container--btn"><a href="register.php">Register</a></button>
->>>>>>> 6124d5331ede172e4b0f988915e41a49002163a1
+
+
       </div>
       <div class="hero__container--right">
         <img src="images/img-1.svg" alt="alien" class="hero__container--img" />
