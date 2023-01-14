@@ -1,101 +1,6 @@
 <?php
 include("../connections.php");
-$fname = $midname =  $lname = $email = $contact = $business_type = $password = $address = $file  = "";
-$fnameErr = $midnameErr = $lnameErr = $emailErr = $contactErr = $business_typeErr = $passwordErr = $addressErr = $fileErr = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    if (empty($_POST["fname"])) {
-        $fnameErr = "First name is required!";
-    } else {
-        $fname = $_POST["fname"];
-    }
-    if (empty($_POST["midname"])) {
-        $midnameErr = "Middle name is required!";
-    } else {
-        $midname = $_POST["midname"];
-    }
-    if (empty($_POST["lname"])) {
-        $lnameErr = "Last name is required!";
-    } else {
-        $lname = $_POST["lname"];
-    }
-    if (empty($_POST["email"])) {
-        $emailErr = "Email is required!";
-    } else {
-        $email = $_POST["email"];
-    }
-    if (empty($_POST["contact"])) {
-        $contactErr = "Contact is required!";
-    } else {
-        $contact = $_POST["contact"];
-    }
-    if (empty($_POST["business_type"])) {
-        $business_typeErr = "type of business is required!";
-    } else {
-        $business_type = $_POST["business_type"];
-    }
-    if (empty($_POST["password"])) {
-        $password = "password is required!";
-    } else {
-        $password = $_POST["password"];
-    }
-    if (empty($_POST["address"])) {
-        $addressErr = "Address is required!";
-    } else {
-        $address = $_POST["address"];
-    }
-
-    // if (empty($_POST["file"])) {
-    //     $fileErr = "File is required!";
-    // } else {
-    //     $file = $_POST["file"];
-    // }
-
-
-    if ($fname && $midname && $lname && $email && $contact &&  $business_type && $address) {
-        if (!preg_match("/^[a-zA-Z]*$/", $fname)) {
-            $fnameErr = "Invalid!";
-        } else {
-            $count_first_name_string = strlen($fname);
-            if ($count_first_name_string < 2) {
-                $fnameErr = "Too short";
-            } else {
-                if (!preg_match("/^[a-zA-Z]*$/", $midname)) {
-                    $midnameErr = "Invalid!";
-                } else {
-                    $count_middle_name_string = strlen($midname);
-                    if ($count_middle_name_string < 2) {
-                        $midnameErr = "Too short!";
-                    } else {
-                        if (!preg_match("/^[a-zA-Z]*$/", $lname)) {
-                            $lnameErr = "Invalid!";
-                        } else {
-                            $count_last_name_string = strlen($lname);
-                            if ($count_last_name_string < 2) {
-                                $lnameErr = "Too short!";
-                            } else {
-                                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                                    $emailErr = "Invalid email format!";
-                                } else {
-                                    if (!preg_match("/^[0-9]*$/", $contact)) {
-                                        $contactErr = "Invalid!";
-                                    } else {
-                                        mysqli_query($connections, "INSERT INTO tenants(fname, midname, lname, email, contact, business_type, address, file) 
-                                        VALUES('$fname', '$midname', '$lname', '$email', '$contact', '$business_type', '$address', '$file') ");
-                                        echo "<script>location.href='pending_page.php'</script>";
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-
+include("validate.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class=" container" style="width: 40rem; margin-top: 30px;">
         <form action="<?php htmlspecialchars("PHP_SELF") ?>" method="POST">
             <center>
-                <h3>CHMSU TENANT REGISTRATION</h3><br>
+                <h2>Register</h2><br>
             </center>
             <div class="mb-3">
                 <label for="firstname" class="form-label">First Name</label>
@@ -139,6 +44,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <span class="error"><?php echo $contactErr ?></span>
             </div>
             <div class="mb-3">
+                <label for="birth_date" class="form-label">Date of birth</label>
+                <input name="birth_date" type="date" value="" class="form-control" autocomplete="off">
+                <span class="error"><?php echo $birth_dateErr ?></span>
+            </div>
+            <div class="mb-3">
                 <label for="businessType" class="form-label">Business type</label>
                 <input name="business_type" value="<?php echo $business_type ?>" type="text" class="form-control" placeholder="e.g. Coffee" autocomplete="off">
                 <span class="error"><?php echo $business_typeErr ?></span>
@@ -148,13 +58,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <textarea name="address" class="form-control" placeholder="Enter your complete address" rows="3" autocomplete="off"><?php echo $address ?></textarea>
                 <span class="error"><?php echo $addressErr ?></span>
             </div>
+            <center>
+                <h5>Legal Requirements</h5>
+            </center>
             <div class="mb-3">
-                <label for="upload" class="form-label">Upload letter of intent</label>
-                <input name="file" value="<?php echo $file ?>" type="file" class="form-control" autocomplete="off">
-                <span class="error"><?php echo $fileErr ?></span>
+                <label for="upload" class="form-label">Letter of intent</label>
+                <input name="l_intent" value="<?php echo $l_intent ?>" type="file" class="form-control" autocomplete="off">
+                <span class="error"><?php echo $l_intentErr ?></span>
+            </div>
+            <div class="mb-3">
+                <label for="upload" class="form-label">Sanitary Permit to Operate</label>
+                <input name="s_permit" value="<?php echo $s_permit ?>" type="file" class="form-control" autocomplete="off">
+                <span class="error"><?php echo $s_permitErr ?></span>
+            </div>
+            <div class="mb-3">
+                <label for="upload" class="form-label">Business Permit (if Applicable)</label>
+                <input name="b_permit" value="<?php echo $b_permit ?>" type="file" class="form-control" autocomplete="off">
+                <span class="error"><?php echo $b_permitErr ?></span>
+            </div>
+            <div class="mb-3">
+                <label for="upload" class="form-label">Health Certificate</label>
+                <input name="h_certificate" value="<?php echo $h_certificate ?>" type="file" class="form-control" autocomplete="off">
+                <span class="error"><?php echo $h_certificateErr ?></span>
             </div>
             <div class="d-grid gap-2 col-6 mx-auto">
-                <button name="register" class="btn btn-success" type="submit">Register</button>
+                <button name="register" class="btn btn-success" type="submit">Submit</button>
             </div>
     </div>
     </form>

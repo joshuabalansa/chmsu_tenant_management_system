@@ -13,8 +13,6 @@ if (isset($_SESSION["id"])) :
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Applicants</title>
-        <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
-        <script src="../plugins/bootstrap/js/bootstrap.bundle.js"></script>
     </head>
 
     <body>
@@ -53,13 +51,14 @@ if (isset($_SESSION["id"])) :
                             $db_address = $row["address"];
                             $db_status = $row["status"];
                             $fullname = ucfirst($db_fname) . " " . ucfirst($db_midname[0]) . ". " . ucfirst($db_lname);
-
+                            $count_address = strlen($db_address);
+                            ($count_address > 10) ? ($db_address = substr($db_address, 0, -2) . "...") : ($db_address);
                         ?>
                             <tr>
                                 <td><?php echo $fullname ?></td>
                                 <td><?php echo $db_email ?></td>
                                 <td><?php echo $db_contact ?></td>
-                                <td><?php echo substr($db_address, 0, -15) . "..." ?></td>
+                                <td><?php echo $db_address ?></td>
                                 <td><?php echo $db_type ?></td>
                                 <td>
                                     <p class='badge rounded-pill text-bg-danger'><?php echo $db_status ?></p>

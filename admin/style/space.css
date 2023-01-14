@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: space-around;
+}
+.wrapper .left-section {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.wrapper .right-section {
+    width: 50%;
+}

@@ -14,8 +14,6 @@ if (isset($_SESSION["id"])) :
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
-        <script src="../plugins/bootstrap/js/bootstrap.bundle.js"></script>
         <title>Tenants</title>
     </head>
 
@@ -60,10 +58,12 @@ if (isset($_SESSION["id"])) :
                             //
                             $db_fullname = ucfirst($db_first_name) . " " . ucfirst($db_middle_name[0]) . ". " . ucfirst($db_last_name);
                             ($db_status == "active") ? ($badge = "success") : ($badge = "danger");
+                            $count_address = strlen($db_address);
+                            ($count_address > 10) ? ($db_address = substr($db_address, 0, -2) . "...") : ($db_address);
                         ?>
                             <tr>
                                 <td><?php echo $db_fullname ?></td>
-                                <td><?php echo substr($db_address, 0, -15) . "..." ?></td>
+                                <td><?php echo $db_address ?></td>
                                 <td><?php echo $db_email ?></td>
                                 <td><?php echo $db_contact ?></td>
                                 <td><?php echo $db_type  ?></td>

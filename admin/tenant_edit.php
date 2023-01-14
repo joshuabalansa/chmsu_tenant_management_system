@@ -11,7 +11,6 @@
 <body>
     <div class="container mt-5">
         <h3>Edit Tenant</h3>
-
         <form action="" method="POST">
             <div class="row">
                 <div class="col">

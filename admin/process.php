@@ -37,4 +37,13 @@
         mysqli_query($connections, "UPDATE coordinators SET first_name='$new_first_name', middle_name='$new_middle_name', last_name='$new_last_name', email='$new_email', contact='$new_contact' WHERE user_id='$db_id'");
         header("location: profile.php");
     }
+
+    //Space.php query
+    if (isset($_POST["space_submit"])) {
+        $code = $_POST["code"];
+        $rate = $_POST["rate"];
+        mysqli_query($connections, "INSERT INTO space(code, rate) VALUES ('$code', '$rate')");
+        echo "<script>confirm('Inserted')</script>";
+        header("location: space.php");
+    }
     ?>

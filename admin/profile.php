@@ -13,8 +13,6 @@ if (isset($_SESSION["id"])) :
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
-        <script src="../plugins/bootstrap/js/bootstrap.bundle.js"></script>
         <title>CHMSU TMS</title>
 
     </head>
@@ -25,6 +23,11 @@ if (isset($_SESSION["id"])) :
             <br><br>
 
             <?php
+            $get_profile = mysqli_query(
+                $connections,
+                "SELECT users.username, users.date, coordinators.first_name, coordinators.last_name 
+                FROM users JOIN coordinators ON coordinators.user_id = users.user_id WHERE users.id = $user_id"
+            );
             while ($row = mysqli_fetch_assoc($get_profile)) {
                 $db_first_name = $row["first_name"];
                 $db_last_name = $row["last_name"];

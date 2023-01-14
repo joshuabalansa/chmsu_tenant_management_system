@@ -41,4 +41,13 @@ if (mysqli_connect_errno()) {
             return false;
         return true;
     }
+    //Validate Text field
+    let inputField = document.getElementById("inputField");
+
+    inputField.addEventListener("input", function() {
+        let regex = /^[a-zA-Z\s]*$/;
+        if (!regex.test(inputField.value)) {
+            inputField.value = inputField.value.replace(/[^a-zA-Z\s]/g, "");
+        }
+    });
 </script>

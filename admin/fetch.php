@@ -19,14 +19,8 @@ while ($row = mysqli_fetch_assoc($get_record)) {
 }
 
 // fetch user logs
-$get_logs = mysqli_query($connections, "SELECT * FROM logs");
+$get_logs = mysqli_query($connections, "SELECT * FROM logs WHERE account_type='tenant'");
 
-// fetch profile
-$get_profile = mysqli_query(
-    $connections,
-    "SELECT users.username, users.date, coordinators.first_name, coordinators.last_name 
-    FROM users JOIN coordinators ON coordinators.user_id = users.user_id"       
-);
 
 // Fetch applicants
 $get_applicants = mysqli_query($connections, "SELECT * FROM tenants WHERE status='pending'");

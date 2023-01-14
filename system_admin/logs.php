@@ -35,7 +35,8 @@ if (isset($_SESSION["id"])) :
                 <table id="fetch_result" class="table-sm table table-hover">
                     <thead>
                         <tr>
-                            <th>Tenant Name</th>
+                            <th>Users Name</th>
+                            <th>Type</th>
                             <th>Login Date</th>
                         </tr>
                     </thead>
@@ -44,17 +45,20 @@ if (isset($_SESSION["id"])) :
                         $get_record = mysqli_query($connections, "SELECT * FROM logs ");
                         while ($row = mysqli_fetch_assoc($get_record)) :
                             $db_fname = $row['first_name'];
+                            $db_account_type = $row['account_type'];
                             $db_date = $row['date'];
                         ?>
                             <tr>
                                 <td><?php echo $db_fname ?></td>
+                                <td><?php echo $db_account_type ?></td>
                                 <td><?php echo date("F j, Y, g:i a", strtotime($db_date)) ?></td>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Tenant Name</th>
+                            <th>Users Name</th>
+                            <th>Type</th>
                             <th>Date Timestamp</th>
                         </tr>
                     </tfoot>
