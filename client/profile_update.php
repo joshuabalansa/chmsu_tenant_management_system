@@ -27,7 +27,14 @@
                     <input placeholder="Enter full name" class="form-control" type="text" name="new_last_name" value="<?php echo $db_last_name ?>" required>
                 </div>
             </div>
-
+            <div class="mb-3">
+                <label for="name">Date of Birth</label>
+                <input type="date" class="form-control" value="<?php echo $db_birth_date ?>" name="new_birth_date">
+            </div>
+            <div class="mb-3">
+                <label for="name">Address</label>
+                <textarea placeholder="Enter your address" class="form-control" type="text" name="new_address" rows="3" required><?php echo $db_address ?></textarea>
+            </div>
             <div class="mb-3">
                 <label for="name">Address</label>
                 <textarea placeholder="Enter your address" class="form-control" type="text" name="new_address" rows="3" required><?php echo $db_address ?></textarea>

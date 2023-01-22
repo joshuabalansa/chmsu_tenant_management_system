@@ -4,5 +4,5 @@ unset($_SESSION['id']);
 session_unset();
 session_destroy();
 echo "<center>Clearing session please wait...</center>";
-header('refresh: .3, url=../index.php');
+header('refresh: .3, url=../login.php');
 exit();

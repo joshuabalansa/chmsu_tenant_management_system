@@ -19,11 +19,12 @@ if (isset($_SESSION["id"])) :
         <script src="../plugins/bootstrap/js/bootstrap.bundle.js"></script>
         <title>Dashboard</title>
     </head>
+
     <body>
         <div class="container">
             <?php include("inc/top_nav.php") ?>
             <br><br>
-            <h4>Payment History</h4>
+            <p class="lead">Payment History</p>
             <?php $get_record = mysqli_query($connections, "SELECT * FROM payment WHERE user_id='$user_id' LIMIT 6");
             while ($row = mysqli_fetch_assoc($get_record)) :
                 $db_amount = $row["amount"];

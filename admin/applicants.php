@@ -21,7 +21,7 @@ if (isset($_SESSION["id"])) :
             <br>
             <br>
             <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-            <div class="container bg-light">
+            <div class="container">
 
                 <br>
                 <p>List of Pending Applicants</p>

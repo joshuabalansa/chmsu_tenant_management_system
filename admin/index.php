@@ -38,8 +38,8 @@ if (isset($_SESSION["id"])) :
                     <p>Active Tenants</p>
                 </div>
                 <div class="card">
-                    <h4><?php echo "&#8369; 98342"; ?></h4>
-                    <p>Total income generated <br></p>
+                    <h4><?php echo $pastdue; ?></h4>
+                    <p>PastDue Tenants<br></p>
                 </div>
             </div>
         </div>

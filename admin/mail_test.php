@@ -1,6 +1,18 @@
 <?php
-//Import PHPMailer classes into the global namespace
-//These must be at the top of your script, not inside a function
+
+include("../connections.php");
+
+
+
+$db_retrieve = mysqli_query($connections, "SELECT * FROM tenants WHERE status='pending' ");
+while ($row = mysqli_fetch_assoc($db_retrieve)) {
+    $db_name = $row["fname"];
+    $recipients = $row["email"]. ',';
+        echo $recipients;
+}
+
+
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -9,39 +21,45 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
-//Load Composer's autoloader
-// require 'vendor/autoload.php';
+$due_date = date("d");
+$status = "active";
 
-//Create an instance; passing `true` enables exceptions
-$mail = new PHPMailer(true);
+if ($due_date == 20) {
+    $status = "Inactive";
 
-try {
-    //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-    $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'j.balansa00@gmail.com';                     //SMTP username
-    $mail->Password   = 'grmqjovlsvcwmsdw';                               //SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-    //Recipients
-    $mail->setFrom('j.balansa00@gmail.com', 'Testing!');
-    $mail->addAddress('jbalansa143@gmail.com', 'Joe User');     //Add a recipient
+    $mail = new PHPMailer(true);
 
-    //Attachments
-    // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'j.balansa00@gmail.com';
+        $mail->Password   = 'grmqjovlsvcwmsdw'; //Google App Password                       
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port       = 465;
 
-    //Content
-    $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Good Day!';
-    $mail->Body    = 'Testing!';
-    $mail->AltBody = 'Testing!';
+        //Recipients
+        $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University');
+        // $mail->addAddress('jbalansa143@gmail.com', 'User');
 
-    $mail->send();
-    echo 'Message has been sent';
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            $mail->addAddress($recipients);
+
+
+        //Content
+        $mail->isHTML(true);
+        $mail->Subject = 'Carlos Hilado Memorial State University';
+        $mail->Body    = $db_name . $status . ' Due!';
+        $mail->AltBody = 'Due!';
+
+        $mail->send();
+        echo 'Message has been sent';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+} else {
+    $status = "Active";
 }
+echo $status;

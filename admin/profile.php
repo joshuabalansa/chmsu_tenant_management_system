@@ -55,7 +55,7 @@ if (isset($_SESSION["id"])) :
                     </tr>
                 </thead>
             </table>
-            <button title="Logout" type='submit' name="logoutUser" data-bs-toggle="modal" data-bs-target="#profile_edit" class='btn btn-info'>Edit Profile</button>
+            <a href="process.php?editInfo=<?php echo $user_id ?>" class="btn-sm btn btn-secondary">Edit Info</a>
             <?php include("inc/modals.php"); ?>
         </div>
 

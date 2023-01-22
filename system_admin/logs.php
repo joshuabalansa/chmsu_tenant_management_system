@@ -35,9 +35,9 @@ if (isset($_SESSION["id"])) :
                 <table id="fetch_result" class="table-sm table table-hover">
                     <thead>
                         <tr>
-                            <th>Users Name</th>
+                            <th>Users</th>
                             <th>Type</th>
-                            <th>Login Date</th>
+                            <th>Login Time</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,9 +57,9 @@ if (isset($_SESSION["id"])) :
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Users Name</th>
+                            <th>Users</th>
                             <th>Type</th>
-                            <th>Date Timestamp</th>
+                            <th>Login Time</th>
                         </tr>
                     </tfoot>
                 </table>

@@ -102,7 +102,7 @@ if (isset($_SESSION["id"])) :
                     }
                 }
                 ?>
-                <div class="container" style="width: 50rem;">
+                <div class="container" style="width: 40rem;">
                     <center>
                         <h5>Create new account</h5>
                     </center>

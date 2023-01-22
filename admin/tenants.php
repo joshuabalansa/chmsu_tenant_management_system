@@ -20,13 +20,12 @@ if (isset($_SESSION["id"])) :
     <body>
         <div class="container">
             <?php include("inc/top_nav.php") ?>
-            <br>
             <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-            <div class="container bg-light" style="margin-top: 60px;">
-                <a href="register.php" class="btn-sm btn btn-primary" title="Add new user">New Tenant</a>
+            <div class="container" style="margin-top: 60px;">
+                <!-- <a href="register.php" class="btn-sm btn btn-primary" title="Add new user">New Tenant</a> -->
                 <br>
                 <br>
-                <p>List of users</p>
+                <p>List of Tenants</p>
                 <hr>
                 <table id="fetch_result" class="table-sm table table-hover">
                     <thead>
@@ -42,7 +41,7 @@ if (isset($_SESSION["id"])) :
                     </thead>
                     <tbody>
                         <?php
-                        $tenants_query = mysqli_query($connections, "SELECT * FROM tenants WHERE status = 'active' || status = 'pending' ");
+                        $tenants_query = mysqli_query($connections, "SELECT * FROM tenants WHERE status = 'active' || status = 'pastdue' ");
 
                         while ($row = mysqli_fetch_assoc($tenants_query)) :
                             $user_id = $row["id"];
@@ -72,8 +71,8 @@ if (isset($_SESSION["id"])) :
 
                                     <a href='tenant_info.php?view=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info' title="View tenant Information">
                                         <i class='bx bxs-user-detail'></i></a>
-                                    <a class='btn-sm btn btn-info' href='process.php?update=<?php echo $row["id"] ?>' title="Edit Tenant Info">
-                                        <i class='bx bxs-edit'></i></a>
+                                    <!-- <a class='btn-sm btn btn-info' href='process.php?update=<?php echo $row["id"] ?>' title="Edit Tenant Info">
+                                        <i class='bx bxs-edit'></i></a> -->
 
                                 </td>
                             </tr>

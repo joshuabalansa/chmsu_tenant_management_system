@@ -31,6 +31,7 @@ if (isset($_SESSION["id"])) :
                     $db_first_name = $row["fname"];
                     $db_midname = $row["midname"];
                     $db_last_name = $row["lname"];
+                    $db_birth_date = $row["birth_date"];
                     $db_address = $row["address"];
                     $db_email = $row["email"];
                     $db_type = $row["business_type"];
@@ -54,6 +55,10 @@ if (isset($_SESSION["id"])) :
                         <td><?php echo $fullname ?></td>
                     </tr>
                     <tr>
+                        <th>Date of Birth:</th>
+                        <td><?php echo $db_birth_date ?></td>
+                    </tr>
+                    <tr>
                         <th>Email:</th>
                         <td><?php echo $db_email ?></td>
                     </tr>
@@ -70,19 +75,27 @@ if (isset($_SESSION["id"])) :
                         <td><?php echo $db_address ?></td>
                     </tr>
                     <tr>
-                        <th>Letter of Intent</th>
+                        <th>Letter of Intent:</th>
                         <td>
-                            <button type="button" class="btn-sm btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                View
-                            </button>
+                            <a href="#" class="link-primary">View</a>
                         </td>
                     </tr>
                     <tr>
-                        <th>Sanitary Permit</th>
+                        <th>Business Permit:</th>
                         <td>
-                            <button type="button" class="btn-sm btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                View
-                            </button>
+                            <a href="#" class="link-primary">View</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Sanitary Permit:</th>
+                        <td>
+                            <a href="#" class="link-primary">View</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Health Certificate:</th>
+                        <td>
+                            <a href="#" class="link-primary">View</a>
                         </td>
                     </tr>
                 </thead>

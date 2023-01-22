@@ -27,6 +27,7 @@ if (isset($_SESSION["id"])) :
             ?>
             <br>
             <br>
+            <br>
             <h4>Create Space</h4>
             <div class="wrapper">
                 <div class="left-section">
@@ -57,7 +58,6 @@ if (isset($_SESSION["id"])) :
                             $status = $row["status"];
                             ($status == "available") ? ($badge = "success") : ($badge = "warning")
                         ?>
-
                             <tr>
                                 <td><?php echo $code ?></td>
                                 <td><?php echo $rate ?></td>

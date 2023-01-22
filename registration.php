@@ -1,5 +1,5 @@
 <?php
-include("../connections.php");
+include("connections.php");
 include("validate.php");
 ?>
 <!DOCTYPE html>
@@ -14,7 +14,7 @@ include("validate.php");
 
 <body>
     <div class=" container" style="width: 40rem; margin-top: 30px;">
-        <form action="<?php htmlspecialchars("PHP_SELF") ?>" method="POST">
+        <form action="<?php htmlspecialchars("PHP_SELF") ?>" method="POST" enctype="multipart/form-data">
             <center>
                 <h2>Register</h2><br>
             </center>
@@ -45,7 +45,7 @@ include("validate.php");
             </div>
             <div class="mb-3">
                 <label for="birth_date" class="form-label">Date of birth</label>
-                <input name="birth_date" type="date" value="" class="form-control" autocomplete="off">
+                <input name="birth_date" type="date" value="<?php echo $birth_date ?>" class="form-control" autocomplete="off">
                 <span class="error"><?php echo $birth_dateErr ?></span>
             </div>
             <div class="mb-3">

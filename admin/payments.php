@@ -33,7 +33,7 @@ if (isset($_SESSION["id"])) :
                 <?php
                 if (isset($_GET["view_payment"])) {
                     $id = $_GET["view_payment"];
-                    $get_payment = mysqli_query($connections, "SELECT * FROM payment");
+                    $get_payment = mysqli_query($connections, "SELECT payment.amount, payment.refno, payment.date, payment.user_id FROM payment JOIN users ON payment.user_id = users.id WHERE users.user_id = $id");
                 }
                 ?>
                 <h5>Payment History</h5>
@@ -69,6 +69,7 @@ if (isset($_SESSION["id"])) :
                         </tr>
                     </tfoot>
                 </table>
+                <a href="tenants.php" class="btn btn-secondary">Back</a>
             </div>
             <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
             <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

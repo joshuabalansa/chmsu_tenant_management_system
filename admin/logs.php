@@ -27,7 +27,7 @@ if (isset($_SESSION["id"])) :
             <br>
             <br>
             <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-            <div class="container bg-light">
+            <div class="container">
                 <br>
                 <p>List of tenant login logs</p>
                 <hr>
@@ -35,7 +35,7 @@ if (isset($_SESSION["id"])) :
                     <thead>
                         <tr>
                             <th>Tenant Name</th>
-                            <th>Login Date</th>
+                            <th>Login Time</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,7 +54,7 @@ if (isset($_SESSION["id"])) :
                     <tfoot>
                         <tr>
                             <th>Tenant Name</th>
-                            <th>Login Date</th>
+                            <th>Login Time</th>
                         </tr>
                     </tfoot>
                 </table>

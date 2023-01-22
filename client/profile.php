@@ -26,11 +26,13 @@ if (isset($_SESSION["id"])) :
             <?php
             $get_info = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$db_id' ");
             while ($row = mysqli_fetch_assoc($get_info)) {
+                $db_status = $row["status"];
                 $db_first_name = $row["fname"];
                 $db_middle_name = $row["midname"];
                 $db_last_name = $row["lname"];
                 $db_address = $row["address"];
                 $db_email = $row["email"];
+                $db_birth_date = $row["birth_date"];
                 $db_contact = $row["contact"];
             }
             $fullname = $db_first_name . " " . $db_middle_name . " " . $db_last_name;
@@ -38,8 +40,16 @@ if (isset($_SESSION["id"])) :
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>Status:</th>
+                        <td><?php echo ucfirst($db_status) ?></td>
+                    </tr>
+                    <tr>
                         <th>Name:</th>
                         <td><?php echo $fullname ?></td>
+                    </tr>
+                    <tr>
+                        <th>Date of Birth:</th>
+                        <td><?php echo $db_birth_date ?></td>
                     </tr>
                     <tr>
                         <th>Email:</th>
@@ -54,8 +64,8 @@ if (isset($_SESSION["id"])) :
                         <td> <?php echo $db_address ?></td>
                     </tr>
                     <tr>
-                        <th>Username</th>
-                        <td> <?php echo $db_username ?></td>
+                        <th>Letter of intent</th>
+                        <td> <?php echo "Complete"?></td>
                     </tr>
                 </thead>
             </table>

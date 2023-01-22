@@ -11,6 +11,11 @@ $result = mysqli_query($connections, "SELECT COUNT(*) AS `count` FROM tenants WH
 $row = mysqli_fetch_assoc($result);
 $tenants = $row['count'];
 
+//Fetch Index Summary /Due
+$result = mysqli_query($connections, "SELECT COUNT(*) AS `count` FROM tenants WHERE status='pastdue'");
+$row = mysqli_fetch_assoc($result);
+$pastdue = $row['count'];
+
 //Fetch Users user_name/ 
 $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
 while ($row = mysqli_fetch_assoc($get_record)) {
@@ -25,3 +30,6 @@ $get_logs = mysqli_query($connections, "SELECT * FROM logs WHERE account_type='t
 // Fetch applicants
 $get_applicants = mysqli_query($connections, "SELECT * FROM tenants WHERE status='pending'");
 // Fetch Applicants Info
+
+
+//

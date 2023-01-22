@@ -13,6 +13,9 @@
                     <a class="nav-link active" href="payments.php">Payments</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link active" href="#">History</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link active" href="profile.php">Profile</a>
                 </li>
             </ul>

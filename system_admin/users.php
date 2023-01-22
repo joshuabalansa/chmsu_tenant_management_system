@@ -31,6 +31,8 @@ if (isset($_SESSION["id"])) :
                 <br>
                 <br>
                 <p>List of coordinators</p>
+                <a href="http://">Active</a>
+                <a href="http://">Inactive</a>
                 <hr>
                 <table id="fetch_result" class="table-sm table table-striped">
                     <thead>
