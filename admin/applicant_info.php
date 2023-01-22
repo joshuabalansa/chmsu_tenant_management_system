@@ -40,6 +40,9 @@ if (isset($_SESSION["id"])) :
                     $db_contact = $row["contact"];
                     $db_date = $row["date"];
                     $db_l_intent = $row["l_intent"];
+                    $db_s_permit = $row["s_permit"];
+                    $db_b_permit = $row["b_permit"];
+                    $db_h_certificate = $row["h_certificate"];
                 }
 
                 $fullname = $db_first_name . " " . $db_last_name;
@@ -97,7 +100,7 @@ if (isset($_SESSION["id"])) :
                     <tr>
                         <th>Health Certificate:</th>
                         <td>
-                            <a href="#" class="link-primary">View</a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#view4" class="link-primary">View</a>
                         </td>
                     </tr>
                 </thead>
@@ -113,3 +116,22 @@ else :
     @include "../error.php";
 endif;
 ?>
+
+<!-- View modal applicants_info.php -->
+<div class="modal fade" id="view4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Letter of intent</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img width="100%" src="../uploads/<?php echo $db_h_certificate ?>" alt="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Download</button>
+            </div>
+        </div>
+    </div>
+</div>
