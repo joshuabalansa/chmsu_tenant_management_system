@@ -19,7 +19,7 @@ require 'PHPMailer/src/SMTP.php';
 if (isset($_GET['reject'])) {
     $id = $_GET['reject'];
     mysqli_query($connections, "UPDATE tenants SET status='rejected' WHERE id = $id");
-    $get_record = mysqli_query($connections, "SELECT * FROM user_register WHERE id='$id'");
+    $get_record = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$id'");
     while ($row = mysqli_fetch_assoc($get_record)) {
         $db_fname = $row["fname"];
     }
@@ -92,7 +92,7 @@ if (isset($_GET['accept'])) {
         return $shuffled;
     }
     $password = random_password(8);
-    
+
     mysqli_query($connections, "INSERT INTO users (username, password, user_id) 
     VALUES('$username', '$password', '$db_id')");
     //INSERT END

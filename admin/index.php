@@ -39,7 +39,7 @@ if (isset($_SESSION["id"])) :
                 </div>
                 <div class="card">
                     <h4><?php echo $pastdue; ?></h4>
-                    <p>PastDue Tenants<br></p>
+                    <p>Pastdue Tenants<br></p>
                 </div>
             </div>
         </div>

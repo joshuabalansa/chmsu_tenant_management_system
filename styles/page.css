@@ -5,7 +5,7 @@
 
 .navbar {
   background: #f7f7f7;
-  height: 80px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   padding: 1.5rem calc((100vw - 1200px) / 2);
@@ -17,9 +17,12 @@
   color: #222121;
   cursor: pointer;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1.6rem;
   margin-left: 24px;
   margin-top: 10px;
+}
+.navbar__logo img {
+  width: 4rem;
 }
 .navbar__bars {
   opacity: 0;
@@ -59,12 +62,12 @@
   border: none;
   outline: none;
   border-radius: 4px;
-  background: #157347;
+  background: #385a64;
   margin-left: 16px;
   color: #f7f7f7;
 }
 .navbar__menu #button:hover {
-  background: #fb4b4e;
+  background: #385a64b9;
   transition: all 0.3s ease;
 }
 
@@ -84,7 +87,7 @@
   align-items: center;
   justify-items: center;
   margin: 0 auto;
-  height: 90vh;
+  height: 80vh;
   z-index: 1;
   width: 100%;
   max-width: 1200px;
@@ -113,7 +116,7 @@
 }
 .hero__container--left h1 {
   font-size: 4rem;
-  color: #157347;
+  color: #385a64;
 }
 @media screen and (max-width: 280px) {
   .hero__container--left h1 {
@@ -142,7 +145,7 @@
 }
 .hero__container--btn {
   font-size: 1rem;
-  background-color: #157347;
+  background-color: #385a64;
   padding: 14px 32px;
   border: none;
   border-radius: 4px;
@@ -166,7 +169,7 @@
   left: 0;
   width: 0;
   height: 100%;
-  background: #fb4b4e;
+  background: #2fadd3;
   transition: all 0.3s;
   border-radius: 4px;
 }

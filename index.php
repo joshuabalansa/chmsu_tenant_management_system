@@ -12,9 +12,7 @@
 <body>
   <!-- Navbar Section -->
   <nav class="navbar">
-    <a href="index.html" class="navbar__logo"><img src="images/logo.png" width="80" alt=""></a>
-
-    <a href="index.php" class="navbar__logo">CHMSU</a>
+    <a href="index.html" class="navbar__logo"><img src="images/logo.png" alt=""></a>
     <div class="navbar__menu">
       <a href="index.php" class="navbar__menu--links">Home</a>
       <a href="guidelines.php" class="navbar__menu--links">Guidelines</a>
@@ -35,7 +33,7 @@
 
       </div>
       <div class="hero__container--right">
-        <img src="images/img-1.svg" alt="alien" class="hero__container--img" />
+        <img src="images/15588818_5643749.png" alt="alien" class="hero__container--img" />
       </div>
     </div>
   </div>

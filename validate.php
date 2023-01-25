@@ -123,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                         mysqli_query($connections, "INSERT INTO tenants(fname, midname, lname, email, contact, birth_date, business_type, address,l_intent, s_permit, b_permit, h_certificate) 
                                             VALUES('$fname', '$midname', '$lname', '$email', '$contact','$birth_date', '$business_type', '$address', '$l_intent', '$s_permit', '$b_permit', '$h_certificate') ");
-                                        // echo "<script>location.href='pending_page.php'</script>";
+                                        echo "<script>location.href='pending_page.php'</script>";
                                     }
                                 }
                             }
