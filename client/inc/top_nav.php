@@ -13,7 +13,7 @@
                     <a class="nav-link active" href="payments.php">Payments</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">History</a>
+                    <a class="nav-link active" href="history.php">History</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="profile.php">Profile</a>

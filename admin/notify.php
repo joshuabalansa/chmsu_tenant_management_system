@@ -4,13 +4,6 @@ include("../connections.php");
 
 
 
-$db_retrieve = mysqli_query($connections, "SELECT * FROM tenants WHERE status='pending' ");
-while ($row = mysqli_fetch_assoc($db_retrieve)) {
-    $db_name = $row["fname"];
-    $recipients = $row["email"]. ',';
-        echo $recipients;
-}
-
 
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -24,7 +17,7 @@ require 'PHPMailer/src/SMTP.php';
 $due_date = date("d");
 $status = "active";
 
-if ($due_date == 20) {
+if ($due_date == 28) {
     $status = "Inactive";
 
 
@@ -44,14 +37,29 @@ if ($due_date == 20) {
         //Recipients
         $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University');
         // $mail->addAddress('jbalansa143@gmail.com', 'User');
+        $query = "SELECT * FROM tenants";
+        $result = $connections->query($query);
 
-            $mail->addAddress($recipients);
-
-
+        while ($row = $result->fetch_assoc()) {
+            $mail->addAddress($row['email']);
+        }
         //Content
         $mail->isHTML(true);
         $mail->Subject = 'Carlos Hilado Memorial State University';
-        $mail->Body    = $db_name . $status . ' Due!';
+        $mail->Body    = "Dear, CHMSU Tenant <br>
+
+        This is a reminder that your payment for rental payment is about to end. The due <br> 
+        date will be the end of this month. We kindly request that you take care of this outstanding <br>
+        balance as soon as possible.
+        
+        If you have any questions or concerns, please don't hesitate to reach out to us at Carlos Hilado Memorial State University cashier. We want to <br> 
+        work with you to resolve this matter promptly. <br>
+        
+        Thank you for your attention to this matter. <br>
+        
+        Sincerely, Carlos Hilado Memorial State University";
+
+
         $mail->AltBody = 'Due!';
 
         $mail->send();

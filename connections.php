@@ -28,10 +28,16 @@
 </style>
 
 <?php
-$connections = mysqli_connect("localhost", "root", "", "ctms");
+$server = "localhost";
+$uname = "root";
+$pass = "";
+$db = "ctms";
+
+$connections = mysqli_connect($server, $uname, $pass, $db);
 if (mysqli_connect_errno()) {
     echo "Failed to connect to mySQL" . mysqli_connect_error();
 }
+
 ?>
 
 <script>

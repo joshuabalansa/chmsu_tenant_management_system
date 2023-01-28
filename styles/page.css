@@ -62,12 +62,12 @@
   border: none;
   outline: none;
   border-radius: 4px;
-  background: #385a64;
+  background: #157347;
   margin-left: 16px;
   color: #f7f7f7;
 }
 .navbar__menu #button:hover {
-  background: #385a64b9;
+  background: #31a56f;
   transition: all 0.3s ease;
 }
 
@@ -116,7 +116,7 @@
 }
 .hero__container--left h1 {
   font-size: 4rem;
-  color: #385a64;
+  color: #157347;
 }
 @media screen and (max-width: 280px) {
   .hero__container--left h1 {
@@ -145,7 +145,7 @@
 }
 .hero__container--btn {
   font-size: 1rem;
-  background-color: #385a64;
+  background-color: #157347;
   padding: 14px 32px;
   border: none;
   border-radius: 4px;
@@ -169,7 +169,7 @@
   left: 0;
   width: 0;
   height: 100%;
-  background: #2fadd3;
+  background: #3fa877;
   transition: all 0.3s;
   border-radius: 4px;
 }

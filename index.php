@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="./styles/page.css" />
   <title>CHMSU TMS</title>
 </head>
@@ -23,7 +24,7 @@
   <!-- Hero Section -->
   <div class="hero">
     <div class="hero__container">
-      <div class="hero__container--left">
+      <div class="hero__container--left animate__animated animate__fadeInLeft">
         <h1>Become a part of </h1>
         <h2>CHMSU Tenant</h2>
         <p>Sign up now to join the list.</p>

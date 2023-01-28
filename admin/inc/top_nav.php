@@ -15,9 +15,6 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="tenants.php">Tenants</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="space.php">Space</a>
-                </li>
                 <li class="nav-item"> 
                     <a class="nav-link active" href="reports.php">Payments</a>
                 </li>

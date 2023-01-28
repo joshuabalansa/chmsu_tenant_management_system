@@ -64,9 +64,9 @@ if (isset($_SESSION["id"])) :
                                     <p class='badge rounded-pill text-bg-danger'><?php echo $db_status ?></p>
                                 </td>
                                 <td>
-                                    <a href='applicant_info.php?view=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info'>View</a>
-                                    <a href='mailer.php?accept=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-success'>Accept</a>
-                                    <a href="mailer.php?reject=<?php echo $row['id'] ?>" name='btnReject' class='btn-sm btn btn-warning'>Reject</a>
+                                    <a href='applicant_info.php?view=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info' title="View all details"> <i class='bx bxs-user-detail'></i></a>
+                                    <a href='mailer.php?accept=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-success' title="Accept tenant">Accept</a>
+                                    <a href="mailer.php?reject=<?php echo $row['id'] ?>" name='btnReject' class='btn-sm btn btn-warning' title="Reject tenant">Reject</a>
                                 </td>
                             </tr>
                         <?php endwhile; ?>

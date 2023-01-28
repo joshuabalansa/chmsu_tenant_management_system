@@ -44,7 +44,9 @@ if (isset($_SESSION["id"])) :
                     $db_b_permit = $row["b_permit"];
                     $db_h_certificate = $row["h_certificate"];
                 }
-
+                $date = date_create($db_birth_date);
+                $db_birth_date = date_format($date, "M-d-Y");
+                $age = date('Y') - date_format($date, 'Y');
                 $fullname = $db_first_name . " " . $db_last_name;
             }
             ?>
@@ -58,6 +60,10 @@ if (isset($_SESSION["id"])) :
                     <tr>
                         <th>Name:</th>
                         <td><?php echo $fullname ?></td>
+                    </tr>
+                    <tr>
+                        <th>Age:</th>
+                        <td><?php echo $age ?></td>
                     </tr>
                     <tr>
                         <th>Date of Birth:</th>
