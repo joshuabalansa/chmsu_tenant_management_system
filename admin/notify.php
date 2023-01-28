@@ -2,10 +2,6 @@
 
 include("../connections.php");
 
-
-
-
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -30,14 +26,14 @@ if ($due_date == 28) {
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'j.balansa00@gmail.com';
-        $mail->Password   = 'grmqjovlsvcwmsdw'; //Google App Password                       
+        $mail->Password   = 'grmqjovlsvcwmsdw';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;
 
         //Recipients
         $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University');
         // $mail->addAddress('jbalansa143@gmail.com', 'User');
-        $query = "SELECT * FROM tenants";
+        $query = "SELECT * FROM tenants WHERE status='active'";
         $result = $connections->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -67,7 +63,4 @@ if ($due_date == 28) {
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
-} else {
-    $status = "Active";
 }
-echo $status;
