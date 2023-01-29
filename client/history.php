@@ -33,8 +33,8 @@ if (isset($_SESSION["id"])) :
             <table id="fetch_result" class="table-sm table table-hover">
                 <thead>
                     <tr>
-                        <th>Amount</th>
                         <th>Ref. No</th>
+                        <th>Amount</th>
                         <th>Date</th>
                     </tr>
                 </thead>
@@ -47,8 +47,8 @@ if (isset($_SESSION["id"])) :
                         $db_date = $row["date"];
                     ?>
                         <tr>
-                            <td><?php echo $db_amount ?></td>
                             <td><?php echo $db_refno ?></td>
+                            <td><?php echo $db_amount ?></td>
                             <td><?php echo date("F j, Y", strtotime($db_date)) ?></td>
 
                         </tr>
@@ -56,8 +56,8 @@ if (isset($_SESSION["id"])) :
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>Amount</th>
                         <th>Ref. No</th>
+                        <th>Amount</th>
                         <th>Date</th>
                     </tr>
                 </tfoot>

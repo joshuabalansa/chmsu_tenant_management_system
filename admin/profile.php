@@ -25,25 +25,26 @@ if (isset($_SESSION["id"])) :
             <?php
             $get_profile = mysqli_query(
                 $connections,
-                "SELECT users.username, users.date, coordinators.first_name, coordinators.last_name 
+                "SELECT users.username, users.status , users.date, coordinators.first_name, coordinators.last_name, coordinators.middle_name    
                 FROM users JOIN coordinators ON coordinators.user_id = users.user_id WHERE users.id = $user_id"
             );
             while ($row = mysqli_fetch_assoc($get_profile)) {
                 $db_first_name = $row["first_name"];
+                $db_middle_name = $row["middle_name"];
                 $db_last_name = $row["last_name"];
+                $db_status = $row["status"];
                 $db_user = $row["username"];
                 $db_date = $row["date"];
             }
 
-            $fullname = ucfirst($db_first_name) . " " . ucfirst($db_last_name);
-
+            $fullname = ucfirst($db_first_name) . " " . ucfirst($db_middle_name) . " " . ucfirst($db_last_name);
             ?>
             <h3>Profile</h3>
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Date</th>
-                        <td><?php echo date('M d, Y', strtotime($db_date)) ?></td>
+                        <th>Status</th>
+                        <td><span class="badge text-bg-success"><?php echo $db_status ?></span></td>
                     </tr>
                     <tr>
                         <th>Name:</th>

@@ -22,7 +22,7 @@ if (isset($_SESSION["id"])) :
         <div class="container">
             <?php
             @include("inc/top_nav.php");
-            @include("inc/modals.php");
+
             ?>
             <br>
 
@@ -38,27 +38,30 @@ if (isset($_SESSION["id"])) :
                             <th>Name</th>
                             <th>Email</th>
                             <th>Contact</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $view_query = mysqli_query($connections, "SELECT * FROM coordinators");
+                        $view_query = mysqli_query($connections, "SELECT * FROM coordinators WHERE status='active'");
 
                         while ($row = mysqli_fetch_assoc($view_query)) :
                             $user_id = $row["id"];
+                            $userId = $row["user_id"];
                             $db_first_name = $row["first_name"];
                             $db_middle_name = $row["middle_name"];
                             $db_last_name = $row["last_name"];
                             $db_email = $row["email"];
+                            $db_status = $row["status"];
                             $db_contact = $row["contact"];
-
                             $db_fullname = $db_first_name . " " . $db_middle_name . " " . $db_last_name;
                         ?>
                             <tr>
                                 <td><?php echo $db_fullname ?></td>
                                 <td><?php echo $db_email ?></td>
                                 <td><?php echo $db_contact ?></td>
+                                <td><?php echo $db_status ?></td>
                                 <td colspan='3'>
                                     <a href='process.php?view=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info'>
                                         <i class='bx bxs-user-detail'></i></a>
@@ -71,6 +74,7 @@ if (isset($_SESSION["id"])) :
                             <th>Name</th>
                             <th>Email</th>
                             <th>Contact</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -94,4 +98,5 @@ if (isset($_SESSION["id"])) :
 else :
     @include "../error.php";
 endif;
+@include("inc/modals.php");
 ?>

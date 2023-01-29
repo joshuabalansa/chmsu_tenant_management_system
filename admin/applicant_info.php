@@ -88,32 +88,32 @@ if (isset($_SESSION["id"])) :
                     <tr>
                         <th>Letter of Intent:</th>
                         <td>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#view1" class="btn-sm btn btn-primary">
-                                <i class='bx bx-image-alt'></i>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#view1">
+                                View
                             </a>
                         </td>
                     </tr>
                     <tr>
                         <th>Business Permit:</th>
                         <td>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#view2" class="btn-sm btn btn-primary">
-                                <i class='bx bx-image-alt'></i>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#view2">
+                                View
                             </a>
                         </td>
                     </tr>
                     <tr>
                         <th>Sanitary Permit:</th>
                         <td>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#view3" class="btn-sm btn btn-primary">
-                                <i class='bx bx-image-alt'></i>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#view3">
+                                View
                             </a>
                         </td>
                     </tr>
                     <tr>
                         <th>Health Certificate:</th>
                         <td>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#view4" class="btn-sm btn btn-primary">
-                                <i class='bx bx-image-alt'></i>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#view4">
+                                View
                             </a>
                         </td>
                     </tr>

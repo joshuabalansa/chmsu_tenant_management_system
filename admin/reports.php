@@ -26,22 +26,9 @@ if (isset($_SESSION["id"])) :
             <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
             <div class="container">
                 <br>
-                <?php
-                $report = mysqli_query($connections, "SELECT SUM(amount) AS `amount` FROM payment");
-                while ($payments = mysqli_fetch_assoc($report)) {
-                    $amounts = $payments["amount"];
-                }
-
-                ?>
                 <h5>Payment Reports</h5>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <td>Total this month:</td>
-                            <td><?php echo "₱ " . $amounts; ?></td>
-                        </tr>
-                    </thead>
-                </table>
+                <a href="#">ADD QR CODE</a>
+                <br><br>
                 <table id="fetch_result" class="table-sm table table-hover">
                     <thead>
                         <tr>
@@ -56,17 +43,20 @@ if (isset($_SESSION["id"])) :
                         <?php
                         $get_record = mysqli_query(
                             $connections,
-                            "SELECT users.username, tenants.fname, payment.amount, payment.refno, payment.date
+                            "SELECT users.username, tenants.fname, tenants.lname, payment.amount, payment.refno, payment.date
                              FROM ((users INNER JOIN payment ON payment.user_id = users.id) INNER JOIN tenants ON users.user_id = tenants.id)"
                         );
                         while ($row = mysqli_fetch_assoc($get_record)) :
                             $db_first_name = $row["fname"];
+                            $db_last_name = $row["lname"];
                             $db_amount = $row["amount"];
                             $db_refno = $row["refno"];
                             $db_date = $row["date"];
+
+                            $fullname = $db_first_name . " " . $db_last_name;
                         ?>
                             <tr>
-                                <td><?php echo $db_first_name  ?></td>
+                                <td><?php echo $fullname  ?></td>
                                 <td><?php echo $db_amount ?></td>
                                 <td><?php echo $db_refno ?></td>
                                 <td><?php echo date("F j, Y", strtotime($db_date)) ?></td>

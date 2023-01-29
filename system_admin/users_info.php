@@ -19,11 +19,9 @@ if (isset($_SESSION["id"])) :
     <body>
         <div class="container">
             <?php
-
             include("inc/top_nav.php");
             include("inc/modals.php");
             ?>
-
             <br><br>
             <h3>Info</h3>
             <table class="table table-striped">
@@ -44,7 +42,7 @@ if (isset($_SESSION["id"])) :
             </table>
             <a href="users.php" class="btn btn-outline-secondary">Back</a>
             <a href="#" class="btn btn-warning">Update</a>
-            <button type='submit' name="logoutUser" data-bs-toggle="modal" data-bs-target="#modalDeactivate" class='btn btn-danger'>Deactivate</button>
+            <a href="process.php?deactivate=<?php echo $db_user_id ?>" class='btn btn-danger'>Deactivate</a>
         </div>
     </body>
 

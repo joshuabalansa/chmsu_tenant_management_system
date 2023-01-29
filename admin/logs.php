@@ -40,7 +40,7 @@ if (isset($_SESSION["id"])) :
                     </thead>
                     <tbody>
                         <?php
-                        
+
                         while ($row = mysqli_fetch_assoc($get_logs)) :
                             $db_name = $row['first_name'];
                             $db_date = $row['date'];
