@@ -24,8 +24,14 @@ if (isset($_SESSION["id"])) :
         <div class="container">
             <?php include("inc/top_nav.php") ?>
             <br><br>
+            <p class="lead">Status</p>
+            <h3><span class="badge bg-<?php if ($db_status == 'active') {
+                                            echo 'success';
+                                        } else {
+                                            echo 'danger';
+                                        } ?>  animate__animated animate__bounceInLeft"><?php echo ucfirst($db_status) ?></span></h3>
             <p class="lead">Payment History</p>
-            <?php $get_record = mysqli_query($connections, "SELECT * FROM payment WHERE user_id='$user_id' LIMIT 6");
+            <?php $get_record = mysqli_query($connections, "SELECT * FROM payment WHERE user_id='$user_id' LIMIT 5");
             while ($row = mysqli_fetch_assoc($get_record)) :
                 $db_amount = $row["amount"];
                 $db_refno = $row["refno"];

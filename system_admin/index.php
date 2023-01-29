@@ -26,7 +26,7 @@ if (isset($_SESSION["id"])) :
 
             <br><br>
             <center>
-                <h2>Welcome Admin</h2>
+                <h2 class="animate__animated animate__backInUp">Welcome Admin</h2>
             </center>
         </div>
     </body>

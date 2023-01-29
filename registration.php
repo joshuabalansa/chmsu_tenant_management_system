@@ -16,7 +16,7 @@ include("validate.php");
     <div class=" container" style="width: 40rem; margin-top: 30px;">
         <form action="<?php htmlspecialchars("PHP_SELF") ?>" method="POST" enctype="multipart/form-data">
             <center>
-                <h2>Register</h2><br>
+                <h2 class="animate__animated animate__bounceInDown">Register</h2><br>
             </center>
             <div class="mb-3">
                 <label for="firstname" class="form-label">First Name</label>

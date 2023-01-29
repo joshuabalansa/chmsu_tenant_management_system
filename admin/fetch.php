@@ -24,7 +24,7 @@ while ($row = mysqli_fetch_assoc($get_record)) {
 }
 
 // fetch user logs
-$get_logs = mysqli_query($connections, "SELECT * FROM logs WHERE account_type='tenant'");
+$get_logs = mysqli_query($connections, "SELECT * FROM logs WHERE account_type='tenant' ORDER BY date ASC");
 
 
 // Fetch applicants

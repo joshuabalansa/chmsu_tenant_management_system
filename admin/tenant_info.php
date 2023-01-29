@@ -21,7 +21,6 @@ if (isset($_SESSION["id"])) :
         <div class="container">
             <?php include("inc/top_nav.php") ?>
             <br><br>
-
             <?php
             if (isset($_GET['view'])) {
                 $id = $_GET["view"];
@@ -77,25 +76,33 @@ if (isset($_SESSION["id"])) :
                     <tr>
                         <th>Letter of Intent:</th>
                         <td>
-                            <a href="#" class="link-primary">View</a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#view1">
+                                View
+                            </a>
                         </td>
                     </tr>
                     <tr>
                         <th>Business Permit:</th>
                         <td>
-                            <a href="#" class="link-primary">View</a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#view2">
+                                View
+                            </a>
                         </td>
                     </tr>
                     <tr>
                         <th>Sanitary Permit:</th>
                         <td>
-                            <a href="#" class="link-primary">View</a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#view3">
+                                View
+                            </a>
                         </td>
                     </tr>
                     <tr>
                         <th>Health Certificate:</th>
                         <td>
-                            <a href="#" class="link-primary">View</a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#view4">
+                                View
+                            </a>
                         </td>
                     </tr>
                 </thead>
@@ -113,3 +120,62 @@ else :
     @include "../error.php";
 endif;
 ?>
+
+<!-- View modal applicants_info.php -->
+<div class="modal fade" id="view4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img width="100%" src="../uploads/<?php echo $db_h_certificate ?>" alt="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                <a href='../uploads/<?php echo $db_h_certificate ?>' type="button" class="btn btn-primary" download>Download</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="view3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+
+                <img width="100%" src="../uploads/<?php echo $db_b_permit ?>" alt="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                <a href='../uploads/<?php echo $db_b_permit ?>' type="button" class="btn btn-primary" download>Download</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="view2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img width="100%" src="../uploads/<?php echo $db_s_permit ?>" alt="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                <a href='../uploads/<?php echo $db_s_permit ?>' type="button" class="btn btn-primary" download>Download</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="view1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img width="100%" src="../uploads/<?php echo $db_l_intent ?>" alt="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                <a href='../uploads/<?php echo $db_l_intent ?>' type="button" class="btn btn-primary" download>Download</a>
+            </div>
+        </div>
+    </div>
+</div>

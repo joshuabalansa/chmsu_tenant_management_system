@@ -5,27 +5,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
     <title>Edit</title>
 </head>
 
 <body>
 
-    <div class="container mt-5">
+    <div class="container mt-5 profile_width">
         <h3>Edit Profile</h3>
         <form action="" method="POST">
-            <div class="row">
-                <div class="col">
-                    <label for="name">First name</label>
-                    <input placeholder="Enter full name" class="form-control" type="text" name="new_first_name" value="<?php echo $db_first_name ?>" required>
-                </div>
-                <div class="col">
-                    <label for="name">Middle Name</label>
-                    <input placeholder="Enter middle name" class="form-control" type="text" name="new_middle_name" value="<?php echo $db_middle_name ?>" required>
-                </div>
-                <div class="col">
-                    <label for="name">Last Name</label>
-                    <input placeholder="Enter full name" class="form-control" type="text" name="new_last_name" value="<?php echo $db_last_name ?>" required>
-                </div>
+
+            <div class="mb-3">
+                <label for="name">First name</label>
+                <input placeholder="Enter full name" class="form-control" type="text" name="new_first_name" value="<?php echo $db_first_name ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="name">Middle Name</label>
+                <input placeholder="Enter middle name" class="form-control" type="text" name="new_middle_name" value="<?php echo $db_middle_name ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="name">Last Name</label>
+                <input placeholder="Enter full name" class="form-control" type="text" name="new_last_name" value="<?php echo $db_last_name ?>" required>
             </div>
             <div class="mb-3">
                 <label for="name">Date of Birth</label>

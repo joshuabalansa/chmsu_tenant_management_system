@@ -30,7 +30,7 @@ if (isset($_SESSION["id"])) :
             <div class="container bg-light" style="margin-top: 60px;">
                 <br>
                 <br>
-                <p>List of coordinators</p>
+                <p>List of archived users</p>
                 <hr>
                 <table id="fetch_result" class="table-sm table table-striped">
                     <thead>
@@ -44,7 +44,7 @@ if (isset($_SESSION["id"])) :
                     </thead>
                     <tbody>
                         <?php
-                        $view_query = mysqli_query($connections, "SELECT * FROM coordinators WHERE status='active'");
+                        $view_query = mysqli_query($connections, "SELECT * FROM coordinators WHERE status='archived'");
 
                         while ($row = mysqli_fetch_assoc($view_query)) :
                             $user_id = $row["id"];
@@ -61,9 +61,9 @@ if (isset($_SESSION["id"])) :
                                 <td><?php echo $db_fullname ?></td>
                                 <td><?php echo $db_email ?></td>
                                 <td><?php echo $db_contact ?></td>
-                                <td><span class="badge text-bg-success"><?php echo $db_status ?></span></td>
+                                <td><span class="badge text-bg-secondary"><?php echo $db_status ?></span></td>
                                 <td colspan='3'>
-                                    <a href='process.php?view=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info'>
+                                    <a href='process.php?archive=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info'>
                                         <i class='bx bxs-user-detail'></i></a>
                                 </td>
                             </tr>

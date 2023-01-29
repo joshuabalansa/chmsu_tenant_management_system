@@ -15,8 +15,9 @@ if (isset($_SESSION["id"])) :
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styles/style.css">
         <script src="../plugins/bootstrap/js/bootstrap.bundle.js"></script>
-        
+
         <title>Payments</title>
     </head>
 
@@ -24,12 +25,10 @@ if (isset($_SESSION["id"])) :
         <div class="container">
             <?php include("inc/top_nav.php") ?>
             <br><br>
-            <div class="d-flex justify-content-around">
-                <div class="img">
-                    <img src="gcash.jpg" width="300" height="400" alt="">
-                </div>
-                <div class="form-divider">
+            <div class="form-wrapper">
+                <div class="content">
                     <h3>Gcash Reciept Information</h3>
+                    <button data-bs-toggle="modal" data-bs-target="#showQr" class="btn btn-primary">Show QR</button>
                     <form action="" method="POST">
                         <div class="mb-3">
                             <label for="amount">Amount</label>
@@ -42,8 +41,8 @@ if (isset($_SESSION["id"])) :
                             <span style="color: red;"><?php echo $refnoErr ?></span>
                         </div>
                         <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
+                    </form>
                 </div>
-                </form>
             </div>
 
             <?php include("inc/modals.php"); ?>

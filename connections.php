@@ -5,6 +5,7 @@
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
 <script src="plugins/bootstrap/js/bootstrap.bundle.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 <style>
     .error {

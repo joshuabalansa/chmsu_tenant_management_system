@@ -28,7 +28,7 @@ if (isset($_SESSION["id"])) :
             <br>
             <br>
             <h3>Summary</h3>
-            <div class="card-wrapper">
+            <div class="card-wrapper animate__animated animate__fadeInUp">
                 <div class="card">
                     <h2><?php echo $pending; ?></h2>
                     <p class="blinker">Pending Applicants</p>

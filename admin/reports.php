@@ -27,7 +27,7 @@ if (isset($_SESSION["id"])) :
             <div class="container">
                 <br>
                 <h5>Payment Reports</h5>
-                <a href="#">ADD QR CODE</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#showQr">ADD QR CODE</a>
                 <br><br>
                 <table id="fetch_result" class="table-sm table table-hover">
                     <thead>

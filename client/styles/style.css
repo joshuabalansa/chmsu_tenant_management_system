@@ -5,3 +5,27 @@
 .wrapper .item {
     border: none !important;
 }
+.form-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-wrapper .content {
+    width: 30rem;
+}
+
+@media screen and(max-width: 480px) {
+    .form-wrapper {
+        width: 100%;
+    }
+}
+
+/* .profile_width {
+    width: 40rem;
+}
+@media screen and(max-width: 480px) {
+    .profile_width {
+        width: 100%;
+    }
+} */

@@ -46,3 +46,10 @@ if ($amount && $refno) {
         }
     }
 }
+
+
+$get_status = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$db_id' ");
+while ($row = mysqli_fetch_assoc($get_status)) {
+    $db_status = $row["status"];
+}
+

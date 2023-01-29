@@ -29,7 +29,8 @@ if (isset($_SESSION["id"])) :
             <?php
             $get_payment = mysqli_query($connections, "SELECT * FROM payment");
             ?>
-            <h5>Payment History</h5>
+            <p class="lead">Payment History</p>
+            <hr>
             <table id="fetch_result" class="table-sm table table-hover">
                 <thead>
                     <tr>

@@ -42,7 +42,7 @@ if (isset($_SESSION["id"])) :
                     </thead>
                     <tbody>
                         <?php
-                        $get_record = mysqli_query($connections, "SELECT * FROM logs ");
+                        $get_record = mysqli_query($connections, "SELECT * FROM logs ORDER BY date DESC");
                         while ($row = mysqli_fetch_assoc($get_record)) :
                             $db_fname = $row['first_name'];
                             $db_account_type = $row['account_type'];

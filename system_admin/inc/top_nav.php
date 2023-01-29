@@ -16,7 +16,7 @@
                     <a class="nav-link active" aria-current="" href="users.php">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Archive</a>
+                    <a class="nav-link active" href="archive.php">Archive</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="logs.php">Logs</a>

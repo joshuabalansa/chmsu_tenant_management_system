@@ -14,3 +14,9 @@
         </div>
     </div>
 </div>
+<!-- QR COde -->
+<div class="modal fade" id="showQr" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <img src="gcash.jpg" width="90%" height="80%" alt="">
+    </div>
+</div>

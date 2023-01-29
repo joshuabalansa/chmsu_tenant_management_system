@@ -40,8 +40,8 @@ if (isset($_SESSION["id"])) :
                     </tr>
                 </thead>
             </table>
-            <a href="users.php" class="btn btn-outline-secondary">Back</a>
-            <a href="process.php?deactivate=<?php echo $db_user_id ?>" class='btn btn-danger'>Deactivate</a>
+            <a href="archive.php" class="btn btn-outline-secondary">Back</a>
+            <a href="process.php?reactivate=<?php echo $db_user_id ?>" class='btn btn-success'>Reactivate</a>
         </div>
     </body>
 

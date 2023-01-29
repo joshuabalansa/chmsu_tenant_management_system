@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         echo "<script>window.location.href='system_admin'</script>";
                     } elseif ($db_account_type == "tenant") {
-                        
+
                         $tenant_info = mysqli_query($connections, "SELECT tenants.fname, tenants.lname, users.account_type FROM tenants INNER JOIN users ON tenants.id = users.user_id WHERE users.id='$user_id'");
                         while ($row = mysqli_fetch_assoc($tenant_info)) {
                             $db_firstname = $row["fname"];
@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-    <div class="modal d-block bg-light py-5">
+    <div class="modal d-block bg-light py-5 animate__animated animate__fadeIn">
         <div class="modal-dialog mt-5" role="document">
             <div class="modal-content rounded-4 shadow">
                 <div class="modal-header p-5 pb-4 border-bottom-0">

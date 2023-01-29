@@ -65,15 +65,11 @@ if (isset($_SESSION["id"])) :
                     </tr>
                     <tr>
                         <th>Letter of intent</th>
-                        <td> <?php echo "Complete"?></td>
+                        <td> <?php echo "Complete" ?></td>
                     </tr>
                 </thead>
             </table>
-
             <a class="btn btn-info" href="process.php?update=<?php echo $db_id ?>">Update</a>
-
-
-
         </div>
         <?php include("inc/modals.php"); ?>
         </div>

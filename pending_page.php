@@ -13,9 +13,9 @@ include("connections.php");
 </head>
 
 <body>
-    <div class="container">
+    <div class="container animate__animated animate__flipInX">
         <center>
-            <img style="width: 24rem;" class="image img-fluid image mt-5" src="assets/undraw_loading.svg" alt=""><br>
+            <img style="width: 20rem;" class="image img-fluid image mt-5" src="assets/undraw_loading.svg" alt=""><br>
             <h2>Your request is pending for approval</h2>
             <p class="lead mt-2">You will recieve an email notification when your request has been approved.</p>
         </center>
