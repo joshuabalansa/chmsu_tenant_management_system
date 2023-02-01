@@ -51,21 +51,3 @@
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="showQr" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="formFile" class="form-label">Upload QrCode</label>
-                    <input class="form-control" type="file" name="qr">
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add</button>
-            </div>
-        </div>
-    </div>
-</div>

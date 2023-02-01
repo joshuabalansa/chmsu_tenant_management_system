@@ -8,6 +8,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="./styles/page.css" />
   <title>CHMSU TMS</title>
+  <style>
+    .link {
+      text-decoration: none;
+      margin: 15px;
+      display: none;
+    }
+
+    @media screen and (max-device-width: 480px) {
+      .link {
+        display: inline;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -30,6 +43,7 @@
         <p>Sign up now to join the list.</p>
 
         <button class="hero__container--btn"><a href="registration.php">Register</a></button>
+        <a href="login.php" class="link">Sign in</a>
 
 
       </div>

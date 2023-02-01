@@ -11,6 +11,7 @@ if (isset($_GET['update'])) {
         $db_email = $row["email"];
         $db_birth_date = $row["birth_date"];
         $db_contact = $row["contact"];
+        $db_l_intent = $row["l_intent"];
     }
 }
 

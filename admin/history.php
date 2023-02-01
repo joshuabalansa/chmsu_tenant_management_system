@@ -27,7 +27,7 @@ if (isset($_SESSION["id"])) :
             <div class="container">
                 <br><br>
                 <p>List of Tenants</p>
-                <a href="history.php" class="btn-sm btn btn-primary">Show Accepted</a>
+                <a href="reports.php" class="btn-sm btn btn-primary">Show Pending</a>
                 <hr>
                 <table id="fetch_result" class="table-sm table table-hover">
                     <thead>
@@ -37,7 +37,6 @@ if (isset($_SESSION["id"])) :
                             <th>Ref. No</th>
                             <th>Date</th>
                             <th>Status</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,7 +46,7 @@ if (isset($_SESSION["id"])) :
                             $connections,
                             "SELECT users.username, tenants.fname, tenants.lname, payment.id, payment.amount, payment.status, payment.refno, payment.date
                              FROM ((users INNER JOIN payment ON payment.user_id = users.id)
-                            INNER JOIN tenants ON users.user_id = tenants.id) WHERE payment.status='pending' ORDER BY date DESC"
+                            INNER JOIN tenants ON users.user_id = tenants.id) WHERE payment.status='accepted' ORDER BY date DESC"
                         );
                         while ($row = mysqli_fetch_assoc($get_record)) :
                             $db_payment_id = $row["id"];
@@ -65,14 +64,10 @@ if (isset($_SESSION["id"])) :
                                 <td><?php echo $db_refno ?></td>
                                 <td><?php echo date("F j, Y", strtotime($db_date)) ?></td>
                                 <td>
-                                    <span class="badge rounded-pill text-bg-danger">
+                                    <span class="badge rounded-pill text-bg-success">
                                         <?php echo $db_status ?>
                                 </td>
                                 </span>
-                                <td colspan="3">
-                                    <a title="Accept Payment" href="process.php?paymentAccept=<?php echo $db_payment_id; ?>" class="btn-sm btn btn-success"><i class='bx bx-check'></i></a>
-                                    <a title="Reject Payment" href="mailer.php?paymentReject=<?php echo $db_payment_id; ?>" class="btn-sm btn btn-outline-danger"><i class='bx bx-x'></i></a>
-                                </td>
 
                             </tr>
                         <?php endwhile; ?>
@@ -84,7 +79,6 @@ if (isset($_SESSION["id"])) :
                             <th>Ref. No</th>
                             <th>Date</th>
                             <th>Status</th>
-                            <th>Action</th>
                         </tr>
                     </tfoot>
                 </table>

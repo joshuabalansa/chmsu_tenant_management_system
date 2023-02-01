@@ -156,6 +156,9 @@
   transition: all 0.3s;
   outline: none;
 }
+.hero__link {
+  text-decoration: none;
+}
 .hero__container--btn a {
   position: relative;
   z-index: 2;

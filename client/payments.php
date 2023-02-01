@@ -29,7 +29,7 @@ if (isset($_SESSION["id"])) :
                 <div class="content">
                     <h3>Gcash Reciept Information</h3>
                     <button data-bs-toggle="modal" data-bs-target="#showQr" class="btn btn-primary">Show QR</button>
-                    <form action="" method="POST">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="amount">Amount</label>
                             <input value="<?php echo $amount ?>" autocomplete="off" maxlength="6" onkeypress="return isNumberKey(event)" class="form-control" type="text" name="amount" placeholder="Enter the amount">
@@ -39,6 +39,10 @@ if (isset($_SESSION["id"])) :
                             <label for="refno">Ref. No.</label>
                             <input value="<?php echo $refno ?>" autocomplete="off" maxlength="13" onkeypress="return isNumberKey(event)" class="form-control" type="text" name="refno" placeholder="Enter the ref. no.">
                             <span style="color: red;"><?php echo $refnoErr ?></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="upload" class="form-label">Upload Ref image</label>
+                            <input name="ref_img" type="file" class="form-control">
                         </div>
                         <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
                     </form>

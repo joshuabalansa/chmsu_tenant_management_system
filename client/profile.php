@@ -25,6 +25,7 @@ if (isset($_SESSION["id"])) :
             <h5>My Info</h5>
             <?php
             $get_info = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$db_id' ");
+
             while ($row = mysqli_fetch_assoc($get_info)) {
                 $db_status = $row["status"];
                 $db_first_name = $row["fname"];
@@ -32,9 +33,14 @@ if (isset($_SESSION["id"])) :
                 $db_last_name = $row["lname"];
                 $db_address = $row["address"];
                 $db_email = $row["email"];
-                $db_birth_date = $row["birth_date"];
                 $db_contact = $row["contact"];
+                $db_birth_date = $row["birth_date"];
+                $db_l_intent = $row["l_intent"];
+                $db_s_permit = $row["s_permit"];
+                $db_b_permit = $row["b_permit"];
+                $db_h_certificate = $row["h_certificate"];
             }
+
             $fullname = $db_first_name . " " . $db_middle_name . " " . $db_last_name;
             ?>
             <table class="table table-striped">
@@ -65,7 +71,19 @@ if (isset($_SESSION["id"])) :
                     </tr>
                     <tr>
                         <th>Letter of intent</th>
-                        <td> <?php echo "Complete" ?></td>
+                        <td>View</td>
+                    </tr>
+                    <tr>
+                        <th>Sanitary Permit to Operate</th>
+                        <td>View</td>
+                    </tr>
+                    <tr>
+                        <th>Business Permit</th>
+                        <td>View</td>
+                    </tr>
+                    <tr>
+                        <th>Health Certificate</th>
+                        <td>View</td>
                     </tr>
                 </thead>
             </table>

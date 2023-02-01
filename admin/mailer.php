@@ -83,7 +83,9 @@ if (isset($_GET['accept'])) {
         $db_fname = $row["fname"];
         $db_lname = $row["lname"];
     }
-    $username = strtolower($db_fname[0]) . strtolower($db_lname);
+    $random_num = rand(1, 9) . rand(1, 9) . rand(1, 9) . rand(1, 9) . rand(1, 9);
+    $username = strtolower($db_fname[0]) . strtolower($db_lname) . $random_num;
+
 
     function random_password($lenght = 5)
     {
@@ -95,8 +97,8 @@ if (isset($_GET['accept'])) {
 
     mysqli_query($connections, "INSERT INTO users (username, password, user_id) 
     VALUES('$username', '$password', '$db_id')");
-    //INSERT END
 
+    //INSERT END
     $mail = new PHPMailer(true);
 
     try {
@@ -179,4 +181,38 @@ if (isset($_GET['change_password'])) {
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
+}
+
+if (isset($_GET["paymentReject"])) {
+    $id = $_GET["paymentReject"];
+    mysqli_query($connections, "DELETE FROM payment WHERE id=$id");
+    $mail = new PHPMailer(true);
+    try {
+
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'j.balansa00@gmail.com';
+        $mail->Password   = 'grmqjovlsvcwmsdw';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port       = 465;
+
+
+        $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University');
+        $mail->addAddress($email, 'user');
+
+        $mail->isHTML(true);
+        $mail->Subject = 'Payment Declined';
+        $mail->Body    = "Your Payment has been decline, Please check your input and resubmit your request!";
+        $mail->AltBody = '';
+
+        $mail->send();
+        echo "Reject Message Sent!";
+        echo "<script>document.location.href='tenants.php'</script>";
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+
+    header("location: reports.php");
 }

@@ -25,9 +25,10 @@ if (isset($_SESSION["id"])) :
     <body>
         <div class="container">
             <?php include("inc/top_nav.php") ?>
+            <?php include("inc/modals.php") ?>
             <br><br>
             <?php
-            $get_payment = mysqli_query($connections, "SELECT * FROM payment");
+            $get_payment = mysqli_query($connections, "SELECT * FROM payment ORDER BY date DESC");
             ?>
             <p class="lead">Payment History</p>
             <hr>
@@ -37,6 +38,7 @@ if (isset($_SESSION["id"])) :
                         <th>Ref. No</th>
                         <th>Amount</th>
                         <th>Date</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,12 +48,14 @@ if (isset($_SESSION["id"])) :
                         $db_amount = $row["amount"];
                         $db_refno = $row["refno"];
                         $db_date = $row["date"];
+                        $db_status = $row["status"];
+                        ($db_status == "accepted") ? ($badge = "success") : ($badge = "danger");
                     ?>
                         <tr>
                             <td><?php echo $db_refno ?></td>
                             <td><?php echo $db_amount ?></td>
                             <td><?php echo date("F j, Y", strtotime($db_date)) ?></td>
-
+                            <td><span class="badge rounded-pill text-bg-<?php echo $badge ?>"><?php echo $db_status ?></span></td>
                         </tr>
                     <?php endwhile; ?>
                 </tbody>
@@ -60,6 +64,7 @@ if (isset($_SESSION["id"])) :
                         <th>Ref. No</th>
                         <th>Amount</th>
                         <th>Date</th>
+                        <th>Status</th>
                     </tr>
                 </tfoot>
             </table>
@@ -75,11 +80,7 @@ if (isset($_SESSION["id"])) :
                 $('#fetch_result').DataTable();
             });
         </script>
-
-
-
         </div>
-
     </body>
 
     </html>

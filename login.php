@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-    <div class="modal d-block bg-light py-5 animate__animated animate__fadeIn">
+    <div class="modal d-block bg-light py-5 animate__animated animate__flipInX">
         <div class="modal-dialog mt-5" role="document">
             <div class="modal-content rounded-4 shadow">
                 <div class="modal-header p-5 pb-4 border-bottom-0">
@@ -116,7 +116,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <small class="text-center text-muted">CHMSU Tenants Management System</small><br><br>
                             <h6 style="color: red;"><?php echo $script ?></h6>
                         </center>
-
                     </form>
                 </div>
             </div>

@@ -71,9 +71,6 @@ if (isset($_SESSION["id"])) :
 
                                     <a href='tenant_info.php?view=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info' title="View tenant Information">
                                         <i class='bx bxs-user-detail'></i></a>
-                                    <!-- <a class='btn-sm btn btn-info' href='process.php?update=<?php echo $row["id"] ?>' title="Edit Tenant Info">
-                                        <i class='bx bxs-edit'></i></a> -->
-
                                 </td>
                             </tr>
                         <?php endwhile; ?>

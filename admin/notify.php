@@ -24,7 +24,7 @@ try {
     $mail->Password   = 'grmqjovlsvcwmsdw';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port       = 465;
-
+    
     //Recipients
     $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University');
     // $mail->addAddress('jbalansa143@gmail.com', 'User');
