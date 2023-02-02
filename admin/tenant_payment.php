@@ -13,7 +13,9 @@ if (isset($_SESSION["id"])) :
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Payments</title>
+        <link rel="stylesheet" href="style/dashboard.css">
+        <title>Admin</title>
+
     </head>
 
     <body>
@@ -21,67 +23,53 @@ if (isset($_SESSION["id"])) :
             <?php
             include("inc/top_nav.php");
             include("inc/modals.php");
+
             ?>
-            <br><br>
+            <br>
+            <br>
             <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
             <div class="container">
-                <br><br>
-                <p>List of Tenants</p>
-                <a href="reports.php" class="btn-sm btn btn-primary">Show Pending</a>
-                <hr>
+                <br>
+                <?php
+                if (isset($_GET["view_payment"])) {
+                    $id = $_GET["view_payment"];
+                    $get_payment = mysqli_query($connections, "SELECT payment.amount, payment.refno, payment.date, payment.user_id FROM payment JOIN users ON payment.user_id = users.id WHERE users.user_id = $id");
+                }
+                ?>
+                <h5>Payment History</h5>
                 <table id="fetch_result" class="table-sm table table-hover">
                     <thead>
                         <tr>
-                            <th>Name</th>
                             <th>Amount</th>
                             <th>Ref. No</th>
                             <th>Date</th>
-                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-
                         <?php
-                        $get_record = mysqli_query(
-                            $connections,
-                            "SELECT users.username, tenants.fname, tenants.lname, payment.id, payment.amount, payment.status, payment.refno, payment.date
-                             FROM ((users INNER JOIN payment ON payment.user_id = users.id)
-                            INNER JOIN tenants ON users.user_id = tenants.id) WHERE payment.status='accepted' ORDER BY date DESC"
-                        );
-                        while ($row = mysqli_fetch_assoc($get_record)) :
-                            $db_payment_id = $row["id"];
-                            $db_first_name = $row["fname"];
-                            $db_last_name = $row["lname"];
+
+                        while ($row = mysqli_fetch_assoc($get_payment)) :
                             $db_amount = $row["amount"];
-                            $db_status = $row["status"];
                             $db_refno = $row["refno"];
                             $db_date = $row["date"];
-                            $fullname = $db_first_name . " " . $db_last_name;
                         ?>
                             <tr>
-                                <td><?php echo $fullname  ?></td>
                                 <td><?php echo $db_amount ?></td>
                                 <td><?php echo $db_refno ?></td>
                                 <td><?php echo date("F j, Y", strtotime($db_date)) ?></td>
-                                <td>
-                                    <span class="badge rounded-pill text-bg-success">
-                                        <?php echo $db_status ?>
-                                </td>
-                                </span>
 
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Name</th>
                             <th>Amount</th>
                             <th>Ref. No</th>
                             <th>Date</th>
-                            <th>Status</th>
                         </tr>
                     </tfoot>
                 </table>
+                <a href="tenants.php" class="btn btn-secondary">Back</a>
             </div>
             <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
             <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>

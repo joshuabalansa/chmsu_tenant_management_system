@@ -108,7 +108,7 @@ if (isset($_SESSION["id"])) :
                 </thead>
             </table>
             <a href="tenants.php" class="btn-sm btn btn-outline-secondary">Back</a>
-            <a title="View payments history" href="payments.php?view_payment=<?php echo $id ?>" class="btn-sm btn btn-primary">Payments</a>
+            <a title="View payments history" href="tenant_payment.php?view_payment=<?php echo $id ?>" class="btn-sm btn btn-primary">Payments</a>
             <button title="Request a new password of a user" type='submit' name="changepassword" data-bs-toggle="modal" data-bs-target="#modalChangePassword" class='btn-sm btn btn-warning'>Reset Password</button>
             <button title="Deactivate user will put to archive" type='button' name="archive" data-bs-toggle="modal" data-bs-target="#modalDeactivate" class='btn-sm btn btn-outline-danger'>Deactivate</button>
             <?php include("inc/modals.php") ?>

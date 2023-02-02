@@ -14,6 +14,9 @@ require '../../vendor/autoload.php';
 $id = $_GET['deactivateUser'];
 
 mysqli_query($connections, "UPDATE users SET account_type='archived' WHERE user_id=$id");
+mysqli_query($connections, "UPDATE users SET status='archived' WHERE user_id=$id");
+mysqli_query($connections, "UPDATE tenants SET status='archived' WHERE id=$id");
+
 $get_record = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$id'");
 while ($row = mysqli_fetch_assoc($get_record)) {
     $db_id = $row["id"];

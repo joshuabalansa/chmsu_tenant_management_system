@@ -24,11 +24,11 @@ while ($row = mysqli_fetch_assoc($get_record)) {
 }
 
 // fetch user logs
-$get_logs = mysqli_query($connections, "SELECT * FROM logs WHERE account_type='tenant' ORDER BY date ASC");
+$get_logs = mysqli_query($connections, "SELECT * FROM logs WHERE account_type='tenant' ORDER BY date DESC");
 
 
 // Fetch applicants
-$get_applicants = mysqli_query($connections, "SELECT * FROM tenants WHERE status='pending'");
+$get_applicants = mysqli_query($connections, "SELECT * FROM tenants WHERE status='pending' ORDER BY id DESC");
 // Fetch Applicants Info
 
 

@@ -40,7 +40,7 @@ if (isset($_SESSION["id"])) :
                     </thead>
                     <tbody>
                         <?php
-                        $get_applicants = mysqli_query($connections, "SELECT * FROM tenants WHERE status='pending'");
+                        // $get_applicants = mysqli_query($connections, "SELECT * FROM tenants WHERE status='pending'");
                         while ($row = mysqli_fetch_assoc($get_applicants)) :
                             $db_fname = $row["fname"];
                             $db_midname = $row["midname"];

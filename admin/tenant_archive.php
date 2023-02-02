@@ -25,10 +25,10 @@ if (isset($_SESSION["id"])) :
                 <br>
                 <br>
                 <br>
-                <a href="tenant_archive.php" class="btn-sm btn btn-outline-secondary">View Archived</a>
+                <a href="tenants.php" class="btn-sm btn btn-outline-secondary">View Tenants</a>
                 <br>
                 <br>
-                <p>List of Tenants</p>
+                <p>List of archived tenants</p>
                 <hr>
                 <table id="fetch_result" class="table-sm table table-hover">
                     <thead>
@@ -44,7 +44,7 @@ if (isset($_SESSION["id"])) :
                     </thead>
                     <tbody>
                         <?php
-                        $tenants_query = mysqli_query($connections, "SELECT * FROM tenants WHERE status = 'active' || status = 'pastdue' ");
+                        $tenants_query = mysqli_query($connections, "SELECT * FROM tenants WHERE status = 'archived' ");
 
                         while ($row = mysqli_fetch_assoc($tenants_query)) :
                             $user_id = $row["id"];

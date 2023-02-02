@@ -62,7 +62,7 @@
             <form method="post">
                 <div class="modal-footer flex-nowrap p-0">
                     <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end" data-bs-dismiss="modal">Cancel</button>
-                    <a href="mail/deactivate_user.php?deactivateUser=<?php echo $id ?>" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0">Change Password</a>
+                    <a href="mail/deactivate_user.php?deactivateUser=<?php echo $id ?>" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0">Deactivate</a>
                 </div>
             </form>
         </div>

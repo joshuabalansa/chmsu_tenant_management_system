@@ -44,7 +44,7 @@ if (isset($_GET["deactivate"])) {
 
 if (isset($_GET["reactivate"])) {
     $id = $_GET["reactivate"];
-    mysqli_query($connections, "UPDATE users SET account_type='active' WHERE user_id='$id' ");
+    mysqli_query($connections, "UPDATE users SET account_type='coordinator' WHERE user_id='$id' ");
 
     mysqli_query($connections, "UPDATE coordinators SET status='active' WHERE user_id='$id' ");
     header("location: users.php");
