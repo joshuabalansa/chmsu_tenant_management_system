@@ -45,12 +45,13 @@ if (isset($_SESSION["id"])) :
                         <?php
                         $get_record = mysqli_query(
                             $connections,
-                            "SELECT users.username, tenants.fname, tenants.lname, payment.id, payment.amount, payment.status, payment.refno, payment.date
+                            "SELECT users.username,users.user_id, tenants.fname, tenants.lname, payment.id, payment.amount, payment.status, payment.refno, payment.date
                              FROM ((users INNER JOIN payment ON payment.user_id = users.id)
                             INNER JOIN tenants ON users.user_id = tenants.id) WHERE payment.status='pending' ORDER BY date DESC"
                         );
                         while ($row = mysqli_fetch_assoc($get_record)) :
                             $db_payment_id = $row["id"];
+                            $db_users_userId = $row["user_id"];
                             $db_first_name = $row["fname"];
                             $db_last_name = $row["lname"];
                             $db_amount = $row["amount"];
@@ -71,9 +72,8 @@ if (isset($_SESSION["id"])) :
                                 </span>
                                 <td colspan="3">
                                     <a title="Accept Payment" href="process.php?paymentAccept=<?php echo $db_payment_id; ?>" class="btn-sm btn btn-success"><i class='bx bx-check'></i></a>
-                                    <a title="Reject Payment" href="mailer.php?paymentReject=<?php echo $db_payment_id; ?>" class="btn-sm btn btn-outline-danger"><i class='bx bx-x'></i></a>
+                                    <a title="Reject Payment" href="mail/paymentReject.php?tenantId=<?php echo $db_users_userId; ?>&paymentId=<?php echo $db_payment_id ?>" class="btn-sm btn btn-outline-danger"><i class='bx bx-x'></i></a>
                                 </td>
-
                             </tr>
                         <?php endwhile; ?>
                     </tbody>

@@ -1,0 +1,6 @@
+{
+    "require": {
+        "php": ">=8.1.10",
+        "phpmailer/phpmailer": "^6.7"
+    }
+}

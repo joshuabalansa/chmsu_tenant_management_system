@@ -2,15 +2,6 @@
     //Edit Tenant INFO Process
     include("../connections.php");
 
-    //Space.php query
-    if (isset($_POST["space_submit"])) {
-        $code = $_POST["code"];
-        $rate = $_POST["rate"];
-        mysqli_query($connections, "INSERT INTO space(code, rate) VALUES ('$code', '$rate')");
-        echo "<script>confirm('Inserted')</script>";
-        header("location: space.php");
-    }
-
     //Edit Info in profile.php
     if (isset($_GET["editInfo"])) {
         $id = $_GET["editInfo"];
@@ -40,12 +31,10 @@
         mysqli_query($connections, "UPDATE users
         SET username='$new_uname', password='$new_password' WHERE user_id='$db_id'");
 
-
-
         header("location: profile.php");
-        include("profile_edit.php");
     }
-
+    include("profile_edit.php");
+    
     if (isset($_GET["paymentAccept"])) {
         $id = $_GET["paymentAccept"];
         mysqli_query($connections, "UPDATE payment SET status='accepted' WHERE id=$id");

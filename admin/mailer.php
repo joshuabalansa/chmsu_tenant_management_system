@@ -36,7 +36,7 @@ if (isset($_GET['reject'])) {
         $mail->Password   = 'grmqjovlsvcwmsdw';
         $mail->SMTPSecure = 'ssl';
         $mail->Port       = 465;
-
+ 
 
         $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University');
         $mail->addAddress($email, 'user');
@@ -74,9 +74,8 @@ if (isset($_GET['reject'])) {
 }
 if (isset($_GET['accept'])) {
     $id = $_GET['accept'];
-    mysqli_query($connections, "UPDATE tenants SET status='active' WHERE id = $id");
 
-    //INSERT TO users
+    mysqli_query($connections, "UPDATE tenants SET status='active' WHERE id = $id");
     $get_record = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$id'");
     while ($row = mysqli_fetch_assoc($get_record)) {
         $db_id = $row["id"];
@@ -86,21 +85,20 @@ if (isset($_GET['accept'])) {
     $random_num = rand(1, 9) . rand(1, 9) . rand(1, 9) . rand(1, 9) . rand(1, 9);
     $username = strtolower($db_fname[0]) . strtolower($db_lname) . $random_num;
 
-
     function random_password($lenght = 5)
     {
         $str = "abcdefghijkLmnopqrstuvwxyz1234567890";
         $shuffled = substr(str_shuffle($str), 0, $lenght);
         return $shuffled;
     }
+
     $password = random_password(8);
 
     mysqli_query($connections, "INSERT INTO users (username, password, user_id) 
     VALUES('$username', '$password', '$db_id')");
 
-    //INSERT END
-    $mail = new PHPMailer(true);
 
+    $mail = new PHPMailer(true);
     try {
 
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;
@@ -112,7 +110,6 @@ if (isset($_GET['accept'])) {
         $mail->SMTPSecure = 'ssl';
         $mail->Port       = 465;
 
-
         $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University');
         $mail->addAddress($email, 'user');
 
@@ -122,8 +119,7 @@ if (isset($_GET['accept'])) {
         <br><b>Username:</b> $username <br> <b>Password:</b> $password  </b>
         <br><br>NOTE: you can also change your password in your profile <br><br><br>
         Regards,<br>
-        Carlos Hilado Memorial State University
-        ";
+        Carlos Hilado Memorial State University";
         $mail->AltBody = "You can use this Credentials:  
         <br><b>Username:</b> $username <br> <b>Password:</b> $password  </b>
         <br><br>NOTE: you can also change your password in your profile <br><br><br>
