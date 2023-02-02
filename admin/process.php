@@ -32,9 +32,9 @@
         SET username='$new_uname', password='$new_password' WHERE user_id='$db_id'");
 
         header("location: profile.php");
+        include("profile_edit.php");
     }
-    include("profile_edit.php");
-    
+
     if (isset($_GET["paymentAccept"])) {
         $id = $_GET["paymentAccept"];
         mysqli_query($connections, "UPDATE payment SET status='accepted' WHERE id=$id");

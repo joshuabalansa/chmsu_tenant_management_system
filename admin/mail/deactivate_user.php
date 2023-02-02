@@ -11,23 +11,21 @@ use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
 require '../../vendor/autoload.php';
 
-$id = $_GET['change_password'];
+$id = $_GET['deactivateUser'];
+
+mysqli_query($connections, "UPDATE users SET account_type='archived' WHERE user_id=$id");
 $get_record = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$id'");
 while ($row = mysqli_fetch_assoc($get_record)) {
+    $db_id = $row["id"];
+    $db_fname = ucfirst($row["fname"]);
+    $db_lname = $row["lname"];
     $email = $row["email"];
 }
-function random_password($lenght = 5)
-{
-    $str = "abcdefghijkLmnopqrstuvwxyz1234567890";
-    $shuffled = substr(str_shuffle($str), 0, $lenght);
-    return $shuffled;
-}
-$password = random_password(8);
 
-mysqli_query($connections, "UPDATE users SET password='$password' WHERE user_id=$id");
+$subject = "Account Deactivated!";
+$body = "We regret to inform you $db_fname that your account has been deactivated due to inactivity As a result, your account will no longer have access to the system provided by Carlos Hilado Memorial State University. Please note that any content or data associated with your account may also be permanently deleted soon.
 
-$subject = "Password Reset!";
-$body = "Your password was Change to <b>$password</b>";
+If you believe that this deactivation was in error, please contact us at Carlos Hilado Memorial State University to have your account reviewed. Please include a detailed explanation of the situation, and any relevant information or evidence to support your case.";
 
 
 //Create an instance; passing `true` enables exceptions

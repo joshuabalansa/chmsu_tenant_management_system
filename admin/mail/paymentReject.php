@@ -55,6 +55,7 @@ try {
 
     $mail->send();
     echo 'Message has been sent';
+    echo "<script>document.location.href='tenants.php'</script>";
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
