@@ -65,8 +65,8 @@ if (isset($_SESSION["id"])) :
                                 </td>
                                 <td>
                                     <a href='applicant_info.php?view=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info' title="View all details"> <i class='bx bxs-user-detail'></i></a>
-                                    <a href='mail/accept.php?accept=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-success' title="Accept tenant">Accept</a>
-                                    <a href="mail/reject.php?reject=<?php echo $row['id'] ?>" name='btnReject' class='btn-sm btn btn-warning' title="Reject tenant">Reject</a>
+                                    <a href='mail/accept.php?accept=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-success' title="Accept tenant with complete requirements">Complete</a>
+                                    <a href="mail/reject.php?reject=<?php echo $row['id'] ?>" name='btnReject' class='btn-sm btn btn-outline-warning' title="Accept tenant with incomplete requirements">Incomplete</a>
                                 </td>
                             </tr>
                         <?php endwhile; ?>

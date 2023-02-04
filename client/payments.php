@@ -48,11 +48,8 @@ if (isset($_SESSION["id"])) :
                     </form>
                 </div>
             </div>
-
             <?php include("inc/modals.php"); ?>
-
         </div>
-
     </body>
 
     </html>

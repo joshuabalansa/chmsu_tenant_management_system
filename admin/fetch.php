@@ -16,6 +16,11 @@ $result = mysqli_query($connections, "SELECT COUNT(*) AS `count` FROM tenants WH
 $row = mysqli_fetch_assoc($result);
 $pastdue = $row['count'];
 
+//Fetch pending payments
+$result = mysqli_query($connections, "SELECT COUNT(*) AS `count` FROM payment WHERE status='pending'");
+$row = mysqli_fetch_assoc($result);
+$pendingPayment = $row['count'];
+
 //Fetch Users user_name/ 
 $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
 while ($row = mysqli_fetch_assoc($get_record)) {

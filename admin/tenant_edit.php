@@ -17,7 +17,6 @@
                     <label for="name">First Name</label>
                     <input placeholder="Enter first name" class="form-control" type="text" name="new_first_name" value="<?php echo $db_first_name ?>" required>
                 </div>
-
                 <div class="col">
                     <label for="name">Middle Name</label>
                     <input placeholder="Enter middle name" class="form-control" type="text" name="new_middle_name" value="<?php echo $db_middle_name ?>" required>

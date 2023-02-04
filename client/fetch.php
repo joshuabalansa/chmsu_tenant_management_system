@@ -4,6 +4,10 @@ while ($row = mysqli_fetch_assoc($get_record)) {
     $db_username = $row["username"];
     $db_id = $row["user_id"];
 }
+$get_record = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$db_id' ");
+while ($row = mysqli_fetch_assoc($get_record)) {
+    $tenant_id = $row["id"];
+}
 // $get_record = mysqli_query($connections, "SELECT * FROM users WHERE id='$user_id' ");
 // while ($row = mysqli_fetch_assoc($get_record)) {
 //     $user_id = $row["user_id"];
@@ -65,6 +69,7 @@ if ($amount && $refno) {
                 }
                 if ($uploadOK == 1) {
                     if (move_uploaded_file($_FILES["ref_img"]["tmp_name"], $target_file)) {
+
                         mysqli_query($connections, "INSERT INTO payment(amount, refno, ref_img, user_id) VALUES('$amount', '$refno', '$target_file','$user_id') ");
                         echo "<script>alert('Payment Submitted!')</script>";
 
@@ -76,21 +81,6 @@ if ($amount && $refno) {
                         echo "Sorry the there was an error uploading the file";
                     }
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 $amount = $refno = "";
                 $amountErr = $refnoErr = "";
             }

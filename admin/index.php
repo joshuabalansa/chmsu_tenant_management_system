@@ -28,18 +28,23 @@ if (isset($_SESSION["id"])) :
             <br>
             <br>
             <h3>Summary</h3>
+            <br>
             <div class="card-wrapper animate__animated animate__fadeInUp">
                 <div class="card">
                     <h2><?php echo $pending; ?></h2>
-                    <p class="blinker">Pending Applicants</p>
+                    <p class="blinker">Pending applicants</p>
                 </div>
                 <div class="card">
                     <h2><?php echo $tenants; ?></h2>
-                    <p>Active Tenants</p>
+                    <p>Active tenants</p>
                 </div>
                 <div class="card">
                     <h4><?php echo $pastdue; ?></h4>
-                    <p>Pastdue Tenants<br></p>
+                    <p>Pastdue tenants<br></p>
+                </div>
+                <div class="card">
+                    <h4><?php echo $pendingPayment; ?></h4>
+                    <p>Payment confirmation<br></p>
                 </div>
             </div>
         </div>

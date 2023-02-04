@@ -35,18 +35,26 @@
         include("profile_edit.php");
     }
 
-    if (isset($_GET["paymentAccept"])) {
-        $id = $_GET["paymentAccept"];
-        mysqli_query($connections, "UPDATE payment SET status='accepted' WHERE id=$id");
-        // $get_record = mysqli_query($connections, "SELECT user");
-        // mysqli_query($connections, "UPDATE users SET status='active' WHERE id=$id");
+    if (isset($_GET["paymentAccept"]) && isset($_GET["tenantId"])) {
+        $paymentId = $_GET["paymentAccept"];
+        $tenantId = $_GET["tenantId"];
+        mysqli_query($connections, "UPDATE payment SET status='accepted' WHERE id=$paymentId");
 
-        header("location: reports.php");
+        mysqli_query($connections, "UPDATE tenants SET status='active' WHERE id=$tenantId");
+
+
+
+        header("location: payments.php");
     }
-    if (isset($_GET["paymentReject"])) {
-        $id = $_GET["paymentReject"];
-        mysqli_query($connections, "DELETE FROM payment WHERE id=$id");
-        header("location: reports.php");
+
+    // User reactivation
+    if (isset($_GET['reactivateUser'])) {
+        $id = $_GET['reactivateUser'];
+
+        mysqli_query($connections, "UPDATE users SET account_type='tenant' WHERE user_id=$id");
+        mysqli_query($connections, "UPDATE users SET status='active' WHERE user_id=$id");
+        mysqli_query($connections, "UPDATE tenants SET status='active' WHERE id=$id");
+        header('location: tenant_archive.php');
     }
     ?>
     

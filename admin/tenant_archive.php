@@ -59,7 +59,7 @@ if (isset($_SESSION["id"])) :
                             $db_status    = $row['status'];
                             //
                             $db_fullname = ucfirst($db_first_name) . " " . ucfirst($db_middle_name[0]) . ". " . ucfirst($db_last_name);
-                            ($db_status == "active") ? ($badge = "success") : ($badge = "danger");
+                            ($db_status == "active") ? ($badge = "success") : ($badge = "secondary");
                             $count_address = strlen($db_address);
                             ($count_address > 10) ? ($db_address = substr($db_address, 0, -2) . "...") : ($db_address);
                         ?>
@@ -71,8 +71,7 @@ if (isset($_SESSION["id"])) :
                                 <td><?php echo $db_type  ?></td>
                                 <td><span class="badge rounded-pill text-bg-<?php echo $badge ?>"><?php echo $db_status ?></span></td>
                                 <td colspan='3'>
-
-                                    <a href='tenant_info.php?view=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info' title="View tenant Information">
+                                    <a href='tenant_archive_info.php?view=<?php echo $row['id'] ?>' name='btnAccept' class='btn-sm btn btn-info' title="View tenant Information">
                                         <i class='bx bxs-user-detail'></i></a>
                                 </td>
                             </tr>
