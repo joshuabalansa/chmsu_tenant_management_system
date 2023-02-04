@@ -44,7 +44,7 @@ if (isset($_SESSION["id"])) :
                     </thead>
                     <tbody>
                         <?php
-                        $tenants_query = mysqli_query($connections, "SELECT * FROM tenants WHERE status = 'active' || status = 'pastdue' ");
+                        $tenants_query = mysqli_query($connections, "SELECT * FROM tenants WHERE status = 'active' || status = 'pastdue' || status = 'incomplete' ");
 
                         while ($row = mysqli_fetch_assoc($tenants_query)) :
                             $user_id = $row["id"];
@@ -59,7 +59,7 @@ if (isset($_SESSION["id"])) :
                             $db_status    = $row['status'];
                             //
                             $db_fullname = ucfirst($db_first_name) . " " . ucfirst($db_middle_name[0]) . ". " . ucfirst($db_last_name);
-                            ($db_status == "active") ? ($badge = "success") : ($badge = "danger");
+                            ($db_status == "active") ? ($badge = "success") : ($db_status == "pastdue");
                             $count_address = strlen($db_address);
                             ($count_address > 10) ? ($db_address = substr($db_address, 0, -2) . "...") : ($db_address);
                         ?>

@@ -56,5 +56,24 @@
         mysqli_query($connections, "UPDATE tenants SET status='active' WHERE id=$id");
         header('location: tenant_archive.php');
     }
+
+    if (isset($_GET["viewPaymentInfo"])) {
+        $paymentId = $_GET["viewPaymentInfo"];
+        $get_payment = mysqli_query(
+            $connections,
+            "SELECT users.username,users.user_id, tenants.id AS tenantId, tenants.fname, tenants.lname, payment.id, payment.amount, payment.status, payment.refno, payment.ref_img, payment.date
+             FROM ((users INNER JOIN payment ON payment.user_id = users.id)
+            INNER JOIN tenants ON users.user_id = tenants.id) WHERE payment.id = $paymentId"
+        );
+        while ($row = mysqli_fetch_assoc($get_payment)) {
+            $tenant_fname = $row["fname"];
+            $tenant_lname = $row["fname"];
+            $payment_amount = $payment["fname"];
+            $payment_refno = $payment["fname"];
+            $payment_date = $payment["fname"];
+            $payment_refImg = $payment["fname"];
+        }
+        echo $tenantName;
+    }
     ?>
     

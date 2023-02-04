@@ -74,7 +74,7 @@ if (isset($_SESSION["id"])) :
                                 </td>
                                 </span>
                                 <td colspan="3">
-                                    <a title="View Payment reference" class="btn-sm btn btn-info" href="process.php?viewPaymentDetails=<?php echo $db_payment_id = $row["id"]; ?>">
+                                    <a title="View Payment reference" class="btn-sm btn btn-info" href="process.php?viewPaymentInfo=<?php echo $db_payment_id = $row["id"]; ?>">
                                         <i class='bx bx-credit-card-front'></i>
                                     </a>
                                     <a title="Accept Payment" href="process.php?paymentAccept=<?php echo $db_payment_id; ?>&tenantId=<?php echo $tenantId  ?>" class="btn-sm btn btn-success"><i class='bx bx-check'></i></a>
