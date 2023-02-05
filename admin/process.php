@@ -39,7 +39,6 @@
         $paymentId = $_GET["paymentAccept"];
         $tenantId = $_GET["tenantId"];
         mysqli_query($connections, "UPDATE payment SET status='accepted' WHERE id=$paymentId");
-
         mysqli_query($connections, "UPDATE tenants SET status='active' WHERE id=$tenantId");
 
 
@@ -54,6 +53,7 @@
         mysqli_query($connections, "UPDATE users SET account_type='tenant' WHERE user_id=$id");
         mysqli_query($connections, "UPDATE users SET status='active' WHERE user_id=$id");
         mysqli_query($connections, "UPDATE tenants SET status='active' WHERE id=$id");
+
         header('location: tenant_archive.php');
     }
 
@@ -65,15 +65,16 @@
              FROM ((users INNER JOIN payment ON payment.user_id = users.id)
             INNER JOIN tenants ON users.user_id = tenants.id) WHERE payment.id = $paymentId"
         );
+        
         while ($row = mysqli_fetch_assoc($get_payment)) {
             $tenant_fname = $row["fname"];
-            $tenant_lname = $row["fname"];
-            $payment_amount = $payment["fname"];
-            $payment_refno = $payment["fname"];
-            $payment_date = $payment["fname"];
-            $payment_refImg = $payment["fname"];
+            $tenant_lname = $row["lname"];
+            $payment_amount = $row["amount"];
+            $payment_refno = $row["refno"];
+            $payment_date = $row["date"];
+            $payment_refImg = $row["ref_img"];
         }
-        echo $tenantName;
+        include('payment_info.php');
     }
     ?>
     

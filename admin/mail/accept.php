@@ -44,6 +44,11 @@ $body = "You are now a part of CHMSU tenant $db_fname you can use this credentia
 Regards,<br>
 Carlos Hilado Memorial State University";
 
+$mail_host = "smtp.gmail.com";
+$mail_username = "j.balansa00@gmail.com";
+$mail_password = "exqkrxhhvjrruzdm";
+$mail_recipient = "Carlos Hilado Memorial State University";
+
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
@@ -67,8 +72,6 @@ try {
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = $subject;
     $mail->Body    = $body;
-
-
     $mail->AltBody = $body;
 
     $mail->send();

@@ -43,10 +43,6 @@ if ($amount && $refno) {
                 $refnoErr = "Invalid Input";
             } else {
 
-                // $ref_img = $_FILES['ref_img']['name'];
-                // $target = "../uploads/" . basename($ref_img);
-                // move_uploaded_file($_FILES['ref_img']['tmp_name'], $target);
-
                 $target_dir = "../uploads/";
                 $uploadErr = "";
 

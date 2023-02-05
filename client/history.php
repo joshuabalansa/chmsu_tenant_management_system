@@ -27,9 +27,6 @@ if (isset($_SESSION["id"])) :
             <?php include("inc/top_nav.php") ?>
             <?php include("inc/modals.php") ?>
             <br><br>
-            <?php
-            $get_payment = mysqli_query($connections, "SELECT * FROM payment ORDER BY date DESC");
-            ?>
             <p class="lead">Payment History</p>
             <hr>
             <table id="fetch_result" class="table-sm table table-hover">
@@ -43,6 +40,7 @@ if (isset($_SESSION["id"])) :
                 </thead>
                 <tbody>
                     <?php
+                    $get_payment = mysqli_query($connections, "SELECT * FROM payment WHERE user_id='$user_id' ORDER BY date DESC");
 
                     while ($row = mysqli_fetch_assoc($get_payment)) :
                         $db_amount = $row["amount"];

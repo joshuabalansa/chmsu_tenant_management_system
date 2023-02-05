@@ -37,6 +37,10 @@ if (isset($_SESSION["id"])) :
                     $db_contact = $row["contact"];
                     $db_date = $row["date"];
                     $db_status = $row["status"];
+                    $db_l_intent = $row["l_intent"];
+                    $db_s_permit = $row["s_permit"];
+                    $db_b_permit = $row["b_permit"];
+                    $db_h_certificate = $row["h_certificate"];
                 }
 
                 $fullname = ucfirst($db_first_name) . " " . ucfirst($db_midname[0]) . ". " . ucfirst($db_last_name);
