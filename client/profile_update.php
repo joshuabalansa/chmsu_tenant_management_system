@@ -13,7 +13,7 @@
 
     <div class="container mt-5 profile_width">
         <h3>Edit Profile</h3>
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
 
             <div class="mb-3">
                 <label for="name">First name</label>
@@ -32,14 +32,6 @@
                 <input type="date" class="form-control" value="<?php echo $db_birth_date ?>" name="new_birth_date">
             </div>
             <div class="mb-3">
-                <label for="name">Address</label>
-                <textarea placeholder="Enter your address" class="form-control" type="text" name="new_address" rows="3" required><?php echo $db_address ?></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="name">Address</label>
-                <textarea placeholder="Enter your address" class="form-control" type="text" name="new_address" rows="3" required><?php echo $db_address ?></textarea>
-            </div>
-            <div class="mb-3">
                 <label for="name">Email</label>
                 <input placeholder="Enter your email" class="form-control" type="email" name="new_email" value="<?php echo $db_email ?>" required>
             </div>
@@ -47,6 +39,16 @@
                 <label for="name">Contact</label>
                 <input onkeypress="return isNumberKey(event)" placeholder="Enter your phone number" maxlength="11" class="form-control" type="text" value="<?php echo $db_contact; ?>" name="new_contact">
             </div>
+            <div class="mb-3">
+                <label for="name">Address</label>
+                <textarea placeholder="Enter your address" class="form-control" type="text" name="new_address" rows="3" required><?php echo $db_address ?></textarea>
+            </div>
+            <h5>Update Legal Requirements</h5>
+            <div class="mb-3">
+                <label for="name">Letter of intent</label>
+                <input class="form-control" type="file" name="new_file1">
+            </div>
+            <!--  -->
             <div class="mb-3">
                 <label for="name">Change Password</label>
                 <input placeholder="Enter your new password" class="form-control" type="password" name="new_password" required>

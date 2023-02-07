@@ -11,30 +11,46 @@ use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
 require '../../vendor/autoload.php';
 
-$id = $_GET['reject'];
-mysqli_query($connections, "DELETE FROM payment WHERE id=$id");
+$id = $_GET['incomplete'];
 
-mysqli_query($connections, "UPDATE tenants SET status='rejected' WHERE id = $id");
+mysqli_query($connections, "UPDATE tenants SET status='active' WHERE id = $id");
 $get_record = mysqli_query($connections, "SELECT * FROM tenants WHERE id='$id'");
 while ($row = mysqli_fetch_assoc($get_record)) {
+    $db_id = $row["id"];
     $db_fname = $row["fname"];
+    $db_lname = $row["lname"];
     $email = $row["email"];
 }
+$random_num = rand(1, 9) . rand(1, 9) . rand(1, 9) . rand(1, 9) . rand(1, 9);
+$username = strtolower($db_fname[0]) . strtolower($db_lname) . $random_num;
 
+function random_password($lenght = 5)
+{
+    $str = "abcdefghijkLmnopqrstuvwxyz1234567890";
+    $shuffled = substr(str_shuffle($str), 0, $lenght);
+    return $shuffled;
+}
 
-$subject = "Thank you for taking the time to apply!";
+$password = random_password(8);
 
-$body = " <p> Hi $db_fname,<br>
-Thank you for a and bringing this feature to our attention.<br>
-I could definitely understand how our customers would benefit from it. <br>
-Right now, we don&#39;t have anything like that in place, however, we&#39;ve actually heard that request quite a lot, so we&#39;ll possibly implement it very soon.<br>
-&#39;ll talk to our development team and find out if that could be added to a future release.<br>
-In the meantime, please let me know if there&#39;s anything else that we can help you with and have a great rest of the week!
-Best,
+mysqli_query($connections, "INSERT INTO users (username, password, user_id) 
+VALUES('$username', '$password', '$db_id')");
+
+$subject = "You are now a part of CHMSU Tenant!";
+
+$body = "I hope this email finds you well.  $db_fname I am writing to inform you that your recent submission of legal requirements is missing some important information and requirements, and as a result, we are unable to proceed with its completion. 
 <br><br>
-Regards, <br>
-Carlos Hilado Memorial State University Fortune Towne.
-</p>";
+You can use this credentials to login your account. <br>
+<b>Username:</b> $username <br> <b>Password:</b> $password  </b><br><br>
+
+You can upload your documents here
+<a href='drive.google.com'>Upload</a>
+";
+
+$mail_host = "smtp.gmail.com";
+$mail_username = "j.balansa00@gmail.com";
+$mail_password = "exqkrxhhvjrruzdm";
+$mail_recipient = "Carlos Hilado Memorial State University";
 
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
@@ -52,15 +68,13 @@ try {
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University');     //Add a recipient
+    $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University');    //Add a recipient
     $mail->addAddress($email);
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = $subject;
     $mail->Body    = $body;
-
-
     $mail->AltBody = $body;
 
     $mail->send();

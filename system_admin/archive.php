@@ -30,6 +30,9 @@ if (isset($_SESSION["id"])) :
             <div class="container bg-light" style="margin-top: 60px;">
                 <br>
                 <br>
+                <a href="users.php" class="btn-sm btn btn-outline-success">Show Active</a>
+                <br>
+                <br>
                 <p>List of archived users</p>
                 <hr>
                 <table id="fetch_result" class="table-sm table table-striped">

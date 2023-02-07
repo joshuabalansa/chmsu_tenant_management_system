@@ -26,12 +26,54 @@ if (isset($_SESSION["id"])) :
 
             ?>
             <br>
-            <div style="display: flex; ">
-                <img width="400" height="500" src="<?php echo $payment_refImg ?> " alt="">
-                <div class="wrapper">
-                    <p class="lead">Name: <?php echo $tenant_fname; ?></p>
-                    <p class="lead">Name: <?php echo $tenant_lname; ?></p>
-                    <a class="btn btn-outline-secondary" href="payments.php">Back</a>
+            <h3>Payment Information</h3>
+            <div class="wrapper" style="display:flex;">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <td><?php echo date('M d, Y', strtotime($payment_date)) ?></td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <td><?php echo $tenant_fullname ?></td>
+                        </tr>
+                        <tr>
+                            <th>Amount</th>
+                            <td><?php echo $payment_amount ?></td>
+                        </tr>
+                        <tr>
+                            <th>Ref. No.</th>
+                            <td><?php echo  $payment_refno ?></td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td><?php echo ucfirst($payment_status) ?></td>
+                        </tr>
+                        <tr>
+                            <th>Reference image</th>
+                            <td>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#viewRef">
+                                    View
+                                </a>
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <a href="payments.php" class="btn btn-secondary">Back</a>
+        </div>
+        <!-- Modal Reference Image -->
+        <div class="modal fade" id="viewRef" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img width="100%" src="<?php echo $payment_refImg ?>" alt="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href='<?php echo $payment_refImg ?>' type="button" class="btn btn-primary" download>Download</a>
+                    </div>
                 </div>
             </div>
         </div>

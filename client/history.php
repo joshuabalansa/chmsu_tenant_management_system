@@ -40,8 +40,7 @@ if (isset($_SESSION["id"])) :
                 </thead>
                 <tbody>
                     <?php
-                    $get_payment = mysqli_query($connections, "SELECT * FROM payment WHERE user_id='$user_id' ORDER BY date DESC");
-
+                    $get_payment = mysqli_query($connections, "SELECT payment.amount, payment.status, payment.refno, payment.date, payment.user_id FROM payment JOIN users ON payment.user_id = users.id WHERE users.id = $user_id");
                     while ($row = mysqli_fetch_assoc($get_payment)) :
                         $db_amount = $row["amount"];
                         $db_refno = $row["refno"];

@@ -51,7 +51,6 @@ if (isset($_SESSION["id"])) :
             <?php include("inc/modals.php"); ?>
         </div>
     </body>
-
     </html>
 <?php
 else :

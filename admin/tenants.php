@@ -59,7 +59,7 @@ if (isset($_SESSION["id"])) :
                             $db_status    = $row['status'];
                             //
                             $db_fullname = ucfirst($db_first_name) . " " . ucfirst($db_middle_name[0]) . ". " . ucfirst($db_last_name);
-                            ($db_status == "active") ? ($badge = "success") : ($db_status == "pastdue");
+                            ($db_status == "active") ? ($badge = "success") : ($badge = "danger");
                             $count_address = strlen($db_address);
                             ($count_address > 10) ? ($db_address = substr($db_address, 0, -2) . "...") : ($db_address);
                         ?>

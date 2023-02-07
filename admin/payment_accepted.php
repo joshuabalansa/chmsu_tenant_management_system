@@ -27,6 +27,7 @@ if (isset($_SESSION["id"])) :
             <div class="container">
                 <br><br>
                 <a href="payments.php" class="btn-sm btn btn-outline-danger">Show Pending</a>
+                <a href="payment_reports.php" class="btn-sm btn btn-secondary">Reports</a>
                 <br><br>
                 <p>List of approved payments</p>
                 <hr>

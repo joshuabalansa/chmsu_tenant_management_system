@@ -50,32 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $address = $_POST["address"];
     }
-    //FIle
-    // if (empty($_POST["l_intent"])) {
-    //     $l_intentErr = "Letter of intent is required!";
-    // } else {
-    //     $l_intent = $_POST["l_intent"];
-    // }
-    // if (empty($_POST["b_permit"])) {
-    //     $b_permitErr = "Business Permit is required!";
-    // } else {
-    //     $b_permit = $_POST["b_permit"];
-    // }
-    // if (empty($_POST["h_certificate"])) {
-    //     $h_certificateErr = "health Certificate is required!";
-    // } else {
-    //     $h_certificate = $_POST["h_certificate"];
-    // }
-    // if (empty($_POST["s_permit"])) {
-    //     $s_permitErr = "Sanitary Permit is required!";
-    // } else {
-    //     $s_permit = $_POST["s_permit"];
-    // }
-    // $l_intent = $_POST["l_intent"];
-    // $b_permit = $_POST["b_permit"];
-    // $h_certificate = $_POST["h_certificate"];
-    // $s_permit = $_POST["s_permit"];
-
     if ($fname && $midname && $lname && $email && $contact && $business_type && $address) {
         if (!preg_match("/^[a-zA-Z]*$/", $fname)) {
             $fnameErr = "Invalid!";

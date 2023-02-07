@@ -24,18 +24,15 @@ if (isset($_POST["save"])) {
     $new_email = $_POST["new_email"];
     $new_contact = $_POST["new_contact"];
     $new_password = $_POST["new_password"];
+    $new_file1 = $_POST["new_file1"];
 
     //change info in table Tenants
     mysqli_query($connections, "UPDATE tenants
-    SET fname='$new_first_name', midname='$new_middle_name', lname='$new_last_name', address='$new_address', birth_date='$new_birth_date', email='$new_email', contact='$new_contact' WHERE id='$id'");
+    SET fname='$new_first_name', midname='$new_middle_name', lname='$new_last_name', address='$new_address', birth_date='$new_birth_date', email='$new_email', contact='$new_contact', l_intent='$new_file1' WHERE id='$id'");
 
     // change info in table users
     mysqli_query($connections, "UPDATE users SET password='$new_password' WHERE user_id='$id'");
 
     header("location: profile.php");
 }
-?>
-<?php
 include("profile_update.php");
-
-?>

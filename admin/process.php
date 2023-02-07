@@ -65,14 +65,18 @@
              FROM ((users INNER JOIN payment ON payment.user_id = users.id)
             INNER JOIN tenants ON users.user_id = tenants.id) WHERE payment.id = $paymentId"
         );
-        
+
         while ($row = mysqli_fetch_assoc($get_payment)) {
+            $tenant_id = $row["tenantId"];
             $tenant_fname = $row["fname"];
             $tenant_lname = $row["lname"];
+            $payment_id = $row["id"];
             $payment_amount = $row["amount"];
             $payment_refno = $row["refno"];
             $payment_date = $row["date"];
+            $payment_status = $row["status"];
             $payment_refImg = $row["ref_img"];
+            $tenant_fullname = ucfirst($tenant_fname) . " " . ucfirst($tenant_lname);
         }
         include('payment_info.php');
     }
