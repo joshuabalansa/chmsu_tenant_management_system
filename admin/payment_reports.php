@@ -7,7 +7,8 @@ if (isset($_SESSION["id"])) :
     include("fetch.php");
 ?>
     <!DOCTYPE html>
-    <html lang="en"> 
+    <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,9 +16,10 @@ if (isset($_SESSION["id"])) :
         <link rel="stylesheet" href="style/style.css">
         <title>Reports</title>
     </head>
+
     <body>
         <div class="container">
-            <p class="lead">Reports</p>
+            <p class="lead">Payment Reports</p>
             <table class="table-sm table table-hover">
                 <thead>
                     <tr>
@@ -74,6 +76,7 @@ if (isset($_SESSION["id"])) :
             </center>
         </div>
     </body>
+
     </html>
 <?php
 else :

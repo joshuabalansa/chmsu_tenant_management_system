@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2023 at 11:36 AM
+-- Generation Time: Feb 08, 2023 at 01:47 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -20,25 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ctms`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `archives`
---
-
-CREATE TABLE `archives` (
-  `id` int(11) NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `middle_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `contact` varchar(255) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `account_type` varchar(255) NOT NULL,
-  `date` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -62,9 +43,7 @@ CREATE TABLE `coordinators` (
 --
 
 INSERT INTO `coordinators` (`id`, `first_name`, `middle_name`, `last_name`, `email`, `contact`, `status`, `user_id`) VALUES
-(8, 'Carl', 'E', 'Ibabao', 'carl@carl.com', '12938712737', 'active', 52469),
-(13, 'Josh', 'Desabelle', 'Balansa', 'jbalansa143@gmail.com', '09122190312', 'active', 2198),
-(14, 'Coordinator', 'Coordinator', 'Coordinator', 'Coordinator@gmail.com', '09101920123', 'active', 4560);
+(19, 'Joshua', 'Desabelle', 'Balansa', 'jbalansa143@gmail.com', '09882392398', 'active', 843);
 
 -- --------------------------------------------------------
 
@@ -80,6 +59,21 @@ CREATE TABLE `logs` (
   `log_id` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `logs`
+--
+
+INSERT INTO `logs` (`id`, `first_name`, `account_type`, `date`, `log_id`) VALUES
+(500, 'Joshua Balansa', 'admin', '2023-02-07 11:53:38', '122'),
+(501, 'Joshua Balansa', 'admin', '2023-02-07 11:58:16', '122'),
+(502, 'Joshua Balansa', 'admin', '2023-02-07 18:54:17', '122'),
+(503, 'Joshua Balansa', 'admin', '2023-02-07 19:07:34', '122'),
+(504, 'Joshua Balansa', 'admin', '2023-02-07 19:38:23', '122'),
+(505, 'Joshua Balansa', 'admin', '2023-02-07 19:58:57', '122'),
+(506, 'tenant Sample', 'tenant', '2023-02-07 21:14:15', '123'),
+(507, 'tenant Sample', 'tenant', '2023-02-07 21:14:26', '123'),
+(508, 'Joshua Balansa', 'admin', '2023-02-07 21:14:32', '122');
+
 -- --------------------------------------------------------
 
 --
@@ -90,6 +84,8 @@ CREATE TABLE `payment` (
   `id` int(11) NOT NULL,
   `amount` varchar(255) NOT NULL,
   `refno` varchar(255) NOT NULL,
+  `ref_img` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'pending',
   `date` date DEFAULT current_timestamp(),
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -98,10 +94,17 @@ CREATE TABLE `payment` (
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`id`, `amount`, `refno`, `date`, `user_id`) VALUES
-(72, '900', '1029380129380', '2023-01-22', 77),
-(73, '100', '1029391203013', '2023-01-22', 79),
-(74, '800', '9182737213811', '2023-01-27', 77);
+INSERT INTO `payment` (`id`, `amount`, `refno`, `ref_img`, `status`, `date`, `user_id`) VALUES
+(123, '100', '0912830809128', '../uploads/3862_Screenshot_20230129_022210.png', 'accepted', '2023-02-02', 123),
+(124, '800', '2001231212123', '../uploads/6847_health_certificate.jpg', 'accepted', '2023-02-03', 123),
+(127, '900', '0129309909301', '../uploads/health_certificate(1).jpg', 'accepted', '2023-02-03', 124),
+(128, '98', '1928371931827', '../uploads/9436_business_permit.jpg', 'pending', '2023-02-04', 123),
+(129, '900', '0129830123801', '../uploads/7366_letter-of-intent-sample.png', 'accepted', '2023-02-04', 125),
+(130, '20', '1111111111111', '../uploads/refno.jpg', 'accepted', '2023-02-04', 123),
+(131, '900', '0129301203910', '../uploads/4813_refno.jpg', 'accepted', '2023-02-06', 123),
+(132, '800', '0192830921381', '../uploads/2325_refno.jpg', 'pending', '2023-02-06', 123),
+(133, '200', '1029381209380', '../uploads/4623_refno.jpg', 'pending', '2023-02-06', 123),
+(134, '300', '9102830912930', '../uploads/7196_refno.jpg', 'accepted', '2023-02-06', 127);
 
 -- --------------------------------------------------------
 
@@ -132,16 +135,11 @@ CREATE TABLE `tenants` (
 --
 
 INSERT INTO `tenants` (`id`, `fname`, `midname`, `lname`, `email`, `contact`, `birth_date`, `business_type`, `address`, `l_intent`, `s_permit`, `b_permit`, `h_certificate`, `status`, `date`) VALUES
-(73, 'Joshua', 'Desabelle ', 'Balansa', 'jbssalansa143@gmail.com', '09101023900', '2023-01-13', 'Coffee', 'Bacolod City Brgy Estifania ', '', '02af6f406b25e5c284daa0c39cf96a9a.jpg', '', '', 'pastdue', '2022-12-29 21:57:22.357411'),
-(74, 'Alfred', 'Baloya', 'Fabillar', 'afred@yahoo.com', '09812391290', '0000-00-00', 'Burger', 'Bacolod City Brgy Estifania ', '', '02af6f406b25e5c284daa0c39cf96a9a.jpg', '', '', 'pending', '2022-12-29 22:02:00.443010'),
-(75, 'Mark', 'M', 'Munion', 'johnmarksalera5@gmail.com', '98192399238', '2013-01-09', 'Coffee', 'Bacolod City Brgy Estifania ', '', '02af6f406b25e5c284daa0c39cf96a9a.jpg', '', '', 'pending', '2022-12-29 22:07:14.558943'),
-(76, 'Eugene', 'Tingson', 'Talisik', 'lagosjames34@gmail.com', '91283091289', '0000-00-00', 'COffeee', 'Bacolod City', '', '02af6f406b25e5c284daa0c39cf96a9a.jpg', '', '', 'active', '2023-01-05 12:10:39.718637'),
-(90, 'joshua', 'desabelle', 'balannsa', 'jbalansa143@gmail.com', '09120312939', '2023-01-14', 'burger', 'bacolod city neg occ', '1920x1080-rick-and-morty-orange-space-art-4k_1602452335.jpg', '1920x1080-rick-and-morty-orange-space-art-4k_1602452335.jpg', 'IMG_20220928_092205_2.jpg', '1920x1080-rick-and-morty-orange-space-art-4k_1602452335.jpg', 'pending', '2023-01-14 18:45:30.428316'),
-(91, 'James', 'Obregon', 'Lagos', 'jbalansa143@gmail.com', '91827312893', '2023-01-16', 'Business', 'Bacolod City Neg occ', '2f93af00-b23c-4c3d-b442-9d800fc41ec7.jpg', '1920x1080-rick-and-morty-orange-space-art-4k_1602452335.jpg', '1920x1080-rick-and-morty-orange-space-art-4k_1602452335.jpg', '1920x1080-rick-and-morty-orange-space-art-4k_1602452335.jpg', 'pastdue', '2023-01-16 12:00:38.721830'),
-(171, 'bettatest', 'bettatest', 'bettatest', 'jbalansa143@gmail.com', '12321313123', '2023-01-22', 'bettatest', 'bettatest', '2f93af00-b23c-4c3d-b442-9d800fc41ec7.jpg', '1920x1080-rick-and-morty-orange-space-art-4k_1602452335.jpg', 'IMG_20220928_092205_2.jpg', 'Marmotamaps_Wallpaper_Berchtesgaden_Desktop_1920x1080.jpg', 'active', '2023-01-22 23:20:00.015463'),
-(172, 'bettatest', 'bettatest', 'bettatest', 'jbalansa143@gmail.com', '12321313123', '1900-01-11', 'bettatest', 'bettatest', '2f93af00-b23c-4c3d-b442-9d800fc41ec7.jpg', '1920x1080-rick-and-morty-orange-space-art-4k_1602452335.jpg', 'IMG_20220928_092205_2.jpg', 'Marmotamaps_Wallpaper_Berchtesgaden_Desktop_1920x1080.jpg', 'pending', '2023-01-22 23:24:45.443847'),
-(173, 'Alvin', 'Alvin', 'Alvin', 'vintoien22@gmail.com', '91283912232', '2023-01-24', 'Flowers', 'Bacolod city', 'IMG_20220928_092205_2.jpg', '2f93af00-b23c-4c3d-b442-9d800fc41ec7.jpg', '2f93af00-b23c-4c3d-b442-9d800fc41ec7.jpg', 'IMG_20220928_092205_2.jpg', 'rejected', '2023-01-24 11:12:35.177045'),
-(174, 'helloworld', 'helloworld', 'helloworld', 'helloworld@helloworld.com', '09120939120', '2007-06-21', 'Burger', 'Bacolod City', 'wallpaperflare.com_wallpaper.jpg', 'wallpaperflare.com_wallpaper.jpg', 'wallpaperflare.com_wallpaper.jpg', 'wallpaperflare.com_wallpaper.jpg', 'pending', '2023-01-27 21:55:09.028066');
+(188, 'tenant', 'tenant', 'Sample', 'jbalansa143@gmail.com', '12391001923', '2023-02-25', 'Sample', 'SampleSampleSample1', '', 'Sanitary_permit.jpg', 'health_certificate.jpg', '', 'active', '2023-02-02 23:00:43.729837'),
+(189, 'josh', 'desabelle', 'balansa', 'jbalansa143@gmail.com', '91023013091', '2023-02-10', 'Coffeee', 'CoffeeeCoffeee', '', '', '', '', 'pending', '2023-02-02 23:01:17.954229'),
+(190, 'Joshua', 'Desabelle', 'Balansa', 'jbalansa143@gmail.com', '01923908120', '1999-11-09', 'Coffee', 'Bacolod city brgy estifania', 'business_permit.jpg', 'letter-of-intent-sample.png', '', '', 'active', '2023-02-04 08:57:08.994370'),
+(191, 'Potato', 'sample', 'Corner', 'jbalansa143@gmail.com', '01923012039', '1973-03-13', 'sample', 'samplesamplesample', 'letter-of-intent-sample.png', 'Sanitary_permit.jpg', 'business_permit.jpg', 'health_certificate.jpg', 'active', '2023-02-05 08:33:54.769081'),
+(192, 'example', 'example', 'example', 'example@example.com', '12319203801', '2023-03-02', 'example', 'example', '', '', '', '', 'archived', '2023-02-06 07:49:37.589429');
 
 -- --------------------------------------------------------
 
@@ -165,20 +163,15 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `date`, `account_type`, `user_id`, `status`) VALUES
 (1, 'admin', 'admin', '2022-11-02 19:08:57', 'admin', 0, 'active'),
-(56, 'carl', '123', '2022-12-22 00:08:10', 'coordinator', 52469, 'active'),
-(76, 'josh', '123', '2023-01-05 14:33:21', 'coordinator', 2198, 'active'),
-(77, 'jbalansa', '123', '2023-01-05 14:37:17', 'tenant', 73, 'active'),
-(92, 'bbettatest', 'e07bzu46', '2023-01-25 13:20:23', 'tenant', 171, 'active');
+(122, 'coor', '123', '2023-02-02 22:56:53', 'coordinator', 843, 'active'),
+(123, 'tenant', '123', '2023-02-02 23:03:13', 'tenant', 188, 'active'),
+(125, 'tenant2', '123', '2023-02-04 19:36:49', 'tenant', 190, 'active'),
+(126, 'pcorner32349', 'qbi71yzL', '2023-02-05 08:40:49', 'tenant', 191, 'active'),
+(127, 'empty', '123', '2023-02-06 07:49:49', 'archived', 192, 'archived');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `archives`
---
-ALTER TABLE `archives`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `coordinators`
@@ -218,40 +211,34 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `archives`
---
-ALTER TABLE `archives`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
 -- AUTO_INCREMENT for table `coordinators`
 --
 ALTER TABLE `coordinators`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=311;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=509;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- AUTO_INCREMENT for table `tenants`
 --
 ALTER TABLE `tenants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

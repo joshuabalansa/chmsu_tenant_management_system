@@ -76,7 +76,7 @@ if (isset($_SESSION["id"])) :
                                 </span>
                                 <td colspan="3">
                                     <a title="View Payment reference" class="btn-sm btn btn-info" href="process.php?viewPaymentInfo=<?php echo $db_payment_id = $row["id"]; ?>">
-                                        <i class='bx bx-credit-card-front'></i>
+                                        <i class='bx bx-menu-alt-left'></i>
                                     </a>
                                     <a title="Accept Payment" href="process.php?paymentAccept=<?php echo $db_payment_id; ?>&tenantId=<?php echo $tenantId  ?>" class="btn-sm btn btn-success"><i class='bx bx-check'></i></a>
                                     <a title="Reject Payment" href="mail/paymentReject.php?tenantId=<?php echo $db_users_userId; ?>&paymentId=<?php echo $db_payment_id ?>" class="btn-sm btn btn-outline-danger"><i class='bx bx-x'></i></a>
@@ -129,10 +129,7 @@ if (isset($_SESSION["id"])) :
                                         <input class="form-control" type="date" name="to_date" value="<?php if (isset($_GET['to_date'])) {
                                                                                                             echo $_GET['to_date'];
                                                                                                         } ?>" id="">
-                                    </div>
-                                    <div class="col">
-
-                                    </div>
+                                    </div>f
                                 </div>
 
                             </div>

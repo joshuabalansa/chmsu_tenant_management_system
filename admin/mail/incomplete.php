@@ -48,8 +48,8 @@ You can upload your documents here
 ";
 
 $mail_host = "smtp.gmail.com";
-$mail_username = "j.balansa00@gmail.com";
-$mail_password = "exqkrxhhvjrruzdm";
+$mail->Username   = 'lagosjames34@gmail.com';                     //SMTP username
+$mail->Password   = 'eokedvuqbznlgnnw';
 $mail_recipient = "Carlos Hilado Memorial State University";
 
 //Create an instance; passing `true` enables exceptions

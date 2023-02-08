@@ -27,7 +27,7 @@ if (isset($_SESSION["id"])) :
             <div class="container">
                 <br><br>
                 <a href="payments.php" class="btn-sm btn btn-outline-danger">Show Pending</a>
-                <a href="payment_reports.php" class="btn-sm btn btn-secondary">Reports</a>
+                <button data-bs-toggle="modal" data-bs-target="#generateReport" class="btn-sm btn btn-secondary">Reports</button>
                 <br><br>
                 <p>List of approved payments</p>
                 <hr>
@@ -96,6 +96,40 @@ if (isset($_SESSION["id"])) :
                     $('#fetch_result').DataTable();
                 });
             </script>
+        </div>
+
+
+
+        <div class="modal fade" id="generateReport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p class="lead">Generate Report</p>
+                        <form action="payment_reports.php" method="GET">
+                            <div class="mb-3">
+                                <div class="row g-3">
+                                    <div class="col">
+                                        <label for="" class="label-for">From</label>
+                                        <input class="form-control" type="date" name="from_date" value="<?php if (isset($_GET['from_date'])) {
+                                                                                                            echo $_GET['from_date'];
+                                                                                                        } ?>" id="">
+                                    </div>
+                                    <div class="col">
+                                        <label for="" class="label-for">To</label>
+                                        <input class="form-control" type="date" name="to_date" value="<?php if (isset($_GET['to_date'])) {
+                                                                                                            echo $_GET['to_date'];
+                                                                                                        } ?>" id="">
+                                    </div>f
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                <input class="btn btn-primary" type="submit" value="Filter">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 
