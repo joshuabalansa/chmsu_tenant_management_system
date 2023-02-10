@@ -27,7 +27,7 @@ if (isset($_SESSION["id"])) :
             <div class="container">
                 <br><br>
                 <a href="payment_accepted.php" class="btn-sm btn btn-outline-success">Show Accepted</a>
-                <button data-bs-toggle="modal" data-bs-target="#generateReport" class="btn-sm btn btn-secondary">Reports</button>
+                <!-- <button data-bs-toggle="modal" data-bs-target="#generateReport" class="btn-sm btn btn-secondary">Reports</button> -->
                 <br><br>
                 <p>List of pending payments</p>
                 <hr>

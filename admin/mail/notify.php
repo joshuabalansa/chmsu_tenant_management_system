@@ -11,6 +11,7 @@ use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
 require '../../vendor/autoload.php';
 
+@include "mail_config.php";
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
@@ -19,15 +20,15 @@ try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->Host       = $mail_host;                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'lagosjames34@gmail.com';                     //SMTP username
-    $mail->Password   = 'eokedvuqbznlgnnw';                                   //SMTP password
+    $mail->Username   = $mail_username;                     //SMTP username
+    $mail->Password   = $mail_password;                                //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('j.balansa00@gmail.com', 'Carlos Hilado Memorial State University');   //Add a recipient
+    $mail->setFrom($mail_username, $mail_recipient);   //Add a recipient
 
     $query = "SELECT * FROM tenants WHERE status='active'";
     $result = $connections->query($query);

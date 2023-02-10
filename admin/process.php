@@ -40,9 +40,6 @@
         $tenantId = $_GET["tenantId"];
         mysqli_query($connections, "UPDATE payment SET status='accepted' WHERE id=$paymentId");
         mysqli_query($connections, "UPDATE tenants SET status='active' WHERE id=$tenantId");
-
-
-
         header("location: payments.php");
     }
 

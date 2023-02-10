@@ -48,7 +48,7 @@ if (isset($_SESSION["id"])) :
                         </tr>
                         <tr>
                             <th>Status</th>
-                            <td><?php echo ucfirst($payment_status) ?></td>
+                            <td><span class="badge text-bg-danger"><?php echo ucfirst($payment_status) ?></span></td>
                         </tr>
                         <tr>
                             <th>Reference image</th>

@@ -37,6 +37,8 @@ if (isset($_SESSION["id"])) :
                         $from_date = $_GET["from_date"];
                         $to_date = $_GET["to_date"];
 
+                       
+
                         $query = "SELECT * FROM payment WHERE date BETWEEN '$from_date' AND '$to_date'";
                         $query_run = mysqli_query($connections, $query);
 
@@ -53,7 +55,9 @@ if (isset($_SESSION["id"])) :
                     <?php
                             }
                         } else {
-                            $empty_msg = "No Records Found!";
+                            // $empty_msg = "No Records Found!";
+                            echo "<script>window.alert('No Records found!')</script>";
+                            echo "<script>window.location.href='payments.php        '</script>";
                         }
                     }
                     ?>
