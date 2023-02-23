@@ -27,5 +27,11 @@ For support, email jbalansa143@gmail.com or join our Slack channel.
 6. Import the provided SQL file. The file is known as ctms.sql located inside the database folder.
 7. Browse the Carlos Hilado Memorial State University Tenant Management System in a browser. i.e. http://localhost/ctms.
 
+#System Admin
 Username: admin
 Password: admin
+
+#Coordinator sample
+Username: coor
+Password: 123
+
